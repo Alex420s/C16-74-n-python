@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class User(models.Model):
     user_id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=100)
@@ -34,6 +35,7 @@ class Professional(models.Model):
 
     def __str__(self):
         return f"Professional: {self.user_id.first_name} {self.user_id.last_name}"
+
 
 class Availability(models.Model):
     availability_id = models.AutoField(primary_key=True)
