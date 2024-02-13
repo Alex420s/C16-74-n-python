@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.generic import ListView
 from rest_framework import status
-from .models import Usuario
+from .models import *
 
 
 def home(request):
@@ -12,7 +12,7 @@ def home(request):
 def obtener_todos_usuarios(request):
     if request.method == 'GET':
         try:
-            usuarios = Usuario.objects.all()
+            usuarios = User.objects.all()
             datos_usuarios = [{'id': usuario.ID_usuario, 'nombre': usuario.Nombre, 'apellido': usuario.Apellido,
                                'correo': usuario.Correo_electronico, 'contraseña': usuario.Contraseña,
                                'telefono': usuario.Contraseña, 'direccion': usuario.Direccion,

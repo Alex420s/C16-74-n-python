@@ -2,10 +2,11 @@ from django.contrib import admin
 from django.urls import path, include
 from .models import *
 
-admin.site.register(Usuario)
-admin.site.register(Turno)
-admin.site.register(HistoralDeCitas)
-admin.site.register(Profesional)
-admin.site.register(Mensajes)
-admin.site.register(Pago)
-admin.site.register(Valoracion)
+admin.site.register(User)
+admin.site.register(Turn)
+admin.site.register(Availability)
+admin.site.register(Professional)
+admin.site.register(Message)
+admin.site.register(Payment)
+admin.site.register(Rating)
+admin.site.register(AppointmentHistory)
