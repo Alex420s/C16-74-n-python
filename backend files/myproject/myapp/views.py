@@ -13,10 +13,10 @@ def obtener_todos_usuarios(request):
     if request.method == 'GET':
         try:
             usuarios = User.objects.all()
-            datos_usuarios = [{'id': usuario.ID_usuario, 'nombre': usuario.Nombre, 'apellido': usuario.Apellido,
-                               'correo': usuario.Correo_electronico, 'contraseña': usuario.Contraseña,
-                               'telefono': usuario.Contraseña, 'direccion': usuario.Direccion,
-                               'Fecha': usuario.Fecha_de_registro} for usuario in usuarios]
+            datos_usuarios = [{'id': usuario.user_id, 'nombre': usuario.first_name, 'apellido': usuario.last_name,
+                               'correo': usuario.email, 'contraseña': usuario.password,
+                               'telefono': usuario.phone_number, 'direccion': usuario.address,
+                               'fecha': usuario.registration_date} for usuario in usuarios]
             return JsonResponse({'usuarios': datos_usuarios}, status=status.HTTP_200_OK)
         except Exception as e:
             return JsonResponse({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
