@@ -16,7 +16,8 @@ class CustomUserManager(BaseUserManager):
             raise ValueError('El campo phone_number es obligatorio')
         if not address:
             raise ValueError('El campo address es obligatorio')
-
+        if not nick_name:
+            raise ValueError('El campo nick_name es obligatorio')
         email = self.normalize_email(email)
         user = self.model(email=email, nick_name=nick_name, first_name=first_name, last_name=last_name, phone_number=phone_number, address=address, **extra_fields)
         user.set_password(password)
@@ -53,39 +54,20 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} - {self.role}"
-# Si el usuario define el rol 'profesional' se creara una tabla para los datos del profesional
+    
+# Si el usuario define el rol 'profesional' 
+# Se usara un signal para crear la tabla de profesional al guardar la tabla de usuario
 class Professional(models.Model):
     professional_id = models.AutoField(primary_key=True)
     user_id = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-    specialty = models.CharField(max_length=100)
-    description = models.TextField()
-    session_rate = models.DecimalField(max_digits=10, decimal_places=2)
-    availability_hours = models.CharField(max_length=255)
+    speciality = models.CharField(max_length=100, default="Contador")
+    description = models.TextField(max_length=100, default="Profesional de confianza")
+    session_rate = models.DecimalField(max_digits=10, decimal_places=2, default=250)
+    availability_hours = models.CharField(max_length=255, blank=True)
     role = models.CharField(max_length=20, choices=[('professional', 'Professional'), ('user', 'User')], default="user")
 
     def __str__(self):
         return f"Professional: {self.user_id.first_name} {self.user_id.last_name}"
-
-
-# class User(models.Model):
-#     user_id = models.AutoField(primary_key=True)
-#     first_name = models.CharField(max_length=100)
-#     last_name = models.CharField(max_length=100)
-#     email = models.EmailField()
-#     password = models.CharField(max_length=255)  # Hashed password
-#     phone_number = models.CharField(max_length=20)
-#     address = models.CharField(max_length=255)
-#     registration_date = models.DateTimeField(auto_now_add=True)
-#     USER_TYPE_CHOICES = (
-#         ('professional', 'Professional'),
-#         ('user', 'User'),
-#     )
-#     role = models.CharField(max_length=20, choices=USER_TYPE_CHOICES, default="")
-
-#     def __str__(self):
-#         return f"{self.first_name} {self.last_name} {self.role}"
-
-
 
 
 class Availability(models.Model):

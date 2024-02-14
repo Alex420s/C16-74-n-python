@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myapp',
+    'users',
     #Third Party Apps
     'rest_framework',
 
@@ -127,7 +127,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CustomUser 
-AUTH_USER_MODEL = 'myapp.CustomUser'
+AUTH_USER_MODEL = 'users.CustomUser'
 # rest_framework 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
