@@ -1,40 +1,91 @@
 from django.db import models
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+# Profile Signals
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
+class CustomUserManager(BaseUserManager):
+    def create_user(self,nick_name, email, first_name, last_name, phone_number, address, password=None, **extra_fields):
+        if not email:
+            raise ValueError('El campo email es obligatorio')
+        if not first_name:
+            raise ValueError('El campo first_name es obligatorio')
+        if not last_name:
+            raise ValueError('El campo last_name es obligatorio')
+        if not phone_number:
+            raise ValueError('El campo phone_number es obligatorio')
+        if not address:
+            raise ValueError('El campo address es obligatorio')
 
-class User(models.Model):
-    user_id = models.AutoField(primary_key=True)
+        email = self.normalize_email(email)
+        user = self.model(email=email, nick_name=nick_name, first_name=first_name, last_name=last_name, phone_number=phone_number, address=address, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, nick_name, email, first_name, last_name, phone_number, address, password=None, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+
+        if extra_fields.get('is_staff') is not True:
+            raise ValueError('Superuser debe tener is_staff=True.')
+        if extra_fields.get('is_superuser') is not True:
+            raise ValueError('Superuser debe tener is_superuser=True.')
+
+        return self.create_user(email, nick_name, first_name, last_name, phone_number, address, password, **extra_fields)
+
+class CustomUser(AbstractBaseUser, PermissionsMixin):
+    email = models.EmailField(unique=True)
+    nick_name = models.CharField(max_length=100)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    email = models.EmailField()
-    password = models.CharField(max_length=255)  # Hashed password
     phone_number = models.CharField(max_length=20)
     address = models.CharField(max_length=255)
     registration_date = models.DateTimeField(auto_now_add=True)
-    USER_TYPE_CHOICES = (
-        ('professional', 'Professional'),
-        ('user', 'User'),
-    )
-    role = models.CharField(max_length=20, choices=USER_TYPE_CHOICES, default="")
+    role = models.CharField(max_length=20, choices=[('professional', 'Professional'), ('user', 'User')], default="user")
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+
+    objects = CustomUserManager()
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['first_name', 'nick_name','last_name', 'phone_number', 'address','role']
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name} {self.role}"
-
-
+        return f"{self.first_name} {self.last_name} - {self.role}"
+# Si el usuario define el rol 'profesional' se creara una tabla para los datos del profesional
 class Professional(models.Model):
     professional_id = models.AutoField(primary_key=True)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_id = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     specialty = models.CharField(max_length=100)
     description = models.TextField()
     session_rate = models.DecimalField(max_digits=10, decimal_places=2)
     availability_hours = models.CharField(max_length=255)
-    USER_TYPE_CHOICES = (
-        ('professional', 'Professional'),
-        ('user', 'User'),
-    )
-    role = models.CharField(max_length=20, choices=USER_TYPE_CHOICES, default="")
+    role = models.CharField(max_length=20, choices=[('professional', 'Professional'), ('user', 'User')], default="user")
 
     def __str__(self):
         return f"Professional: {self.user_id.first_name} {self.user_id.last_name}"
+
+
+# class User(models.Model):
+#     user_id = models.AutoField(primary_key=True)
+#     first_name = models.CharField(max_length=100)
+#     last_name = models.CharField(max_length=100)
+#     email = models.EmailField()
+#     password = models.CharField(max_length=255)  # Hashed password
+#     phone_number = models.CharField(max_length=20)
+#     address = models.CharField(max_length=255)
+#     registration_date = models.DateTimeField(auto_now_add=True)
+#     USER_TYPE_CHOICES = (
+#         ('professional', 'Professional'),
+#         ('user', 'User'),
+#     )
+#     role = models.CharField(max_length=20, choices=USER_TYPE_CHOICES, default="")
+
+#     def __str__(self):
+#         return f"{self.first_name} {self.last_name} {self.role}"
+
+
 
 
 class Availability(models.Model):
@@ -53,7 +104,7 @@ class Turn(models.Model):
     turn_id = models.AutoField(primary_key=True)
     availability_id = models.ForeignKey(Availability, on_delete=models.CASCADE, default="")
     professional_id = models.ForeignKey(Professional, on_delete=models.CASCADE)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     date_and_time_of_turn = models.DateTimeField()
     turn_status = models.CharField(max_length=20, choices=[('confirmed', 'Confirmed'), ('pending', 'Pending'), ('cancelled', 'Cancelled'), ('completed', 'Completed')])
     message_to_professional = models.TextField(blank=True, null=True)
@@ -87,8 +138,8 @@ class Rating(models.Model):
 class Message(models.Model):
     message_id = models.AutoField(primary_key=True)
     turn_id = models.ForeignKey(Turn, on_delete=models.CASCADE)
-    sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sender')
-    recipient = models.ForeignKey(User, on_delete=models.CASCADE, related_name='recipient')
+    sender = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='sender')
+    recipient = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='recipient')
     message_content = models.TextField()
     date_and_time_of_message = models.DateTimeField(auto_now_add=True)
 
