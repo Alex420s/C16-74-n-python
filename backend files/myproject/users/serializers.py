@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from rest_framework.exceptions import AuthenticationFailed
 from django.contrib.auth import get_user_model, authenticate
+from .models import Professional
 
 UserModel = get_user_model()
 # json de prueba
@@ -49,3 +50,29 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserModel
         fields = ('email', 'first_name', 'last_name', 'phone_number', 'address', 'role')
+
+class ProfessionalSerializer(serializers.ModelSerializer):
+    user_id = UserSerializer()  # Usa el serializer de CustomUser
+
+    class Meta:
+        model = Professional
+        fields = '__all__'  # Incluye todos los campos de Professional
+
+# Devuelve un JSON de esta forma
+"""
+{
+        "professional_id": 1,
+        "user_id": {
+            "email": "testere78s@gmail.com",
+            "first_name": "Jd78uan",
+            "last_name": "Hernandez",
+            "phone_number": "23443435353",
+            "address": "San Bartolo",
+            "role": "professional"
+        },
+        "speciality": "Contador",
+        "description": "Profesional de confianza",
+        "session_rate": "250.00",
+        "availability_hours": ""
+},
+"""

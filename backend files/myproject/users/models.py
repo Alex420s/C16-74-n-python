@@ -1,8 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
-# Profile Signals
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 
 class CustomUserManager(BaseUserManager):
     def create_user(self,nick_name, email, first_name, last_name, phone_number, address, password=None, **extra_fields):
@@ -64,8 +61,6 @@ class Professional(models.Model):
     description = models.TextField(max_length=100, default="Profesional de confianza")
     session_rate = models.DecimalField(max_digits=10, decimal_places=2, default=250)
     availability_hours = models.CharField(max_length=255, blank=True)
-    role = models.CharField(max_length=20, choices=[('professional', 'Professional'), ('user', 'User')], default="user")
-
     def __str__(self):
         return f"Professional: {self.user_id.first_name} {self.user_id.last_name}"
 

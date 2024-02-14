@@ -2,9 +2,9 @@ from django.contrib.auth import get_user_model, login, logout
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .serializers import UserRegisterSerializer, UserLoginSerializer, UserSerializer
+from .serializers import UserRegisterSerializer, UserLoginSerializer, UserSerializer, ProfessionalSerializer
 from rest_framework import permissions, status
-
+from .models import Professional
 
 
 class UserRegister(APIView):
@@ -54,3 +54,13 @@ class UserView(APIView):
 	def get(self, request):
 		serializer = UserSerializer(request.user)
 		return Response({'user': serializer.data}, status=status.HTTP_200_OK)
+
+class ProfessionalView(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    authentication_classes = (SessionAuthentication,)
+
+    def get(self, request):
+        profesionales = Professional.objects.all()
+        serializer = ProfessionalSerializer(profesionales, many=True)
+        return Response(serializer.data)
+	
