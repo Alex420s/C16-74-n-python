@@ -10,6 +10,6 @@ urlpatterns = [
     path('profile', views.ProfessionalView.as_view(), name="professional")
 ]
   
-# path('api/usuarios', views.obtener_todos_usuarios),
+# path('user/usuarios', views.obtener_todos_usuarios),
 
 

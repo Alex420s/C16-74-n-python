@@ -25,8 +25,23 @@ SECRET_KEY = 'django-insecure-9if=6^@04jsk7z6!t!6&*0zv!@98^u&5_mc6t*92xdqrso$rhl
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+"""
+ Es una lista de nombres de host que pueden alojar el sitio web. 
+ En este caso, ' * ' indica que se permiten todas las solicitudes de cualquier host.
+"""
+ALLOWED_HOSTS = ['*']
 
+# Configuración para permitir solicitudes CORS desde estos orígenes.
+# Esto controla desde qué orígenes se pueden hacer solicitudes al servidor.
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost',
+    'http://127.0.0.1',
+    'http://0.0.0.0',
+]
+# Configuración para permitir el envío de cookies de autenticación en solicitudes CORS.
+# para mantener la autenticación del usuario entre diferentes orígenes.
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Application definition
 
@@ -40,10 +55,12 @@ INSTALLED_APPS = [
     'users',
     #Third Party Apps
     'rest_framework',
+    'corsheaders',
 
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

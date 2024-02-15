@@ -8,16 +8,18 @@ UserModel = get_user_model()
 """"
 {
     "first_name": "Jduan",
-    "password": "12345678",
+    
     "nick_name": "locos",
     "last_name": "Hernandez",
     "phone_number": "23443435353",
     "address": "San Bartolo",
     "email": "testeres@gmail.com",
+    "password": "12345678",
     "role": "user"
 }
 """
 class UserRegisterSerializer(serializers.ModelSerializer):
+    role = serializers.CharField(default='user')  # Valor por defecto
     class Meta:
         model = UserModel
         fields = ('first_name', 'password', 'nick_name', 'last_name', 'phone_number', 'address', 'email', 'role')

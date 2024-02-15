@@ -12,12 +12,11 @@ class UserRegister(APIView):
 	
 	def post(self, request):
 		serializer = UserRegisterSerializer(data=request.data)
-		
 		if serializer.is_valid(raise_exception=True):
 			user = serializer.save()
 			message = f"Usuario creado exitosamente con el rol de: {user.get_role_display()}"
 			return Response({"message": message, "user": serializer.data}, status=status.HTTP_201_CREATED)
-		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+		return Response(serializer.errors,{"message": serializer.data}, status=status.HTTP_400_BAD_REQUEST)
 class UserLogin(APIView):
 	permission_classes = (permissions.AllowAny,)
 	authentication_classes = (SessionAuthentication,)
