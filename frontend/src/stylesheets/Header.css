@@ -1,0 +1,47 @@
+.navbar {
+  color: white;
+}
+
+.header-logo {
+  height: 90px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center ;
+  padding-top: 10px;
+}
+
+.navbar > ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  margin-right: 50px;
+}
+
+
+
+.nav-link {
+  display: inline-block;
+  border-radius: 12px;
+  color: inherit;
+  cursor: pointer;
+  line-height: 0;
+  margin: 0 20px;
+  padding: 20px; 
+  text-decoration: none;
+}
+
+.navbar > ul > li:hover {
+  background-color: white;
+  border-radius: 12px;
+  color: black;
+}
+
+.rojo {
+  background-color: red;
+  border-radius: 12px;
+}

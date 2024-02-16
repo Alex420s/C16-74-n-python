@@ -2,8 +2,10 @@ import React from 'react'
 
 const FormContainer = () => {
   return (
-    <div>
-      
+    <div className='outer-container'>
+      <div className='inner-container'>
+
+      </div>
     </div>
   )
 }

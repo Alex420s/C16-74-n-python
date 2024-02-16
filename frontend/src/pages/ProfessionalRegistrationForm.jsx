@@ -1,9 +1,12 @@
 import React from 'react';
 import '../stylesheets/ProfessionalRegistrationForm.css';
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 const ProfessionalRegistrationForm = () => {
   return (
     <>
+      <Header />
       <main>
         <h2>Registrate como<br />
           <span>profesional</span>
@@ -180,6 +183,7 @@ const ProfessionalRegistrationForm = () => {
           <input type="submit" name="registro" value="Registrarte" id="enviar" />
         </div>
       </main>
+      <Footer />
     </>
   );
 }
