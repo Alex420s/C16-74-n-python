@@ -2,12 +2,14 @@ import React from 'react';
 import '../stylesheets/ProfessionalRegistrationForm.css';
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import FormContainer from '../components/FormContainer.jsx'
 
 const ProfessionalRegistrationForm = () => {
   return (
     <>
       <Header />
-      <main>
+      <FormContainer />
+      {/* <main>
         <h2>Registrate como<br />
           <span>profesional</span>
         </h2>
@@ -182,7 +184,7 @@ const ProfessionalRegistrationForm = () => {
         <div id="contenedor-enviar">
           <input type="submit" name="registro" value="Registrarte" id="enviar" />
         </div>
-      </main>
+      </main> */}
       <Footer />
     </>
   );

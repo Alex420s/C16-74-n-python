@@ -1,0 +1,19 @@
+.outer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.inner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 12px;
+  margin: 50px 0;
+  min-width: 30%;
+  padding: 30px 50px;
+}
