@@ -9,18 +9,18 @@ const ProfessionalForm = () => {
       <div className="info-1">
         <h3>Información personal</h3>
         <div>
-          <div>
+          <div className="fila">
             <input className="input-box" type="text" placeholder="Nombre" required name="Nombre" />
             <input type="text" placeholder="Apellido" required name="Apellido" />
           </div>
-          <div>
+          <div className="fila">
             <input type="tel" placeholder="Teléfono" required name="Telefono" />
             <input type="email" name="email" id="email" required placeholder="Email" />
           </div>
           <div>
             <input type="text" name="usuario" id="usuario" placeholder="Usuario" required />
           </div>
-          <div>
+          <div className="fila">
             <input type="password" name="contraseña" placeholder="Contraseña" required />
             <input type="password" name="contraseña-verificar" placeholder="Verifique su contraseña" required />
           </div>
