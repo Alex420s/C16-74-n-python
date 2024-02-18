@@ -1,0 +1,11 @@
+.searchbar {
+    width: 20%;
+    border-style: hidden;
+    border-radius: 5px;
+    margin: 10px;
+    box-shadow: 4px 4px 8px 6px #f6eded;
+}
+
+.titulo {
+    color: #fb1720;
+}

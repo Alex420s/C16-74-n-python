@@ -1,0 +1,65 @@
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+    font-family: arial;
+}
+
+body{
+    background-color: rgb(000, 000, 000);
+}
+
+main{
+    padding: 50px;
+    width: 750px;
+    border-radius: 50px;
+    background-color: rgb(255, 255, 255);
+    margin: auto;
+}
+
+h2{
+    font-size: 30px;
+    text-align: center;
+}
+
+h2 span{
+    color: red;
+}
+
+input{
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 1px solid black ;
+    margin: 5px 0;
+}
+
+.fila {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.info{
+    margin: 20px 0 0;
+}
+
+#usuario{
+    width: 100%;
+}
+
+#contenedor-enviar{
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 0 0;
+}
+
+#enviar{
+    padding: 20px 40px;
+    border-style: none;
+    color: white;
+    background-color: red;
+    cursor: pointer;
+}

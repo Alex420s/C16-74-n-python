@@ -1,0 +1,30 @@
+footer {
+  display: flex;
+  justify-content: space-around;
+  background-color: black;
+}
+
+.footer {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.footer-logo {
+  height: 70px;
+}
+
+.red {
+  width: 1.5rem;
+  margin: 10px;
+}
+
+.redes {
+  display: flex;
+  align-items: center;
+}
+
+.copyright {
+  height: 1rem;
+}
