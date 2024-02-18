@@ -7,5 +7,3 @@ class MyappConfig(AppConfig):
 
     def ready(self):
         import users.signals
-
-        

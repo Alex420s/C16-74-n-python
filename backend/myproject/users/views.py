@@ -6,19 +6,36 @@ from rest_framework.response import Response
 from .serializers import UserRegisterSerializer, UserLoginSerializer, UserSerializer, ProfessionalSerializer
 from rest_framework import permissions, status
 from .models import Professional
+from appointments.models import Availability
 from django.shortcuts import render
 
+
+#### Render 
 def list_professionals(request):
-    # Obtén todos los profesionales desde la base de datos
     professionals = Professional.objects.all()
-    # Renderiza la plantilla 'professional.html' con los profesionales como contexto
     return render(request, 'professional.html', {'professionals': professionals})
 
 
+def view_professional_profile(request, professional_id):
+    try:
+        # Obtener el profesional basado en su ID
+        professional = Professional.objects.get(pk=professional_id)
+        # Obtener las horas disponibles asociadas a ese profesional
+        availabilities = Availability.objects.filter(professional_id=professional_id)
+	
+    except Professional.DoesNotExist:
+        # Manejo de error si el profesional no existe
+        return render(request, 'error.html', {'message': 'El profesional no existe.'})
 
+    # Renderizar la plantilla 'perfil_professional.html' con el contexto del profesional y las horas disponibles
+    return render(request, 'perfil_professional.html', {'professional': professional, 'availabilities': availabilities})
+
+
+### API
+
+# Registrarse
 class UserRegister(APIView):
 	permission_classes = (permissions.AllowAny,)
-	
 	def post(self, request):
 		serializer = UserRegisterSerializer(data=request.data)
 		if serializer.is_valid(raise_exception=True):
@@ -26,6 +43,8 @@ class UserRegister(APIView):
 			message = f"Usuario creado exitosamente con el rol de: {user.get_role_display()}"
 			return Response({"message": message, "user": serializer.data}, status=status.HTTP_201_CREATED)
 		return Response(serializer.errors,{"message": serializer.data}, status=status.HTTP_400_BAD_REQUEST)
+	
+# Loguearse
 class UserLogin(APIView):
 	permission_classes = (permissions.AllowAny,)
 	authentication_classes = (SessionAuthentication,)
@@ -46,7 +65,7 @@ class UserLogin(APIView):
 			login(request, user)
 			return Response(serializer.data, status=status.HTTP_200_OK)
 
-
+# Cerrar Sesión
 class UserLogout(APIView):
 	permission_classes = (permissions.AllowAny,)
 	authentication_classes = ()
@@ -54,8 +73,8 @@ class UserLogout(APIView):
 		logout(request)
 		return Response(status=status.HTTP_200_OK)
 
-
-class UserView(APIView):
+# Devuelve la info del usuario.
+class UserView(APIView):          
 	permission_classes = (permissions.IsAuthenticated,)
 	authentication_classes = (SessionAuthentication,)
 	##
@@ -63,7 +82,8 @@ class UserView(APIView):
 		serializer = UserSerializer(request.user)
 		return Response({'user': serializer.data}, status=status.HTTP_200_OK)
 
-class ProfessionalView(APIView):
+# Devuelve todos los profesionales.
+class ProfessionalView(APIView):       
     permission_classes = (permissions.IsAuthenticated,)
     authentication_classes = (SessionAuthentication,)
 

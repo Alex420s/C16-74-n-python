@@ -10,6 +10,7 @@ urlpatterns = [
     path('user_profile', views.UserView.as_view(), name='user'),
     path('profile', views.ProfessionalView.as_view(), name="professional"),
 
-    path('professionals/', views.list_professionals, name='list_professionals')
+    path('professionals/', views.list_professionals, name='list_professionals'),
+    path('professional/<int:professional_id>/', views.view_professional_profile, name='view_professional_profile'),
 
 ]
