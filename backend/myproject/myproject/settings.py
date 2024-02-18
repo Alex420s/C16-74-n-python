@@ -54,12 +54,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
-    'myproject.appointments',
-    'myproject.payments',
+    'appointments',
+    'payments',
     #Third Party Apps
     'rest_framework',
     'corsheaders',
-
 ]
 
 MIDDLEWARE = [
@@ -91,6 +90,8 @@ TEMPLATES = [
         },
     },
 ]
+
+
 
 WSGI_APPLICATION = 'myproject.wsgi.application'
 

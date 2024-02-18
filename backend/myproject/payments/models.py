@@ -1,10 +1,11 @@
 #C16-74-n-python\backend\myproject\payments\models.py
 from django.db import models
-from myproject.appointments.models import Turn
 
 
 
 class Payment(models.Model):
+    from appointments.models import Turn
+
     payment_id = models.AutoField(primary_key=True)
     turn_id = models.ForeignKey(Turn, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=10, decimal_places=2)

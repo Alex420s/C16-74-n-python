@@ -6,6 +6,14 @@ from rest_framework.response import Response
 from .serializers import UserRegisterSerializer, UserLoginSerializer, UserSerializer, ProfessionalSerializer
 from rest_framework import permissions, status
 from .models import Professional
+from django.shortcuts import render
+
+def list_professionals(request):
+    # Obtén todos los profesionales desde la base de datos
+    professionals = Professional.objects.all()
+    # Renderiza la plantilla 'professional.html' con los profesionales como contexto
+    return render(request, 'professional.html', {'professionals': professionals})
+
 
 
 class UserRegister(APIView):

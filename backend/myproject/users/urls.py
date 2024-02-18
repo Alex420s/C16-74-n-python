@@ -8,9 +8,8 @@ urlpatterns = [
     path('login', views.UserLogin.as_view(), name='login'),
     path('logout', views.UserLogout.as_view(), name='logout'),
     path('user_profile', views.UserView.as_view(), name='user'),
-    path('profile', views.ProfessionalView.as_view(), name="professional")
+    path('profile', views.ProfessionalView.as_view(), name="professional"),
+
+    path('professionals/', views.list_professionals, name='list_professionals')
+
 ]
-  
-# path('user/usuarios', views.obtener_todos_usuarios),
-
-

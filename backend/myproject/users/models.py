@@ -1,7 +1,6 @@
 #C16-74-n-python\backend\myproject\users\models.py
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
-from myproject.appointments.models import Turn
 
 class CustomUserManager(BaseUserManager):
     def create_user(self,nick_name, email, first_name, last_name, phone_number, address, password=None, **extra_fields):
@@ -72,6 +71,7 @@ class Professional(models.Model):
 
 
 class Rating(models.Model):
+    from appointments.models import Turn
     rating_id = models.AutoField(primary_key=True)
     turn_id = models.ForeignKey(Turn, on_delete=models.CASCADE)
     score = models.IntegerField(choices=[(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')])
@@ -83,6 +83,8 @@ class Rating(models.Model):
 
 
 class Message(models.Model):
+    from appointments.models import Turn
+
     message_id = models.AutoField(primary_key=True)
     turn_id = models.ForeignKey(Turn, on_delete=models.CASCADE)
     sender = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='sender')
@@ -95,6 +97,8 @@ class Message(models.Model):
 
 
 class AppointmentHistory(models.Model):
+    from appointments.models import Turn
+
     history_id = models.AutoField(primary_key=True)
     turn_id = models.ForeignKey(Turn, on_delete=models.CASCADE)
     previous_status = models.CharField(max_length=20)

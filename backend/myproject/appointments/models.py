@@ -1,8 +1,9 @@
 #C16-74-n-python\backend\myproject\appointments\models.py
 from django.db import models
-from myproject.users.models import Professional, CustomUser
 
 class Availability(models.Model):
+    from users.models import Professional
+
     availability_id = models.AutoField(primary_key=True)
     professional_id = models.ForeignKey(Professional, on_delete=models.CASCADE)
     day_of_week = models.CharField(max_length=10, choices=[("Lunes", "Lunes"), ("Martes", "Martes"), ("Miercoles", "Miercoles"),
@@ -15,6 +16,8 @@ class Availability(models.Model):
 
 
 class Turn(models.Model):
+    from users.models import Professional, CustomUser
+
     turn_id = models.AutoField(primary_key=True)
     professional_id = models.ForeignKey(Professional, on_delete=models.CASCADE)
     availability_id = models.ForeignKey(Availability, on_delete=models.CASCADE, default="")
