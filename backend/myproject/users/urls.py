@@ -1,3 +1,4 @@
+#C16-74-n-python\backend\myproject\users\urls.py
 from django.urls import path
 from . import views
 # from .views import home, obtener_todos_usuarios

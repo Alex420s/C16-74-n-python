@@ -1,3 +1,4 @@
+#C16-74-n-python\backend\myproject\users\apps.py
 from django.apps import AppConfig
 
 class MyappConfig(AppConfig):

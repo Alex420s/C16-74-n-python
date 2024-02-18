@@ -1,11 +1,23 @@
+#C16-74-n-python\backend\myproject\myproject\settings.py
 import os
 import dj_database_url
 from pathlib import Path
 
+from dotenv import load_dotenv
+
+# Cargar variables de entorno desde el archivo .env
+load_dotenv()
+
+# Obtener el valor de SECRET_KEY
+SECRET_KEY = os.getenv('SECRET_KEY')
+
+"""# lo saqué para que lea el archivo desde C16-74-n-python\backend\myproject\.env #####
+SECRET_KEY = os.environ.get('SECRET_KEY') """
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
 
@@ -42,6 +54,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
+    'myproject.appointments',
+    'myproject.payments',
     #Third Party Apps
     'rest_framework',
     'corsheaders',
