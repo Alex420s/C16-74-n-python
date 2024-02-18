@@ -9,8 +9,6 @@ const Header = () => {
       <header className='navbar'>
         <Link to={'/'}><img className="header-logo" src={logo} alt="Logo"/></Link>
         <ul>
-          <li><Link to={'/nuevo-usuario'} className='nav-link'>Registrar usuario</Link></li>
-          <li><Link to={'/nuevo-profesional'} className='nav-link'>Registrar profesional</Link></li>
           <li className='rojo'><Link to={'/ingresar'} className='nav-link'>Ingresar</Link></li>
         </ul>
       </header>
