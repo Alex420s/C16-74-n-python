@@ -56,10 +56,19 @@ input{
     margin: 20px 0 0 0;
 }
 
-#enviar{
+.enviar{
     padding: 20px 40px;
     border-style: none;
     color: white;
     background-color: red;
     cursor: pointer;
+}
+
+.disabled {
+    padding: 20px 40px;
+    border-style: none;
+    color: white;
+    background-color: red;
+    cursor: not-allowed;
+    opacity: 0.5;
 }

@@ -10,20 +10,50 @@ const ProfessionalForm = () => {
     email: '',
     usuario: '',
     password: '',
+    passwordMatch: '',
     description: '',
     speciality: '',
     barrio: '',
   });
 
+  const [passwordsMatch, setPasswordsMatch] = useState(true);
+
+  // const handleChange = (e) => {
+  //   setFormData({ ...formData, [e.target.name]: e.target.value });
+  
+  //   if (e.target.name === 'contraseña-verificar') {
+  //     setPasswordsMatch(formData.password === e.target.value);
+  //   }
+  // };
+
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    
+    if (name === 'passwordMatch') {
+      setPasswordsMatch(formData.password === value);
+    }
   };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await axios.post('https://render-api-a6du.onrender.com/', formData);
+  //     console.log('Response:', response.data);
+  //   } catch (error) {
+  //     console.error('Error:', error.response.data);
+  //   }
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://render-api-a6du.onrender.com/', formData);
-      console.log('Response:', response.data);
+      if (passwordsMatch) {
+        const response = await axios.post('https://render-api-a6du.onrender.com/', formData);
+        console.log('Response:', response.data);
+      } else {
+        console.log('Passwords do not match');
+      }
     } catch (error) {
       console.error('Error:', error.response.data);
     }
@@ -38,20 +68,21 @@ const ProfessionalForm = () => {
         <h3>Información personal</h3>
         <div>
           <div className="fila">
-            <input className="input-box" type="text" placeholder="Nombre" required name="Nombre" value={formData.first_name} onChange={handleChange} />
-            <input type="text" placeholder="Apellido" required name="Apellido" value={formData.last_name} onChange={handleChange} />
+            <input className="input-box" type="text" placeholder="Nombre" required name="first_name" value={formData.first_name} onChange={handleChange} />
+            <input type="text" placeholder="Apellido" required name="last_name" value={formData.last_name} onChange={handleChange} />
           </div>
           <div className="fila">
-            <input type="tel" placeholder="Teléfono" required name="Telefono" value={formData.phone_number} onChange={handleChange} />
+            <input type="tel" placeholder="Teléfono" required name="phone_number" value={formData.phone_number} onChange={handleChange} />
             <input type="email" name="email" id="email" required placeholder="Email" value={formData.email} onChange={handleChange} />
           </div>
           <div>
-            <input type="text" name="usuario" id="usuario" placeholder="Usuario" required value={formData.username} onChange={handleChange} />
+            <input type="text" name="username" id="usuario" placeholder="Usuario" required value={formData.username} onChange={handleChange} />
           </div>
           <div className="fila">
-            <input type="password" name="contraseña" placeholder="Contraseña" required value={formData.password} onChange={handleChange} />
-            <input type="password" name="contraseña-verificar" placeholder="Verifique su contraseña" required />
+            <input type="password" name="password" placeholder="Contraseña" required value={formData.password} onChange={handleChange} />
+            <input type="password" name="passwordMatch" placeholder="Verifique su contraseña" required value={formData.passwordMatch} onChange={handleChange} />
           </div>
+          {!passwordsMatch && <p style={{ color: 'red' }}>Las contraseñas no coinciden</p>}
         </div>
       </div>
       <div className="info-2">
@@ -65,13 +96,13 @@ const ProfessionalForm = () => {
             <option value="Pilates">Pilates</option>
             <option value="Yoga">Yoga</option>
           </select>
-          <textarea name="descripcion" id="descripcion" placeholder="Descripción" readonly value={formData.description} onChange={handleChange}></textarea>
+          <textarea name="description" id="descripcion" placeholder="Descripción" readonly value={formData.description} onChange={handleChange}></textarea>
         </div>
       </div>
       <div className="info-3">
         <h3>Información clases</h3>
         <div>
-          <input type="text" name="Barrio" id="Barrio" required placeholder="Barrio" value={formData.barrio} onChange={handleChange} />
+          <input type="text" name="barrio" id="Barrio" required placeholder="Barrio" value={formData.barrio} onChange={handleChange} />
         </div>
         <div id="contenedor">
           <div>
@@ -203,7 +234,7 @@ const ProfessionalForm = () => {
         </div>
       </div>
       <div id="contenedor-enviar">
-        <input type="submit" name="registro" value="Registrarte" id="enviar" />
+        <input className={!passwordsMatch ? 'disabled' : 'enviar'} type="submit" name="registro" value="Registrarte" disabled={!passwordsMatch}/>
       </div>
       </form>
     </div>
