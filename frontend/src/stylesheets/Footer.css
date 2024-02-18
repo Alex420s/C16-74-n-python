@@ -11,7 +11,17 @@ footer {
 }
 
 .footer-logo {
-  height: 90px;
+  height: 70px;
+}
+
+.red {
+  width: 1.5rem;
+  margin: 10px;
+}
+
+.redes {
+  display: flex;
+  align-items: center;
 }
 
 .copyright {

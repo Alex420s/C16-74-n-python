@@ -1,34 +1,33 @@
 import React from 'react'
+import '../stylesheets/UserForm.css'
 
 const UserForm = () => {
   return (
     <div>
-      <form>
-            <h2>Registrate</h2>
-            <fieldset class="registrate">
-                <div class="fila">
-                    <div class="col">
-                        <input type="text" name="name_p" id="name_p" placeholder="Nombre" />
-                        <input type="number" name="number_p" min="0" id="number_p" placeholder="Teléfono" />
-                    </div>
-                    <div class="col">
-                        <input type="text" name="lastname_p" id="lastname_p" placeholder="Apellido" />
-                        <input type="email" name="mail_p" id="mail_p" placeholder="Email" />    
-                    </div>
+        <h2>Registrate como<br />
+          <span>usuario</span></h2>
+        <form>
+            <div className="info">
+                <div className="fila">
+                    <input className="input-box" type="text" placeholder="Nombre" required name="Nombre" />
+                    <input type="text" placeholder="Apellido" required name="Apellido" />
+                </div>
+                <div className="fila">
+                    <input type="tel" placeholder="Teléfono" required name="Telefono" />
+                    <input type="email" name="email" id="email" required placeholder="Email" />    
+                </div>
+                <div>
+                    <input type="text" name="usuario" id="usuario" placeholder="Usuario" required />
                 </div>
                 <div class="fila">
-                    <input type="text" name="user_p" id="user_p" placeholder="Ingrese su usuario" />
+                    <input type="password" name="contraseña" placeholder="Contraseña" required/>
+                    <input type="password" name="contraseña-verificar" placeholder="Verifique su contraseña" required />
                 </div>
-                <div class="fila">
-                    <input type="password" name="password_p" id="password_p" placeholder="Contraseña" />
-                    <input type="password" name="password2_p" id="password2_p" placeholder="Verifique su contraseña" />
+                <div id="contenedor-enviar">
+                    <input type="submit" name="registro" value="Registrarte" id="enviar" />
                 </div>
-                <button type="submit" value="Ingresar" class="ingresar">Registrate</button>
-            </fieldset>
-            <br />
-            <br />
+            </div>
         </form> 
-        <div class="linea2"></div>
     </div>
   )
 }
