@@ -9,7 +9,6 @@ import Promo4 from '../images/promo4.jpg'
 const HomePage = () => {
   return (
     <div>
-        <h2>Promociones</h2>
         <div className="promos">
             <ul>
                 <li>
@@ -48,8 +47,8 @@ const HomePage = () => {
         <div className="buscador">
             <h2>Buscador</h2>
         </div>
-        <div id="contenedor-enviar">
-                <input type="submit" name="registro" value="Registrarte" id="enviar" />
+        <div id="contenedor-registrar">
+                <input type="submit" name="registro" value="Registrarte" id="registrate" />
             
         </div>
     </div>
