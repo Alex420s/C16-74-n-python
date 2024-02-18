@@ -1,0 +1,9 @@
+.sidebar {
+    width: 10%;
+    height: 200px;
+    border-style: hidden;
+    border-radius: 5px;
+    margin: 10px;
+    box-shadow: 2px 2px 6px 4px #fff5f5;
+
+}

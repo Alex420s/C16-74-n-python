@@ -1,3 +1,7 @@
+html {
+  background-color: black;
+}
+
 .outer-container {
   display: flex;
   justify-content: center;
