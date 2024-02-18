@@ -1,0 +1,18 @@
+.outers-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: black;
+    width: 100%;
+  }
+  
+  .inners-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 25px 0;
+    min-width: 30%;
+    padding: 30px 20px;
+  }
