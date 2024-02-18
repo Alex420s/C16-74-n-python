@@ -1,11 +1,24 @@
 .searchbar {
-    width: 20%;
-    border-style: hidden;
-    border-radius: 5px;
-    margin: 10px;
-    box-shadow: 4px 4px 8px 6px #f6eded;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 20px auto;
 }
 
-.titulo {
-    color: #fb1720;
+h2 {
+    color: white;
+}
+
+select {
+    width: 400px;
+}
+
+#buscar {
+    padding: 20px 40px;
+    border-style: none;
+    color: white;
+    background-color: red;
+    cursor: pointer;
 }

@@ -5,6 +5,7 @@ import Promo1 from '../images/promo1.png'
 import Promo2 from '../images/promo2.png'
 import Promo3 from '../images/promo3.png'
 import Promo4 from '../images/promo4.jpg'
+import Searchbar from '../components/Searchbar.jsx'
 
 const HomePage = () => {
   return (
@@ -44,9 +45,7 @@ const HomePage = () => {
             <p>¡Tu tiempo es importante, úsalo sabiamente con nuestra aplicación!</p>
           </div>
         </div>
-        <div className="buscador">
-            <h2>Buscador</h2>
-        </div>
+        <Searchbar/>
         <div id="contenedor-registrar">
                 <input type="submit" name="registro" value="Registrarte" id="registrate" />
             
