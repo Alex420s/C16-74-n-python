@@ -1,8 +1,6 @@
 #C16-74-n-python\backend\myproject\payments\models.py
 from django.db import models
 
-
-
 class Payment(models.Model):
     from appointments.models import Turn
 
@@ -14,3 +12,4 @@ class Payment(models.Model):
 
     def __str__(self):
         return f"Payment {self.payment_id}"
+    

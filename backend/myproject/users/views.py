@@ -11,9 +11,45 @@ from django.shortcuts import render
 
 
 #### Render 
-def list_professionals(request):
-    professionals = Professional.objects.all()
-    return render(request, 'professional.html', {'professionals': professionals})
+from django.shortcuts import render
+
+def list_profesionales(request):
+    """
+    Filtra y muestra una lista paginada de profesionales según la ciudad, provincia y país.
+
+    Filtra por:
+        - Localidad (ciudad, provincia, país)
+
+    Devuelve una lista paginada de profesionales (20 por página por defecto) en la plantilla indicada.
+    """
+
+    profesionales = Professional.objects.all()
+
+    # Filtrar por localidad (sin distinción de mayúsculas/minúsculas)
+    filtro_localidad = request.GET.get("ciudad, provincia, país", False)
+    if filtro_localidad:
+        try:
+            
+            terminos_localidad = [termino.strip() for termino in filtro_localidad.split(',')]
+            profesionales = profesionales.filter(ciudad__istartswith=terminos_localidad[0])
+            if len(terminos_localidad) > 1:
+                for termino in terminos_localidad[1:]:
+                    profesionales = profesionales.filter(provincia__istartswith=termino) | profesionales.filter(país__istartswith=termino)
+        except:
+            pass  # Manejar la entrada no válida con elegancia (por ejemplo, mostrar un mensaje de error)
+
+    
+    pagina = request.GET.get('pagina', 1)
+    paginador = profesionales.order_by('city').distinct('city')  
+    p20 = paginador.page(pagina)
+
+    contexto = {
+        'profesionales': p20,
+        'f_localidad': filtro_localidad if filtro_localidad else '',
+    }
+
+    return render(request, 'professional.html', contexto)
+
 
 
 def view_professional_profile(request, professional_id):
