@@ -1,3 +1,4 @@
+#C16-74-n-python\backend\myproject\users\models.py
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
@@ -17,6 +18,7 @@ class CustomUserManager(BaseUserManager):
             raise ValueError('El campo nick_name es obligatorio')
         email = self.normalize_email(email)
         user = self.model(email=email, nick_name=nick_name, first_name=first_name, last_name=last_name, phone_number=phone_number, address=address, **extra_fields)
+        
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -67,43 +69,9 @@ class Professional(models.Model):
         return f"Professional: {self.user_id.first_name} {self.user_id.last_name}"
 
 
-class Availability(models.Model):
-    availability_id = models.AutoField(primary_key=True)
-    professional_id = models.ForeignKey(Professional, on_delete=models.CASCADE)
-    day_of_week = models.CharField(max_length=10, choices=[("Lunes", "Lunes"), ("Martes", "Martes"), ("Miercoles", "Miercoles"),
-                                                           ("Jueves", "Jueves"), ("Viernes", "Viernes"), ("Sabado", "Sabado"), ("Domingo", "Domingo")])
-    start_time = models.TimeField()
-    end_time = models.TimeField()
-
-    def __str__(self):
-        return f"{self.professional_id} - {self.day_of_week}: {self.start_time} - {self.end_time}"
-
-
-class Turn(models.Model):
-    turn_id = models.AutoField(primary_key=True)
-    availability_id = models.ForeignKey(Availability, on_delete=models.CASCADE, default="")
-    professional_id = models.ForeignKey(Professional, on_delete=models.CASCADE)
-    user_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    date_and_time_of_turn = models.DateTimeField()
-    turn_status = models.CharField(max_length=20, choices=[('confirmed', 'Confirmed'), ('pending', 'Pending'), ('cancelled', 'Cancelled'), ('completed', 'Completed')])
-    message_to_professional = models.TextField(blank=True, null=True)
-
-    def __str__(self):
-        return f"Appointment {self.turn_id}"
-
-
-class Payment(models.Model):
-    payment_id = models.AutoField(primary_key=True)
-    turn_id = models.ForeignKey(Turn, on_delete=models.CASCADE)
-    amount = models.DecimalField(max_digits=10, decimal_places=2)
-    payment_method = models.CharField(max_length=100)
-    date_and_time_of_payment = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"Payment {self.payment_id}"
-
 
 class Rating(models.Model):
+    from appointments.models import Turn
     rating_id = models.AutoField(primary_key=True)
     turn_id = models.ForeignKey(Turn, on_delete=models.CASCADE)
     score = models.IntegerField(choices=[(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')])
@@ -115,6 +83,8 @@ class Rating(models.Model):
 
 
 class Message(models.Model):
+    from appointments.models import Turn
+
     message_id = models.AutoField(primary_key=True)
     turn_id = models.ForeignKey(Turn, on_delete=models.CASCADE)
     sender = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='sender')
@@ -127,6 +97,8 @@ class Message(models.Model):
 
 
 class AppointmentHistory(models.Model):
+    from appointments.models import Turn
+
     history_id = models.AutoField(primary_key=True)
     turn_id = models.ForeignKey(Turn, on_delete=models.CASCADE)
     previous_status = models.CharField(max_length=20)

@@ -1,3 +1,4 @@
+#C16-74-n-python\backend\myproject\users\apps.py
 from django.apps import AppConfig
 
 class MyappConfig(AppConfig):
@@ -6,5 +7,3 @@ class MyappConfig(AppConfig):
 
     def ready(self):
         import users.signals
-
-        

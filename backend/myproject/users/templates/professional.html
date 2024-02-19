@@ -1,0 +1,35 @@
+<!-- C16-74-n-python\front_desarrollo_back\professional.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Profesionales</title>
+</head>
+<body>
+    <h1>Listado de Profesionales</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Especialidad</th>
+                <th>Descripción</th>
+                <th>Tarifa por Sesión</th>
+                <!-- Agrega más columnas si es necesario -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for professional in professionals %}
+            <tr>
+                <td>{{ professional.user_id.first_name }} {{ professional.user_id.last_name }}</td>
+                <td>{{ professional.speciality }}</td>
+                <td>{{ professional.description }}</td>
+                <td>{{ professional.session_rate }}</td>
+                <!-- Agrega más columnas si es necesario -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

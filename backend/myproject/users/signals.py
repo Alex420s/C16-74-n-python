@@ -1,3 +1,4 @@
+#C16-74-n-python\backend\myproject\users\signals.py
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from .models import CustomUser, Professional

@@ -1,6 +1,10 @@
+#C16-74-n-python\backend\myproject\users\admin.py
 from django.contrib import admin
 from django.urls import path, include
 from .models import *
+from appointments.models import Availability
+from payments.models import Payment
+from appointments.models import Turn
 
 admin.site.register(CustomUser)
 admin.site.register(Turn)
