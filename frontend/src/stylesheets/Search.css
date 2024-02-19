@@ -1,0 +1,33 @@
+.lista_prof {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0 0;
+}
+  
+.lista_prof th, td {
+  width: 200px;
+  border: 1px solid rgb(231, 229, 229);
+  padding: 8px;
+  text-align: center;
+}
+  
+.lista_prof thead {
+  background-color: rgb(231, 229, 229);
+  color: black;
+  margin: 15% 0;
+}
+  
+.lista_prof tbody {
+  background-color: white;
+}
+
+.reservar {
+    width: 80%;
+    border-style: none;
+    background-color: red;
+    color: white;
+    font-size: 14px;
+    border-collapse: collapse;
+    cursor: pointer;
+    margin: auto;
+}

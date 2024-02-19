@@ -21,7 +21,7 @@ const SearchPage = () => {
   return (
     <div>
         <h1>Listado de Profesionales</h1>
-        <table>
+        <table className="lista_prof">
             <thead>
                 <tr>
                     <th>Nombre</th>
@@ -30,12 +30,23 @@ const SearchPage = () => {
                     <th>Descripción</th>
                     <th>Barrio</th>
                     <th>Provincia/Estado</th>
-                    <th>Tarifa por Sesión</th>
+                    <th>Valor Sesión</th>
                     <th>Reservar</th>
                 </tr>
             </thead>
             <tbody>
-    {/*            {data.map((professional, index) => (
+                <tr>
+                    <td>Prueba</td>
+                    <td>Uno</td>
+                    <td>Boxeo</td>
+                    <td>Las mejores clases</td>
+                    <td>Villa Urquiza</td>
+                    <td>CABA - Bs As</td>
+                    <td>$ 2000</td>
+                    <td><input className='reservar hover' type="submit" name="reservar" value="Reservar" /></td>          
+                </tr>
+    {/* Después hay que borrar el de prueba de arriba
+                {data.map((professional, index) => (
                     <tr key={index}>
                         <td>{professional.user_id.first_name}</td>
                         <td>{professional.user_id.last_name}</td>
@@ -43,7 +54,8 @@ const SearchPage = () => {
                         <td>{professional.description}</td>
                         <td>{professional.barrio}</td>     Ver los nombres de la tabla profesionales 
                         <td>{professional.provincia}</td>
-                        <td>{professional.tarifa}</td>
+                        <td>$ {professional.tarifa}</td>
+                        <td><input className='reservar hover' type="submit" name="reservar" value="Reservar" /></td>
                     </tr>
                 ))} */}
             </tbody>
