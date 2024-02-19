@@ -101,8 +101,9 @@ const ProfessionalForm = () => {
       </div>
       <div className="info-3">
         <h3>Información clases</h3>
-        <div>
+        <div className="fila">
           <input type="text" name="barrio" id="Barrio" required placeholder="Barrio" value={formData.barrio} onChange={handleChange} />
+          <input type="text" name="provincia" id="Provincia" required placeholder="Provincia/Estado" value={formData.provincia} onChange={handleChange} />
         </div>
         <div id="contenedor">
           <div>

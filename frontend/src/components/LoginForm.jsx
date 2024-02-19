@@ -56,7 +56,7 @@ const LoginForm = () => {
           <input type="password" name="password_p" id="password_p" placeholder="Contraseña" onChange={handleChange} />
         </div>
         {emptyPasswordFieldError && <p style={{ color: 'red' }}>Este campo no puede estar vacío</p>}
-        <div id="contenedor-ingresar">
+        <div className="contenedor-ingresar">
           <input className={emptyPasswordFieldError || emptyUsernameFieldError ? 'disabled' : 'hover ingresar'} type="submit" name="ingreso" value="Ingresar" />
         </div>
         {error && <p style={{ color: 'red' }}>{error}</p>}
