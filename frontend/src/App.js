@@ -6,6 +6,7 @@ import Login from './pages/Login.jsx';
 import User from './pages/UserRegistrationForm.jsx';
 import Professional from './pages/ProfessionalRegistrationForm.jsx';
 import UserHome from './pages/UserHome.jsx';
+import Search from './pages/Search.jsx';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/nuevo-usuario" element={<User />} />
           <Route path="/nuevo-profesional" element={<Professional />} />
           <Route path="/usuario" element={<UserHome />} />
+          <Route path="/search" element={<Search />} />
         </Routes>
       </div>
     </Router>
