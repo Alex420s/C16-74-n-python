@@ -2,7 +2,6 @@
 import os
 import dj_database_url
 from pathlib import Path
-
 from dotenv import load_dotenv
 
 # Cargar variables de entorno desde el archivo .env
@@ -99,8 +98,15 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+# }
+
 DATABASES = {
-    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'c-16-74-n.sqlite3',
+    }
 }
 
 
