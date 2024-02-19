@@ -154,5 +154,6 @@ input[type="time"]::-webkit-calendar-picker-indicator, input[type="time"]::-webk
     background-color: red;
     cursor: not-allowed;
     opacity: 0.5;
+    pointer-events: none;
 }
 

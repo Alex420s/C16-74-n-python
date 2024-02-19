@@ -26,7 +26,7 @@ const Searchbar = () => {
         </select>
       </div>
       <div>
-        <input type="submit" name="buscar" value="Buscar" id="buscar" />  
+        <input className='buscar hover' type="submit" name="buscar" value="Buscar" />  
       </div>
     </div>
   )

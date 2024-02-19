@@ -7,15 +7,13 @@
     margin: 20px auto;
 }
 
-h2 {
-    color: white;
-}
+
 
 select {
     width: 400px;
 }
 
-#buscar {
+.buscar {
     padding: 20px 40px;
     border-style: none;
     color: white;

@@ -3,8 +3,8 @@ import '../stylesheets/Novedades.css'
 
 const Novedades = () => {
   return (
-    <div class="novedades">
-       <h1 class="titulo">Proximos Turnos</h1>
+    <div className="novedades">
+       <h1 className="titulo">Proximos Turnos</h1>
       
     </div>
   )

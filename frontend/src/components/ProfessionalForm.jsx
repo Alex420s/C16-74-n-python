@@ -234,7 +234,7 @@ const ProfessionalForm = () => {
         </div>
       </div>
       <div id="contenedor-enviar">
-        <input className={!passwordsMatch ? 'disabled' : 'enviar'} type="submit" name="registro" value="Registrarte" disabled={!passwordsMatch}/>
+        <input className={!passwordsMatch ? 'disabled hover' : 'enviar hover'} type="submit" name="registro" value="Registrarte"/>
       </div>
       </form>
     </div>

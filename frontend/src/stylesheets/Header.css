@@ -7,11 +7,11 @@
 }
 
 header {
+  background-color: black;
   display: flex;
   justify-content: space-between;
   align-items: center ;
-  padding-top: 10px;
-  background-color: black;
+  padding: 10px 30px 0 60px;
 }
 
 .navbar > ul {
@@ -31,15 +31,8 @@ header {
   color: inherit;
   cursor: pointer;
   line-height: 0;
-  margin: 0 20px;
-  padding: 20px; 
+  padding: 25px; 
   text-decoration: none;
-}
-
-.navbar > ul > li:hover {
-  background-color: white;
-  border-radius: 12px;
-  color: black;
 }
 
 .rojo {

@@ -6,3 +6,21 @@ body {
   background-color: black;
   padding: 0 5%;
 }
+
+h2 {
+  color: black;
+}
+
+.hover:hover {
+  background-color: white;
+  outline: 1px solid black;
+  border-radius: 12px;
+
+  color: black;
+  cursor: pointer;
+}
+
+.hover:active {
+  background-color: red;
+  color: white;
+}
