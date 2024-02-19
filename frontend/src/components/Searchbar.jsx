@@ -1,5 +1,6 @@
 import React from 'react'
 import '../stylesheets/Searchbar.css'
+import { Link } from 'react-router-dom'
 
 const Searchbar = () => {
   return (
@@ -22,7 +23,7 @@ const Searchbar = () => {
         </select>
       </div>
       <div>
-        <input className='buscar hover' type="submit" name="buscar" value="Buscar" />  
+        <Link style={{textDecoration: 'none'}} to={'/search'}><input className='buscar hover' type="submit" name="buscar" value="Buscar" /></Link>
       </div>
     </div>
   )
