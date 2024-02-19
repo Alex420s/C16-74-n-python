@@ -3,19 +3,19 @@ import HeaderUser from '../components/HeaderUser'
 import Footer from '../components/Footer'
 import Sidebar from '../components/Sidebar'
 import Novedades from '../components/Novedades'
-import Searchbar from '../components/Searchbar'
+import UserSearchbar from '../components/UserSearchbar'
 import '../stylesheets/UserHome.css'
 const UserHome = () => {
   return (
-    <>
+    <div class="userHome">
       <HeaderUser />
       <div class="main">
         <Sidebar />
         <Novedades />
-        <Searchbar />
+        <UserSearchbar />
       </div>
       <Footer />
-    </>
+    </div>
   )
 }
 

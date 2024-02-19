@@ -7,3 +7,21 @@
 .titulo {
     color: #fb1720;
 }
+
+.novedadBox {
+    width: 80%;
+    margin: 20px;
+    padding: 10px;
+    border-style: hidden;
+    border-radius: 8px;
+    box-shadow: 4px 4px 8px 6px #f6eded;
+
+}
+
+.novedadBoxFecha {
+    width: 40%;
+    background-color: #ff464d;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}

@@ -8,19 +8,19 @@ const Sidebar = () => {
     <div class="sidebar">
         <ul>
             <li>
-              <LuCalendarPlus />
+              <span class="sidebarIcons"> <LuCalendarPlus /> </span>
                <p>Nuevos Turnos</p>
             </li>
             <li>
-              <MdOutlineEditCalendar />
+            <span class="sidebarIcons"> <MdOutlineEditCalendar /> </span>
               <p>Editar Turnos</p>
             </li>
             <li>
-              <MdOutlineReceipt />
+            <span class="sidebarIcons"> <MdOutlineReceipt /> </span>
               <p>Pago</p>
             </li>
             <li>
-              <MdOutlineCalendarToday />
+            <span class="sidebarIcons"> <MdOutlineCalendarToday /> </span>
               <p>Calendario</p>
             </li>
         </ul>

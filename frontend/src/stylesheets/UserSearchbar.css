@@ -1,0 +1,21 @@
+.usersearchbar {
+    width: 28%;
+    height: auto;
+    border-style: hidden;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 4px 4px 8px 6px #f6eded;
+}
+
+.titulo {
+    color: #fb1720;
+}
+
+.searchbaropciones {
+    width: 90%;
+}
+
+.buscarusersearchbar {
+    color: white;
+}
