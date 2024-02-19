@@ -53,17 +53,17 @@ const UserForm = () => {
                     </div>
                     <div className="fila">
                         <input type="tel" placeholder="Teléfono" required name="Telefono" />
-                        <input type="email" name="email" id="email" required placeholder="Email" />
+                        <input type="email" name="email" required placeholder="Email" />
                     </div>
-                    <div>
-                        <input type="text" name="usuario" id="usuario" placeholder="Usuario" required />
+                    <div className="unico">
+                        <input type="text" name="usuario" placeholder="Usuario" required />
                     </div>
                     <div class="fila">
                         <input type="password" name="password" placeholder="Contraseña" required value={formData.password} onChange={handleChange} />
                         <input type="password" name="passwordMatch" placeholder="Verifique su contraseña" required value={formData.passwordMatch} onChange={handleChange} />
                     </div>
                     {!passwordsMatch && <p style={{ color: 'red' }}>Las contraseñas no coinciden</p>}
-                    <div id="contenedor-enviar">
+                    <div className="contenedor-enviar">
                         <input className={!passwordsMatch ? 'disabled hover' : 'enviar hover'} type="submit" name="registro" value="Registrarte" />
                     </div>
                 </div>

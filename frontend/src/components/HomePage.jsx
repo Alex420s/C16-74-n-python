@@ -46,7 +46,11 @@ const HomePage = () => {
           <p>¡Tu tiempo es importante, úsalo sabiamente con nuestra aplicación!</p>
         </div>
       </div>
+      <br />
+      <br />
       <Searchbar/>
+      <br />
+      <br />
       <div id="contenedor-registrar">
         <Link style={{ textDecoration: 'none' }} to={'/nuevo-profesional'}><input type="submit" name="registro_profesional" value="Publica tus clases" className="registroHome hover" /></Link>
         <Link style={{ textDecoration: 'none' }} to={'/nuevo-usuario'}><input type="submit" name="registro_usuario" value="Reserva tu turno" className="registroHome hover" /></Link>  

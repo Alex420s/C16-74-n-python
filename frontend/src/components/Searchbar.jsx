@@ -4,19 +4,15 @@ import '../stylesheets/Searchbar.css'
 const Searchbar = () => {
   return (
     <div className="searchbar">
-      <h2>Buscar</h2>
-      <div className="filtro_barrio">  
-        <select name="barrios" id="barrios">
-          <option value="">Todos los barrios</option>
-          <option value="opcion1">Barrio1</option>
-          <option value="opcion2">Barrio2</option>
-          <option value="opcion3">Barrio3</option>
-          <option value="opcion4">Barrio4</option>
-          <option value="opcion5">Barrio5</option>
-        </select>
+      <h2 className="h2">Buscar</h2>
+      <div>  
+        <input type="text" name="barrio" placeholder="Barrio" />
       </div>
-      <div className="filtro_disciplina">
-        <select name="disciplina" id="disciplina">
+      <div>
+        <input type="text" name="provincia" placeholder="Provincia/Estado" />
+      </div>
+      <div>
+        <select name="disciplina">
           <option value="">Todas las disciplinas</option>
           <option value="Boxeo">Boxeo</option>
           <option value="Zumba">Zumba</option>
