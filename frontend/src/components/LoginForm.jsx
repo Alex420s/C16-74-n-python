@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-import { Link } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom';
 import '../stylesheets/Login.css'
 
 const LoginForm = () => {
@@ -8,6 +8,10 @@ const LoginForm = () => {
     username: '',
     password: '',
   });
+
+  const [error, setError] = useState('');
+
+  const navigate = useNavigate();
 
   const [emptyPasswordFieldError, setEmptyPasswordFieldError] = useState(false);
   const [emptyUsernameFieldError, setEmptyUsernameFieldError] = useState(false);
@@ -32,16 +36,17 @@ const LoginForm = () => {
     e.preventDefault();
     if (emptyPasswordFieldError || emptyUsernameFieldError) {
       try {
-        const response = await axios.post('', formData);
-        console.log('Response:', response.data);
+        const response = await axios.post('http://127.0.0.1:8000/login/', formData);
+        console.log('Logged in user:', response.data);
+        navigate('/'); 
       } catch (error) {
-        console.error('Error:', error.response.data);
+        setError(error.response.data.error);
       }
     }     
   }
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <h2>Ingresá</h2>
         <div>
           <input type="text" name="user_p" id="user_p" placeholder="Ingrese su usuario" onChange={handleChange} />
@@ -54,6 +59,7 @@ const LoginForm = () => {
         <div id="contenedor-ingresar">
           <input className={emptyPasswordFieldError || emptyUsernameFieldError ? 'disabled' : 'hover ingresar'} type="submit" name="ingreso" value="Ingresar" />
         </div>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
         <div class="registro">
         <p>¿No tenés cuenta?</p>
         <p>Registrate como <Link to={'/nuevo-usuario'}> <span> Usuario</span></Link> o <Link to={'/nuevo-profesional'}><span>Profesional</span></Link></p>
