@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import {  useNavigate } from 'react-router-dom'; // Importa useHistory para redirigir al usuario
+
 import '../stylesheets/UserForm.css';
 
 const UserForm = () => {
@@ -17,7 +19,7 @@ const UserForm = () => {
     });
 
     const [passwordsMatch, setPasswordsMatch] = useState(true);
-
+    const history = useNavigate(); // No pud instalar useHistory
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
@@ -31,8 +33,11 @@ const UserForm = () => {
         e.preventDefault();
         try {
             if (passwordsMatch) {
-                const response = await axios.post('http://localhost:8000/user/register', formData);
+                const response = await axios.post('http://localhost:8000/user/register', formData, { withCredentials: true }); // Agrega withCredentials para incluir cookies, al parecer no funciono
+                
                 console.log('Response:', response.data);
+                // Redirige al usuario al home después de enviar el formulario
+                history('/');
             } else {
                 console.log('Passwords do not match');
             }
