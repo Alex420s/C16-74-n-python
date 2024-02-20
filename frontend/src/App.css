@@ -1,5 +1,6 @@
 * {
   margin: 0;
+  padding: 0;
 }
 
 html {
@@ -13,7 +14,7 @@ html {
 
 body{
   background-color: rgb(000, 000, 000);
-  padding: 0 5%;
+  padding: 0;
 }
 
 h2 {

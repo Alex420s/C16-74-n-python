@@ -1,7 +1,12 @@
-.lista_prof {
+.listado {
   width: 100%;
+  margin: auto 5px;
+}
+
+.lista_prof {
+  width: 95%;
   border-collapse: collapse;
-  margin: 15px 0 0;
+  margin: 15px auto 0;
 }
   
 .lista_prof th, td {

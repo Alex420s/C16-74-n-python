@@ -19,7 +19,7 @@ const SearchPage = () => {
     }, []);*/
 
   return (
-    <div>
+    <div className="listado">
         <h1>Listado de Profesionales</h1>
         <table className="lista_prof">
             <thead>
