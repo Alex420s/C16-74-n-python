@@ -1,13 +1,17 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-import { Link } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom';
 import '../stylesheets/Login.css'
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({
-    username: '',
-    password: '',
+    email: '',
+    password: ''
   });
+
+  const [error, setError] = useState('');
+
+  const navigate = useNavigate();
 
   const [emptyPasswordFieldError, setEmptyPasswordFieldError] = useState(false);
   const [emptyUsernameFieldError, setEmptyUsernameFieldError] = useState(false);
@@ -15,12 +19,13 @@ const LoginForm = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    if (name === 'password_p' && value.trim() === '') {
+    console.log(formData);
+    if (name === 'password' && value.trim() === '') {
       setEmptyPasswordFieldError(true);
     } else {
       setEmptyPasswordFieldError(false);
     }
-    if (name === 'user_p' && value.trim() === '') {
+    if (name === 'user' && value.trim() === '') {
       setEmptyUsernameFieldError(true);
     } else {
       setEmptyUsernameFieldError(false);
@@ -30,30 +35,33 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (emptyPasswordFieldError || emptyUsernameFieldError) {
+    if (!emptyPasswordFieldError || !emptyUsernameFieldError) {
+      console.log("click")
       try {
-        const response = await axios.post('', formData);
-        console.log('Response:', response.data);
+        const response = await axios.post('https://render-api-a6du.onrender.com/user/login', formData);
+        console.log('Logged in user:', response.data);
+        navigate('/'); 
       } catch (error) {
-        console.error('Error:', error.response.data);
+        setError(error.response.data.error);
       }
     }     
   }
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <h2>Ingresá</h2>
         <div>
-          <input type="text" name="user_p" id="user_p" placeholder="Ingrese su usuario" onChange={handleChange} />
+          <input type="text" name="email" id="user_p" placeholder="Ingrese su email" onChange={handleChange} />
         </div>
         {emptyUsernameFieldError && <p style={{ color: 'red' }}>Este campono puede estar vacío</p>}
         <div>  
-          <input type="password" name="password_p" id="password_p" placeholder="Contraseña" onChange={handleChange} />
+          <input type="password" name="password" id="password_p" placeholder="Contraseña" onChange={handleChange} />
         </div>
         {emptyPasswordFieldError && <p style={{ color: 'red' }}>Este campo no puede estar vacío</p>}
-        <div id="contenedor-ingresar">
+        <div className="contenedor-ingresar">
           <input className={emptyPasswordFieldError || emptyUsernameFieldError ? 'disabled' : 'hover ingresar'} type="submit" name="ingreso" value="Ingresar" />
         </div>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
         <div class="registro">
         <p>¿No tenés cuenta?</p>
         <p>Registrate como <Link to={'/nuevo-usuario'}> <span> Usuario</span></Link> o <Link to={'/nuevo-profesional'}><span>Profesional</span></Link></p>
