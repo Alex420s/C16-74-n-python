@@ -1,86 +1,85 @@
 #C16-74-n-python\backend\myproject\users\views.py
-from django.contrib.auth import get_user_model, login, logout
+from django.contrib.auth import login, logout
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import UserRegisterSerializer, UserLoginSerializer, UserSerializer, ProfessionalSerializer
-from rest_framework import permissions, status
+from rest_framework import permissions, status, generics
 from .models import Professional
 from appointments.models import Availability
 from django.shortcuts import render
 
 
-#### Render 
-from django.shortcuts import render
-
 def list_profesionales(request):
-    """
-    Filtra y muestra una lista paginada de profesionales según la ciudad, provincia y país.
+	"""
+	Filtra y muestra una lista paginada de profesionales según la ciudad, provincia y país.
 
-    Filtra por:
-        - Localidad (ciudad, provincia, país)
+	Filtra por:
+		- Localidad (ciudad, provincia, país)
 
-    Devuelve una lista paginada de profesionales (20 por página por defecto) en la plantilla indicada.
-    """
+	Devuelve una lista paginada de profesionales (20 por página por defecto) en la plantilla indicada.
+	"""
 
-    profesionales = Professional.objects.all()
+	profesionales = Professional.objects.all()
 
-    # Filtrar por localidad (sin distinción de mayúsculas/minúsculas)
-    filtro_localidad = request.GET.get("ciudad, provincia, país", False)
-    if filtro_localidad:
-        try:
-            
-            terminos_localidad = [termino.strip() for termino in filtro_localidad.split(',')]
-            profesionales = profesionales.filter(ciudad__istartswith=terminos_localidad[0])
-            if len(terminos_localidad) > 1:
-                for termino in terminos_localidad[1:]:
-                    profesionales = profesionales.filter(provincia__istartswith=termino) | profesionales.filter(país__istartswith=termino)
-        except:
-            pass  # Manejar la entrada no válida con elegancia (por ejemplo, mostrar un mensaje de error)
+	# Filtrar por localidad (sin distinción de mayúsculas/minúsculas)
+	filtro_localidad = request.GET.get("ciudad, provincia, país", False)
+	if filtro_localidad:
+		try:
+			
+			terminos_localidad = [termino.strip() for termino in filtro_localidad.split(',')]
+			profesionales = profesionales.filter(ciudad__istartswith=terminos_localidad[0])
+			if len(terminos_localidad) > 1:
+				for termino in terminos_localidad[1:]:
+					profesionales = profesionales.filter(provincia__istartswith=termino) | profesionales.filter(país__istartswith=termino)
+		except:
+			pass  # Manejar la entrada no válida con elegancia (por ejemplo, mostrar un mensaje de error)
 
-    
-    pagina = request.GET.get('pagina', 1)
-    paginador = profesionales.order_by('city').distinct('city')  
-    p20 = paginador.page(pagina)
+	
+	pagina = request.GET.get('pagina', 1)
+	paginador = profesionales.order_by('city').distinct('city')  
+	p20 = paginador.page(pagina)
 
-    contexto = {
-        'profesionales': p20,
-        'f_localidad': filtro_localidad if filtro_localidad else '',
-    }
+	contexto = {
+		'profesionales': p20,
+		'f_localidad': filtro_localidad if filtro_localidad else '',
+	}
 
-    return render(request, 'professional.html', contexto)
+	return render(request, 'professional.html', contexto)
 
 
 
 def view_professional_profile(request, professional_id):
-    try:
-        # Obtener el profesional basado en su ID
-        professional = Professional.objects.get(pk=professional_id)
-        # Obtener las horas disponibles asociadas a ese profesional
-        availabilities = Availability.objects.filter(professional_id=professional_id)
+	try:
+		# Obtener el profesional basado en su ID
+		professional = Professional.objects.get(professional_id=professional_id)
+		# Obtener las horas disponibles asociadas a ese profesional
+		availabilities = Availability.objects.filter(professional_id=professional_id)
 	
-    except Professional.DoesNotExist:
-        # Manejo de error si el profesional no existe
-        return render(request, 'error.html', {'message': 'El profesional no existe.'})
+	except Professional.DoesNotExist:
+		# Manejo de error si el profesional no existe
+		return render(request, 'error.html', {'message': 'El profesional no existe.'})
 
-    # Renderizar la plantilla 'perfil_professional.html' con el contexto del profesional y las horas disponibles
-    return render(request, 'perfil_professional.html', {'professional': professional, 'availabilities': availabilities})
+	# Renderizar la plantilla 'perfil_professional.html' con el contexto del profesional y las horas disponibles
+	return render(request, 'perfil_professional.html', {'professional': professional, 'availabilities': availabilities})
 
 
 ### API
 
-# Registrarse
-class UserRegister(APIView):
-	permission_classes = (permissions.AllowAny,)
-	def post(self, request):
-		serializer = UserRegisterSerializer(data=request.data)
-		if serializer.is_valid(raise_exception=True):
-			user = serializer.save()
-			message = f"Usuario creado exitosamente con el rol de: {user.get_role_display()}"
-			return Response({"message": message, "user": serializer.data}, status=status.HTTP_201_CREATED)
-		return Response(serializer.errors,{"message": serializer.data}, status=status.HTTP_400_BAD_REQUEST)
-	
-# Loguearse
+# nuevo-usuario
+
+class UserRegister(generics.CreateAPIView):
+    permission_classes = (permissions.AllowAny,)
+    serializer_class = UserRegisterSerializer
+
+    def post(self, request, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        user = serializer.instance
+        message = f"Usuario creado exitosamente con el rol de: {user.get_role_display()}"
+        headers = self.get_success_headers(serializer.data)
+        return Response({"detail": message, "user": serializer.data}, status=status.HTTP_201_CREATED, headers=headers)
 class UserLogin(APIView):
 	permission_classes = (permissions.AllowAny,)
 	authentication_classes = (SessionAuthentication,)
@@ -120,11 +119,11 @@ class UserView(APIView):
 
 # Devuelve todos los profesionales.
 class ProfessionalView(APIView):       
-    permission_classes = (permissions.IsAuthenticated,)
-    authentication_classes = (SessionAuthentication,)
+	permission_classes = (permissions.IsAuthenticated,)
+	authentication_classes = (SessionAuthentication,)
 
-    def get(self, request):
-        profesionales = Professional.objects.all()
-        serializer = ProfessionalSerializer(profesionales, many=True)
-        return Response(serializer.data)
+	def get(self, request):
+		profesionales = Professional.objects.all()
+		serializer = ProfessionalSerializer(profesionales, many=True)
+		return Response(serializer.data)
 	

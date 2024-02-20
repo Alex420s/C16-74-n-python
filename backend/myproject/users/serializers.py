@@ -19,11 +19,12 @@ UserModel = get_user_model()
     "role": "user"
 }
 """
+
+# UseForm
 class UserRegisterSerializer(serializers.ModelSerializer):
-    role = serializers.CharField(default='user')  # Valor por defecto
     class Meta:
         model = UserModel
-        fields = ('first_name', 'password', 'nick_name', 'last_name', 'phone_number', 'address', 'email', 'role')
+        fields = ('first_name', 'password', 'nick_name', 'last_name', 'phone_number', 'email', )
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):

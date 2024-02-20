@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import axios from 'axios';
-import '../stylesheets/UserForm.css'
+import '../stylesheets/UserForm.css';
 
 const UserForm = () => {
     const [formData, setFormData] = useState({
@@ -8,9 +8,9 @@ const UserForm = () => {
         last_name: '',
         phone_number: '',
         email: '',
-        usuario: '',
+        nick_name: '',
         password: '',
-        passwordMatch: '',
+        passwordMatch: '', // Agrega el campo passwordMatch al estado
         description: '',
         speciality: '',
         barrio: '',
@@ -31,7 +31,7 @@ const UserForm = () => {
         e.preventDefault();
         try {
             if (passwordsMatch) {
-                const response = await axios.post('', formData);
+                const response = await axios.post('http://localhost:8000/user/register', formData);
                 console.log('Response:', response.data);
             } else {
                 console.log('Passwords do not match');
@@ -45,22 +45,22 @@ const UserForm = () => {
         <div>
             <h2>Registrate como<br />
                 <span>usuario</span></h2>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className="info">
                     <div className="fila">
-                        <input className="input-box" type="text" placeholder="Nombre" required name="Nombre" />
-                        <input type="text" placeholder="Apellido" required name="Apellido" />
+                        <input className="input-box" type="text" placeholder="Nombre" required name="first_name" onChange={handleChange} />
+                        <input type="text" placeholder="Apellido" required name="last_name" onChange={handleChange} />
                     </div>
                     <div className="fila">
-                        <input type="tel" placeholder="Teléfono" required name="Telefono" />
-                        <input type="email" name="email" id="email" required placeholder="Email" />
+                        <input type="tel" placeholder="Teléfono" required name="phone_number" onChange={handleChange} />
+                        <input type="email" name="email" id="email" required placeholder="Email" onChange={handleChange} />
                     </div>
                     <div>
-                        <input type="text" name="usuario" id="usuario" placeholder="Usuario" required />
+                        <input type="text" name="nick_name" id="nick_name" placeholder="Usuario" required onChange={handleChange} />
                     </div>
-                    <div class="fila">
-                        <input type="password" name="password" placeholder="Contraseña" required value={formData.password} onChange={handleChange} />
-                        <input type="password" name="passwordMatch" placeholder="Verifique su contraseña" required value={formData.passwordMatch} onChange={handleChange} />
+                    <div className="fila">
+                        <input type="password" name="password" placeholder="Contraseña" required onChange={handleChange} />
+                        <input type="password" name="passwordMatch" placeholder="Verifique su contraseña" required onChange={handleChange} />
                     </div>
                     {!passwordsMatch && <p style={{ color: 'red' }}>Las contraseñas no coinciden</p>}
                     <div id="contenedor-enviar">
@@ -69,7 +69,7 @@ const UserForm = () => {
                 </div>
             </form>
         </div>
-    )
+    );
 }
 
-export default UserForm
+export default UserForm;
