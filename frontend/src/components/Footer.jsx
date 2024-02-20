@@ -21,9 +21,8 @@ const Footer = () => {
           <img className="red" src={linkedin} alt="" />
         </div>
         <div className="footer">
-          <p>Todos los derechos reservados</p>
+          <p>Todos los derechos reservados 2024</p>
           <img className="copyright" src={copyright} alt="Copyright" />
-          <p>2024</p>
         </div>
       </footer>
     </div>
