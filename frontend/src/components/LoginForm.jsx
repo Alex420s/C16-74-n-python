@@ -4,6 +4,10 @@ import { useNavigate, Link } from 'react-router-dom';
 import '../stylesheets/Login.css'
 
 const LoginForm = () => {
+
+  // TODO: Agregar error handling
+  // TODO: Manejar el roke recibido por el servidor
+
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -19,7 +23,7 @@ const LoginForm = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    console.log(formData);
+    
     if (name === 'password' && value.trim() === '') {
       setEmptyPasswordFieldError(true);
     } else {
