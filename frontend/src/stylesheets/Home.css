@@ -36,7 +36,7 @@
 	100% {margin-left: -300%;}
 } 
 
-.infos {
+.info_GO {
     width: 90%;
     margin: 40px 0 20px 5%;
     background-color: white;
@@ -48,20 +48,51 @@
 }
 
 .texto {
-    line-height: 20px;
+    line-height: 30px;
+    font-size: 20px;
 }
 
 .texto p {
     margin: 5px 0;
-    text-align: justify;
+}
+
+.texto ul {
+    list-style-type: none;
+    text-align: center;
 }
 
 .negrita {
     font-weight: bold;
+    text-align: center;
+    font-size: 30px;
 }
 
-#contenedor-registrar{
-    width: 90%;
+.infos {
+    width: 60%;
+    margin: 0 auto 40px;
+    text-align: justify;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+}
+
+.infos h2 {
+    font-size: 40px;
+}
+
+.fila {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.contenedor-registrar{
+    width: 70%;
     display: flex;
     justify-content: center;
     margin: 50px auto;
@@ -70,9 +101,7 @@
 
 .registroHome {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 40px 60px;
+    padding: 20px 30px;
     font-size: 30px;
     border-style: none;
     color: white;
