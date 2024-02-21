@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
+import FullCalendar from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/daygrid';
 import '../stylesheets/Search.css'
 
 const SearchPage = () => {
+    const [mostrarCalendario, setMostrarCalendario] = useState(false);
     /*const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -43,7 +46,7 @@ const SearchPage = () => {
                     <td>Villa Urquiza</td>
                     <td>CABA - Bs As</td>
                     <td>$ 2000</td>
-                    <td><input className='reservar hover' type="submit" name="reservar" value="Reservar" /></td>          
+                    <td><input className='reservar hover' type="submit" name="reservar" value="Reservar" onClick={() => setMostrarCalendario(true)} /></td>          
                 </tr>
     {/* Después hay que borrar el de prueba de arriba
                 {data.map((professional, index) => (
@@ -60,6 +63,18 @@ const SearchPage = () => {
                 ))} */}
             </tbody>
         </table>
+        {mostrarCalendario && (
+            <div id="calendario">
+                <FullCalendar
+                    plugins={[ dayGridPlugin ]} // Especifica los plugins que deseas utilizar, como el de visualización de día
+                    initialView="dayGridMonth" // Establece la vista inicial del calendario
+                    events={[ 
+                        { title: 'Evento 1', date: '2024-02-21' },
+                        { title: 'Evento 2', date: '2024-02-22' }
+                    ]}
+                />
+            </div>
+        )}
     </div>
   )
 }

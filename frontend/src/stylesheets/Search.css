@@ -31,3 +31,10 @@
     cursor: pointer;
     margin: auto;
 }
+
+#calendario {
+  width: 100%; /* Ajusta el ancho según sea necesario */
+  height: 400px; /* Ajusta la altura según sea necesario */
+  margin-top: 20px; /* Ajusta el margen superior según sea necesario */
+  border: 1px solid #ccc; /* Añade un borde para distinguir el calendario */
+}
