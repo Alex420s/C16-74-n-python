@@ -33,8 +33,8 @@ const UserForm = () => {
         e.preventDefault();
         try {
             if (passwordsMatch) {
-                const response = await axios.post('http://localhost:8000/user/register', formData, { withCredentials: true }); // Agrega withCredentials para incluir cookies, al parecer no funciono
-                
+                const response = await axios.post('http://localhost:8000/user/register', formData,);
+
                 console.log('Response:', response.data);
                 // Redirige al usuario al home después de enviar el formulario
                 history('/');

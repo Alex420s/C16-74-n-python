@@ -21,7 +21,7 @@ class CustomUserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, nick_name, email, first_name, last_name, phone_number, address, password=None, **extra_fields):
+    def create_superuser(self, nick_name, email, first_name, last_name, phone_number, password=None, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
 
@@ -30,7 +30,7 @@ class CustomUserManager(BaseUserManager):
         if extra_fields.get('is_superuser') is not True:
             raise ValueError('Superuser debe tener is_superuser=True.')
 
-        return self.create_user(email, nick_name, first_name, last_name, phone_number, address, password, **extra_fields)
+        return self.create_user(email, nick_name, first_name, last_name, phone_number, password, **extra_fields)
 
 # UserForm
 class CustomUser(AbstractBaseUser, PermissionsMixin):
@@ -62,7 +62,7 @@ class Professional(models.Model):
     session_rate = models.DecimalField(max_digits=10, decimal_places=2, default=250)
     availability_hours = models.CharField(max_length=255, blank=True)
     address = models.CharField(max_length=255)
-    city = models.CharField(max_length=255, default='' )
+    city = models.CharField(max_length=255, default='' )    
     province = models.CharField(max_length=255, default='')
     country = models.CharField(max_length=255, default='Argentina')
     role = models.CharField(max_length=20, choices=[('professional', 'Professional'), ('user', 'User')])
