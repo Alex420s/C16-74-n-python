@@ -21,7 +21,7 @@
   background-color: white;
 }
 
-.reservar {
+.reservar, .ver {
     width: 80%;
     border-style: none;
     background-color: red;
