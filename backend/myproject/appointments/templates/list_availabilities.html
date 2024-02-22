@@ -1,0 +1,32 @@
+<!-- templates/list_availabilities.html -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Disponibilidades</title>
+</head>
+<body>
+    <h1>Lista de Disponibilidades</h1>
+    <ul>
+        {% for availability in availabilities %}
+            <li>
+                <p>Profesional: {{ availability.professional_id }}</p>
+                <p>Día de la semana: {{ availability.day_of_week }}</p>
+                <p>Hora de inicio: {{ availability.start_time }}</p>
+                <p>Hora de fin: {{ availability.end_time }}</p>
+                <p>Precio: ${{ availability.price }}</p>
+                {% if availability.max_users > availability.turn_set.count %}
+                    <form method="post" action="{% url 'reserve_turn' availability.availability_id %}">
+                        {% csrf_token %}
+                        <button type="submit">Reservar Turno</button>
+                    </form>
+                {% else %}
+                    <p>No hay espacio disponible para este turno</p>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

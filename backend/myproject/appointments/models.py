@@ -1,3 +1,4 @@
+#C16-74-n-python\backend\myproject\appointments\models.py
 from django.db import models
 from django.utils import timezone
 from users.models import Professional, CustomUser
@@ -11,7 +12,8 @@ class Availability(models.Model):
     end_time = models.TimeField()
     max_users = models.PositiveIntegerField(default=1, help_text="Cantidad máxima de usuarios permitidos para esta disponibilidad")
     status = models.BooleanField(default=True)
-    
+    price = models.DecimalField(max_digits=10, decimal_places=2, help_text="Precio de la clase", default=1500)
+
     # Relación muchos a muchos con CustomUser para permitir que varios usuarios registren turnos para esta disponibilidad
     users = models.ManyToManyField(CustomUser, through='Turn')
 
@@ -32,6 +34,8 @@ class Turn(models.Model):
     professional_id = models.ForeignKey(Professional, on_delete=models.CASCADE)
     availability_id = models.ForeignKey(Availability, on_delete=models.CASCADE, default="")
     user_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    price = models.DecimalField(max_digits=10, decimal_places=2, help_text="Precio del turno", default=1500)
+
     TURN_STATUS_CHOICES = [
         ('confirmed', 'Confirmado'),
         ('pending', 'Pendiente'),
@@ -64,4 +68,4 @@ class Turn(models.Model):
 
     def _str_(self):
         return f"Appointment {self.turn_id}"
-    
+

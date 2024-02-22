@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservar Turno</title>
+</head>
+<body>
+    <h1>Reservar Turno</h1>
+    <p>Detalles de la disponibilidad:</p>
+    <p>Profesional: {{ availability.professional_id }}</p>
+    <p>Día de la semana: {{ availability.day_of_week }}</p>
+    <p>Hora de inicio: {{ availability.start_time }}</p>
+    <p>Hora de finalización: {{ availability.end_time }}</p>
+    <p>Precio: {{ availability.price }}</p>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        <button type="submit">Confirmar Reserva</button>
+    </form>
+</body>
+</html>
