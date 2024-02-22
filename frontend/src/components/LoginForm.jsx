@@ -6,7 +6,7 @@ import '../stylesheets/Login.css'
 const LoginForm = () => {
 
   // TODO: Agregar error handling
-  // TODO: Manejar el roke recibido por el servidor
+  // TODO: Manejar el token recibido por el servidor
 
   const [formData, setFormData] = useState({
     email: '',
@@ -44,6 +44,8 @@ const LoginForm = () => {
       try {
         const response = await axios.post('https://render-api-a6du.onrender.com/user/login', formData);
         console.log('Logged in user:', response.data);
+        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('firstName', response.data.first_name);
         navigate('/'); 
       } catch (error) {
         setError(error.response.data.error);
