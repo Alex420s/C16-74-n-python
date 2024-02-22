@@ -10,9 +10,6 @@ load_dotenv()
 # Obtener el valor de SECRET_KEY
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-"""# lo saqué para que lea el archivo desde C16-74-n-python\backend\myproject\.env #####
-SECRET_KEY = os.environ.get('SECRET_KEY') """
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -98,8 +95,12 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# # Define la configuración de la base de datos por defecto
+# default_db_url = 'postgres://postgres:bBaC3DD4FF-CdBbg*2dbffB6-cfGDDC5@monorail.proxy.rlwy.net:25117/railway'
+
+# # Obtiene la URL de la base de datos del archivo .env si está disponible, de lo contrario, usa la base de datos por defecto
 # DATABASES = {
-#     'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+#     'default': dj_database_url.config(default=os.getenv('DATABASE_URL', default_db_url))
 # }
 
 DATABASES = {

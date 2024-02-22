@@ -6,8 +6,7 @@ class Availability(models.Model):
 
     availability_id = models.AutoField(primary_key=True)
     professional_id = models.ForeignKey(Professional, on_delete=models.CASCADE)
-    day_of_week = models.CharField(max_length=10, choices=[("Lunes", "Lunes"), ("Martes", "Martes"), ("Miercoles", "Miercoles"),
-                                                           ("Jueves", "Jueves"), ("Viernes", "Viernes"), ("Sabado", "Sabado"), ("Domingo", "Domingo")])
+    day_of_week = models.CharField(max_length=10, choices=[("Lunes", "Lunes"), ("Martes", "Martes"), ("Miercoles", "Miercoles"),                                                           ("Jueves", "Jueves"), ("Viernes", "Viernes"), ("Sabado", "Sabado"), ("Domingo", "Domingo")])
     start_time = models.TimeField()
     end_time = models.TimeField()
     status = models.BooleanField(default=True)

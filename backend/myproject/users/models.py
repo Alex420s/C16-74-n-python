@@ -61,10 +61,8 @@ class Professional(models.Model):
     description = models.TextField(max_length=100, default="Profesional de confianza")
     session_rate = models.DecimalField(max_digits=10, decimal_places=2, default=250)
     availability_hours = models.CharField(max_length=255, blank=True)
-    address = models.CharField(max_length=255)
-    city = models.CharField(max_length=255, default='' )    
+    neighborhood = models.CharField(max_length=255, default='' )  
     province = models.CharField(max_length=255, default='')
-    country = models.CharField(max_length=255, default='Argentina')
     role = models.CharField(max_length=20, choices=[('professional', 'Professional'), ('user', 'User')])
     
     def __str__(self):
