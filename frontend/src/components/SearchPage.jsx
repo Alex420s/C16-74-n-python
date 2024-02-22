@@ -1,28 +1,74 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
-import FullCalendar from '@fullcalendar/react';
-import dayGridPlugin from '@fullcalendar/daygrid';
 import '../stylesheets/Search.css'
 
 const SearchPage = () => {
+    const hoy = new Date(); // Fecha actual
+    const diasSemana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
     const [mostrarCalendario, setMostrarCalendario] = useState(false);
-    /*const [data, setData] = useState([]);
+    const [fechaActual, setFechaActual] = useState(hoy);
+  
+    const handleVer = () => {
+       setMostrarCalendario(true);
+    };
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get('/api/professionals/');
-                setData(response.data);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
+    const handleSeleccionarHorario = (fecha) => {
+        /*falta la lógica*/
+        console.log('Reservar horario para:', fecha);
+    };
 
-        fetchData();
-    }, []);*/
+    const handleReservar = () => {
+        ;
+    };
 
-  return (
-    <div className="listado">
+    const handleAnteriorSemana = () => {
+        const nuevaFecha = new Date(fechaActual);
+        nuevaFecha.setDate(nuevaFecha.getDate() - 7);
+        setFechaActual(nuevaFecha);
+    };
+    
+    const handleSiguienteSemana = () => {
+        const nuevaFecha = new Date(fechaActual);
+        nuevaFecha.setDate(nuevaFecha.getDate() + 7);
+        setFechaActual(nuevaFecha);
+    };
+
+    const EncabezadoCalendario = () => {
+        function obtenerFecha(dia) {
+          const diaActual = hoy.getDay();
+          const diferenciaDias = dia - diaActual;
+          const nuevaFecha = new Date(hoy.getTime() + (diferenciaDias * 24 * 60 * 60 * 1000));
+          const diaNumero = nuevaFecha.getDate();
+          const mes = nuevaFecha.getMonth() + 1;
+          return `${diaNumero < 10 ? '0' : ''}${diaNumero}/${mes < 10 ? '0' : ''}${mes}`;
+        }
+    
+        return (
+            <table className="calendario-table">
+                <thead>
+                    <tr>
+                        {diasSemana.map((dia, indice) => (
+                            <th key={indice}>{dia} <br /> {obtenerFecha(indice + 1)}</th>
+                        ))}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>13:00 - 14:00</td>
+                        <td></td>
+                        <td>13:00 - 14:00</td>
+                        <td>13:00 - 14:00</td>
+                        <td></td>
+                        <td></td>
+
+                    </tr>
+                </tbody>
+            </table>
+        );
+    };
+
+    return (
+      <div className="listado">
         <h1>Listado de Profesionales</h1>
         <table className="lista_prof">
             <thead>
@@ -46,37 +92,19 @@ const SearchPage = () => {
                     <td>Villa Urquiza</td>
                     <td>CABA - Bs As</td>
                     <td>$ 2000</td>
-                    <td><input className='reservar hover' type="submit" name="reservar" value="Reservar" onClick={() => setMostrarCalendario(true)} /></td>          
+                    <td><input className='ver hover' type="submit" name="ver" value="Ver" onClick={handleVer} /></td>          
                 </tr>
-    {/* Después hay que borrar el de prueba de arriba
-                {data.map((professional, index) => (
-                    <tr key={index}>
-                        <td>{professional.user_id.first_name}</td>
-                        <td>{professional.user_id.last_name}</td>
-                        <td>{professional.speciality}</td>
-                        <td>{professional.description}</td>
-                        <td>{professional.barrio}</td>     Ver los nombres de la tabla profesionales 
-                        <td>{professional.provincia}</td>
-                        <td>$ {professional.tarifa}</td>
-                        <td><input className='reservar hover' type="submit" name="reservar" value="Reservar" /></td>
-                    </tr>
-                ))} */}
             </tbody>
         </table>
         {mostrarCalendario && (
-            <div id="calendario">
-                <FullCalendar
-                    plugins={[ dayGridPlugin ]} // Especifica los plugins que deseas utilizar, como el de visualización de día
-                    initialView="dayGridMonth" // Establece la vista inicial del calendario
-                    events={[ 
-                        { title: 'Evento 1', date: '2024-02-21' },
-                        { title: 'Evento 2', date: '2024-02-22' }
-                    ]}
-                />
-            </div>
+          <div className="calendario">
+            <EncabezadoCalendario />
+            <button onClick={handleReservar}>Reservar</button>
+          </div>
         )}
-    </div>
-  )
-}
+        
+        </div>
+    );
+  };
 
 export default SearchPage
