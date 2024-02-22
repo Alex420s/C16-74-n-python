@@ -9,7 +9,6 @@ UserModel = get_user_model()
 """"
 {
     "first_name": "Jduan",
-    
     "nick_name": "locos",
     "last_name": "Hernandez",
     "phone_number": "23443435353",
