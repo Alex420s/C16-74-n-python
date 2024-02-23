@@ -31,9 +31,9 @@ class Availability(models.Model):
 
 class Turn(models.Model):
     turn_id = models.AutoField(primary_key=True)
-    professional_id = models.ForeignKey(Professional, on_delete=models.CASCADE)
-    availability_id = models.ForeignKey(Availability, on_delete=models.CASCADE, default="")
-    user_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    professional_id = models.ForeignKey(Professional, on_delete=models.CASCADE, related_name='turns')
+    availability_id = models.ForeignKey(Availability, on_delete=models.CASCADE, related_name='turns', default="")
+    user_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='turns')
     price = models.DecimalField(max_digits=10, decimal_places=2, help_text="Precio del turno", default=1500)
 
     TURN_STATUS_CHOICES = [
