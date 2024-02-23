@@ -50,7 +50,14 @@ const HomePage = () => {
         <h2>USUARIOS</h2>
         <div className="fila">
           <div className="texto">
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam sit odio, quibusdam quia exercitationem doloremque, nulla laborum cum ducimus suscipit, enim iure quas praesentium. Id maxime exercitationem quia deserunt sequi.</p> 
+            <p>Con GoFitApp podrás:</p>
+            <ul>
+              <li>Reservar turnos en cualquier momento y lugar con un directorio completo de profesionales </li>
+              <li>Elegir el día y la hora que mejor se adapte a vos</li>
+              <li>Verificar la disponibilidad en tiempo real</li>
+              <li>Recibir notificaciones y recordatorios de tus turnos</li>
+              <li>Calificar y opinar sobre tu experiencia</li>
+            </ul> 
           </div>
           <div className="contenedor-registrar">
             <Link style={{ textDecoration: 'none' }} to={'/nuevo-usuario'}><input type="submit" name="registro_usuario" value="Reserva tu turno" className="registroHome hover" /></Link>  
@@ -64,7 +71,13 @@ const HomePage = () => {
             <Link style={{ textDecoration: 'none' }} to={'/nuevo-profesional'}><input type="submit" name="registro_profesional" value="Publica tus clases" className="registroHome hover" /></Link>
           </div>
           <div className="texto">
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam sit odio, quibusdam quia exercitationem doloremque, nulla laborum cum ducimus suscipit, enim iure quas praesentium. Id maxime exercitationem quia deserunt sequi.</p> 
+          <p>Con GoFitApp podrás:</p>
+            <ul>
+              <li>Armar la vidriera de tu servicio y subir una foto</li>
+              <li>Gestionar tu agenda de manera eficiente seleccionando los días y horas en los que estás disponible para atender a tus clientes</li>
+              <li>Confirmar y rechazar turnos</li>
+              <li>Recibirás notificaciones por correo electrónico y en la aplicación cuando un usuario reserve</li>
+            </ul>  
           </div>
         </div>  
       </div>

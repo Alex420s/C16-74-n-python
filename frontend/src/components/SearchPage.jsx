@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import '../stylesheets/Search.css'
+import flechaIzq from '../images/flechaIzquierda.png';
+import flechaDer from '../images/flechaDerecha.png';
 
 const SearchPage = () => {
     const hoy = new Date(); // Fecha actual
@@ -60,8 +62,15 @@ const SearchPage = () => {
                         <td>13:00 - 14:00</td>
                         <td></td>
                         <td></td>
-
                     </tr>
+                    <tr>
+                        <td>13:00 - 14:00</td>
+                        <td></td>
+                        <td>13:00 - 14:00</td>
+                        <td>13:00 - 14:00</td>
+                        <td></td>
+                        <td></td>
+                    </tr>        
                 </tbody>
             </table>
         );
@@ -99,6 +108,10 @@ const SearchPage = () => {
         {mostrarCalendario && (
           <div className="calendario">
             <EncabezadoCalendario />
+            <div>
+                <button className='mover' onclick={handleAnteriorSemana}><img src="flechaIzq" alt="" /> </button>
+                <button className='mover' onClick={handleSiguienteSemana}><img src="flechaDer" alt="" /> </button>
+            </div>    
             <button onClick={handleReservar}>Reservar</button>
           </div>
         )}
