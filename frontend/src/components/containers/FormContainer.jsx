@@ -1,5 +1,5 @@
 import React from 'react'
-import '../stylesheets/FormContainer.css'
+import '../../stylesheets/containers/FormContainer.css'
 
 const FormContainer = ({ children}) => {
   return (

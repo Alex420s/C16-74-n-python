@@ -1,11 +1,11 @@
 import React from 'react'
-import '../stylesheets/Footer.css'
-import logo from '../images/Logo.png'
-import facebook from '../images/Facebook.png'
-import twitter from '../images/Twitter.jpg'
-import instagram from '../images/Instagram.png'
-import linkedin from '../images/Linkedin.png'
-import copyright from '../images/copyright.png'
+import '../../stylesheets/footer-header/Footer.css'
+import logo from '../../images/Logo.png'
+import facebook from '../../images/Facebook.png'
+import twitter from '../../images/Twitter.jpg'
+import instagram from '../../images/Instagram.png'
+import linkedin from '../../images/Linkedin.png'
+import copyright from '../../images/copyright.png'
 import { Link } from 'react-router-dom'
 
 

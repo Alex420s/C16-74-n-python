@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../stylesheets/ProfessionalForm.css'
+import '../../stylesheets/forms/ProfessionalForm.css'
 
 const ProfessionalForm = () => {
   const [formData, setFormData] = useState({

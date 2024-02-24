@@ -1,7 +1,7 @@
 import React from 'react'
-import Header from '../components/Header.jsx'
-import Footer from '../components/Footer.jsx'
-import HomeContainer from '../components/HomeContainer.jsx'
+import Header from '../components/footer-header/Header.jsx'
+import Footer from '../components/footer-header/Footer.jsx'
+import HomeContainer from '../components/containers/HomeContainer.jsx'
 import HomePage from '../components/HomePage.jsx'
 
 

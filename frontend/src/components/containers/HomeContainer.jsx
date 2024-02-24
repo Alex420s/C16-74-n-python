@@ -1,5 +1,5 @@
 import React from 'react'
-import '../stylesheets/HomeContainer.css'
+import '../../stylesheets/containers/HomeContainer.css'
 
 const HomeContainer = ({ children}) => {
   return (

@@ -1,5 +1,5 @@
 import React from 'react'
-import '../stylesheets/UserContainer.css'
+import '../../stylesheets/containers/UserContainer.css'
 
 const UserContainer = ({ children}) => {
   return (

@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-import FormContainer from '../components/FormContainer.jsx'
-import ProfessionalForm from '../components/ProfessionalForm.jsx'
+import Header from '../components/footer-header/Header.jsx'
+import Footer from '../components/footer-header/Footer.jsx'
+import FormContainer from '../components/containers/FormContainer.jsx'
+import ProfessionalForm from '../components/forms/ProfessionalForm.jsx'
 
 const ProfessionalRegistrationForm = () => {
   return (
