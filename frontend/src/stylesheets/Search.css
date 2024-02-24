@@ -1,3 +1,7 @@
+.texto_rojo {
+  color: red;
+}
+
 .lista_prof {
   width: 95%;
   border-collapse: collapse;
@@ -71,7 +75,7 @@ button {
   cursor: pointer;
 }
 
-.posicion {
+.posicion2 {
   text-align: end;
 }
 

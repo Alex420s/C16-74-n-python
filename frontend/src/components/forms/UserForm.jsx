@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import '../../stylesheets/forms/UserForm.css'
+import { Link } from 'react-router-dom'
 
 const UserForm = () => {
   const [formData, setFormData] = useState({
@@ -67,6 +68,9 @@ const UserForm = () => {
           </div>
           <div className="contenedor-enviar">
             <input className={!passwordsMatch ? 'disabled hover' : 'enviar hover'} type="submit" name="registro" value="Registrarte" />
+          </div>
+          <div className="caja">
+            <input type="checkbox" name="condiciones" value="condiciones" onChange={handleChange}/> <label>Acepto <Link to="../Terminos y Condiciones.pdf" target="_blank">los términos y las condiciones</Link></label>
           </div>
         </div>
       </form>

@@ -9,9 +9,17 @@ const SearchPage = () => {
     const [mostrarCalendario, setMostrarCalendario] = useState(false);
     const [fechaActual, setFechaActual] = useState(hoy);
     const [celdasSeleccionadas, setCeldasSeleccionadas] = useState(new Set());
+    const [posicionCalendario, setPosicionCalendario] = useState(0); 
   
-    const handleVer = () => {
-       setMostrarCalendario(true);
+    const handleVer = (id) => {
+        // Aquí puedes agregar lógica para determinar la posición de la fila específica con respecto a la parte superior de la ventana del navegador
+    
+        // Esto es para abrir el calendario debajo del botón "Ver" en la fila específica
+        const fila = document.getElementById(id);
+        const posicionFila = fila.offsetTop + fila.offsetHeight;
+    
+        setPosicionCalendario(posicionFila); // Actualizamos el estado con la posición de apertura del calendario
+        setMostrarCalendario(true);
     };
 
     const handleSeleccionarHorario = (hora) => {
@@ -82,7 +90,7 @@ const SearchPage = () => {
 
     return (
       <div className="listado">
-        <h1>Listado de Profesionales</h1>
+        <h1 className="texto_rojo">Resultados búsqueda</h1>
         <table className="lista_prof">
             <thead>
                 <tr>
@@ -106,7 +114,18 @@ const SearchPage = () => {
                     <td>Villa Urquiza</td>
                     <td>CABA - Bs As</td>
                     <td>$ 2000</td>
-                    <td><input className='ver hover' type="submit" name="ver" value="Ver" onClick={handleVer} /></td>          
+                    <td><input className='ver hover' type="submit" name="ver" value="Ver" onClick={() => handleVer('idDeLaFila')} /></td>          
+                </tr>
+                {/*en el handlever podemos usar el id del profesional desde la tabla*/}
+                <tr>
+                    <td>Prueba</td>
+                    <td>Dos</td>
+                    <td>Zumba</td>
+                    <td>Me aburre inventar</td>
+                    <td>Villa Pueyrredón</td>
+                    <td>CABA - Bs As</td>
+                    <td>$ 2000</td>
+                    <td><input className='ver hover' type="submit" name="ver" value="Ver" onClick={() => handleVer('idDeLaFila')} /></td>          
                 </tr>
             </tbody>
         </table>
@@ -117,7 +136,7 @@ const SearchPage = () => {
                 <button className='mover' onClick={handleAnteriorSemana}><img src={flechaIzq} alt="" /> </button>
                 <button className='mover' onClick={handleSiguienteSemana}><img src={flechaDer} alt="" /> </button>
             </div>    
-            <div className="posicion">  
+            <div className="posicion2">  
                 <button className="reserva" onClick={handleReservar}>Reservar</button>
             </div>
           </div>
