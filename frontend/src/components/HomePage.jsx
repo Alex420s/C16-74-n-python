@@ -29,7 +29,7 @@ const HomePage = () => {
       </div>
       <div className="info_GO">
         <img src={ Gofit } alt="" />
-        <div className="texto">        
+        <div className="texto1">        
           <p className="negrita">¿Tenés un espacio vacío entre dos actividades?</p>
           <p>Con GoFitApp gestiona tu entrenamiento y el de los miembros de tu familia. Como profesional hacete visible y extendé tus horizontes</p>
             <ul>
@@ -49,14 +49,13 @@ const HomePage = () => {
       <div className="infos">
         <h2>USUARIOS</h2>
         <div className="fila">
-          <div className="texto">
-            <p>Con GoFitApp podrás:</p>
+          <div className="texto2">
+            <p>Con <span className="resaltado">GoFitApp</span> podrás:</p>
             <ul>
-              <li>Reservar turnos en cualquier momento y lugar con un directorio completo de profesionales </li>
-              <li>Elegir el día y la hora que mejor se adapte a vos</li>
+              <li>Reservar turnos en cualquier momento y lugar</li>
+              <li>Elegir el día y la hora</li>
               <li>Verificar la disponibilidad en tiempo real</li>
-              <li>Recibir notificaciones y recordatorios de tus turnos</li>
-              <li>Calificar y opinar sobre tu experiencia</li>
+              <li>Recibir notificaciones y recordatorios</li>
             </ul> 
           </div>
           <div className="contenedor-registrar">
@@ -70,13 +69,13 @@ const HomePage = () => {
           <div className="contenedor-registrar">
             <Link style={{ textDecoration: 'none' }} to={'/nuevo-profesional'}><input type="submit" name="registro_profesional" value="Publica tus clases" className="registroHome hover" /></Link>
           </div>
-          <div className="texto">
-          <p>Con GoFitApp podrás:</p>
+          <div className="texto2">
+          <p>Con <span className="resaltado">GoFitApp</span> podrás:</p>
             <ul>
-              <li>Armar la vidriera de tu servicio y subir una foto</li>
-              <li>Gestionar tu agenda de manera eficiente seleccionando los días y horas en los que estás disponible para atender a tus clientes</li>
+              <li>Armar la vidriera de tu servicio</li>
+              <li>Gestionar tu agenda de manera eficiente</li>
               <li>Confirmar y rechazar turnos</li>
-              <li>Recibirás notificaciones por correo electrónico y en la aplicación cuando un usuario reserve</li>
+              <li>Recibir notificaciones cuando un usuario reserve</li>
             </ul>  
           </div>
         </div>  

@@ -6,21 +6,51 @@ import flechaDer from '../images/flechaDerecha.png';
 
 const SearchPage = () => {
     const hoy = new Date(); // Fecha actual
-    const diasSemana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
     const [mostrarCalendario, setMostrarCalendario] = useState(false);
     const [fechaActual, setFechaActual] = useState(hoy);
+    const [celdasSeleccionadas, setCeldasSeleccionadas] = useState(new Set());
   
     const handleVer = () => {
        setMostrarCalendario(true);
     };
 
-    const handleSeleccionarHorario = (fecha) => {
-        /*falta la lógica*/
-        console.log('Reservar horario para:', fecha);
+    const handleSeleccionarHorario = (hora) => {
+        
     };
-
+        
     const handleReservar = () => {
-        ;
+        /* Lógica para reservar el horario seleccionado */
+    };
+    
+    const CalendarioHorarios = ({ diasSemana, obtenerFecha }) => {
+        // Horarios de ejemplo para cada día
+        const horarios = [
+            ["13:00 - 14:00", "", "13:00 - 14:00", "13:00 - 14:00", "", ""],
+            ["13:00 - 14:00", "", "13:00 - 14:00", "13:00 - 14:00", "", ""]
+        ];
+    
+        return (
+            <table className="calendario-table">
+                <thead>
+                    <tr>
+                        {diasSemana.map((dia, indice) => (
+                            <th key={indice}>{dia} <br /> {obtenerFecha(indice + 1)}</th>
+                        ))}
+                    </tr>
+                </thead>
+                <tbody>
+                    {horarios.map((fila, indexFila) => (
+                        <tr key={indexFila}>
+                            {fila.map((hora, indexColumna) => (
+                                <td key={indexColumna} data-hora={hora} onClick={() => handleSeleccionarHorario(hora)}>
+                                    {hora}
+                                </td>
+                            ))}
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        );
     };
 
     const handleAnteriorSemana = () => {
@@ -35,46 +65,20 @@ const SearchPage = () => {
         setFechaActual(nuevaFecha);
     };
 
-    const EncabezadoCalendario = () => {
+    const EncabezadoCalendario = ({fecha}) => {
         function obtenerFecha(dia) {
-          const diaActual = hoy.getDay();
-          const diferenciaDias = dia - diaActual;
-          const nuevaFecha = new Date(hoy.getTime() + (diferenciaDias * 24 * 60 * 60 * 1000));
-          const diaNumero = nuevaFecha.getDate();
-          const mes = nuevaFecha.getMonth() + 1;
-          return `${diaNumero < 10 ? '0' : ''}${diaNumero}/${mes < 10 ? '0' : ''}${mes}`;
+            const diaActual = fecha.getDay();
+            const diferenciaDias = dia - diaActual;
+            const nuevaFecha = new Date(fecha.getTime() + (diferenciaDias * 24 * 60 * 60 * 1000));
+            const diaNumero = nuevaFecha.getDate();
+            const mes = nuevaFecha.getMonth() + 1;
+            return `${diaNumero < 10 ? '0' : ''}${diaNumero}/${mes < 10 ? '0' : ''}${mes}`;
         }
     
         return (
-            <table className="calendario-table">
-                <thead>
-                    <tr>
-                        {diasSemana.map((dia, indice) => (
-                            <th key={indice}>{dia} <br /> {obtenerFecha(indice + 1)}</th>
-                        ))}
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>13:00 - 14:00</td>
-                        <td></td>
-                        <td>13:00 - 14:00</td>
-                        <td>13:00 - 14:00</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>13:00 - 14:00</td>
-                        <td></td>
-                        <td>13:00 - 14:00</td>
-                        <td>13:00 - 14:00</td>
-                        <td></td>
-                        <td></td>
-                    </tr>        
-                </tbody>
-            </table>
+            <CalendarioHorarios diasSemana={["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"]} obtenerFecha={obtenerFecha} />
         );
-    };
+    }
 
     return (
       <div className="listado">
@@ -93,6 +97,7 @@ const SearchPage = () => {
                 </tr>
             </thead>
             <tbody>
+                {/*falta la lógica del back*/}
                 <tr>
                     <td>Prueba</td>
                     <td>Uno</td>
@@ -107,12 +112,14 @@ const SearchPage = () => {
         </table>
         {mostrarCalendario && (
           <div className="calendario">
-            <EncabezadoCalendario />
+            <EncabezadoCalendario fecha={fechaActual}/>
             <div>
-                <button className='mover' onclick={handleAnteriorSemana}><img src="flechaIzq" alt="" /> </button>
-                <button className='mover' onClick={handleSiguienteSemana}><img src="flechaDer" alt="" /> </button>
+                <button className='mover' onClick={handleAnteriorSemana}><img src={flechaIzq} alt="" /> </button>
+                <button className='mover' onClick={handleSiguienteSemana}><img src={flechaDer} alt="" /> </button>
             </div>    
-            <button onClick={handleReservar}>Reservar</button>
+            <div className="posicion">  
+                <button className="reserva" onClick={handleReservar}>Reservar</button>
+            </div>
           </div>
         )}
         

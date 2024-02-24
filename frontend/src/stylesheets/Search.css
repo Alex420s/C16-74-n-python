@@ -32,9 +32,54 @@
     margin: auto;
 }
 
-#calendario {
-  width: 100%; /* Ajusta el ancho según sea necesario */
-  height: 400px; /* Ajusta la altura según sea necesario */
-  margin-top: 20px; /* Ajusta el margen superior según sea necesario */
-  border: 1px solid #ccc; /* Añade un borde para distinguir el calendario */
+.calendario-table {
+  width: 90%;
+  border-collapse: collapse;
+  margin: 15px auto 0;
+}
+
+.calendario-table thead {
+  margin: 15% 0;
+}
+
+.calendario-table td {
+  width: 200px;
+  border: 1px solid rgb(231, 229, 229);
+  padding: 8px;
+  text-align: center;
+}
+
+.mover {
+  width: 25px;
+  background-color: white;
+}
+
+.mover img{
+  width: 100%;
+}
+
+.calendario div{
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+.posicion {
+  text-align: end;
+}
+
+.reserva {
+  padding: 20px 40px;
+  border-style: none;
+  color: white;
+  background-color: red;
+  cursor: pointer;
+  border-radius: 10px;
 }

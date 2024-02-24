@@ -47,16 +47,17 @@
     gap: 30px;
 }
 
-.texto {
+.texto1 {
+    width: 50%;
     line-height: 30px;
     font-size: 20px;
 }
 
-.texto p {
+.texto1 p {
     margin: 5px 0;
 }
 
-.texto ul {
+.texto1 ul {
     list-style-type: none;
     text-align: center;
 }
@@ -88,15 +89,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
 }
 
 .contenedor-registrar{
-    width: 70%;
+    width: 40%;
     display: flex;
     justify-content: center;
     margin: 50px auto;
-    gap: 10%;
+    gap: 10px;
+    padding: 15px;
 }
 
 .registroHome {
@@ -111,4 +113,18 @@
 
 .registroHome a{
     text-decoration: none;
+}
+
+.resaltado {
+    font-weight: bold;
+}
+
+.texto2 {
+    width: 60%;
+    line-height: 30px;
+    font-size: 20px;
+}
+
+.texto2 ul{
+    margin-left: 40px;
 }
