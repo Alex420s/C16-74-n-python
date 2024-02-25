@@ -5,12 +5,14 @@
 .lista_prof {
   width: 95%;
   border-collapse: collapse;
+  border-radius: 10px;
   margin: 15px auto 0;
 }
   
 .lista_prof th, td {
   width: 200px;
-  border: 1px solid rgb(231, 229, 229);
+  /*border: 1px solid rgb(231, 229, 229);*/
+  border-radius: 10px;
   padding: 8px;
   text-align: center;
 }
@@ -51,6 +53,7 @@
 .calendario-table td {
   width: 200px;
   border: 1px solid rgb(231, 229, 229);
+  border-radius: 10px;
   padding: 8px;
   text-align: center;
 }

@@ -5,26 +5,25 @@ import { MdOutlineEditCalendar, MdOutlineCalendarToday, MdOutlineReceipt } from 
 
 const Sidebar = () => {
   return (
-    <div class="sidebar">
+    <div className="sidebar">
         <ul>
             <li>
-              <span class="sidebarIcons"> <LuCalendarPlus /> </span>
+              <span className="sidebarIcons"> <LuCalendarPlus /> </span>
                <p>Nuevos Turnos</p>
             </li>
             <li>
-            <span class="sidebarIcons"> <MdOutlineEditCalendar /> </span>
+            <span className="sidebarIcons"> <MdOutlineEditCalendar /> </span>
               <p>Editar Turnos</p>
             </li>
             <li>
-            <span class="sidebarIcons"> <MdOutlineReceipt /> </span>
+            <span className="sidebarIcons"> <MdOutlineReceipt /> </span>
               <p>Pago</p>
             </li>
             <li>
-            <span class="sidebarIcons"> <MdOutlineCalendarToday /> </span>
+            <span className="sidebarIcons"> <MdOutlineCalendarToday /> </span>
               <p>Calendario</p>
             </li>
         </ul>
-      
     </div>
   )
 }

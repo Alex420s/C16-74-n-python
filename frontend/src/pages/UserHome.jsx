@@ -5,7 +5,6 @@ import Saludo from '../components/Saludo.jsx'
 import Sidebar from '../components/Sidebar.jsx'
 import Novedades from '../components/Novedades.jsx'
 import UserSearchbar from '../components/UserSearchbar.jsx'
-import UserContainer from '../components/containers/UserContainer.jsx'
 import '../stylesheets/UserHome.css'
 
 const UserHome = () => {
