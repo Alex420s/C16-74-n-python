@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from 'react';
 import logo from '../../images/Logo.png';
 import '../../stylesheets/footer-header/Header.css';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Header = () => {
 
@@ -9,11 +9,13 @@ const Header = () => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [firstName, setFirstName] = useState('');
+  const navigate = useNavigate();
 
   const logout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('firstName');
-    window.location.reload();
+    navigate('/');
+    // window.location.reload();
   }
   
   useEffect(() => {
@@ -32,7 +34,7 @@ const Header = () => {
         <ul>
           {isLoggedIn ? (
             <>
-            <li>Hola, {firstName}</li>
+            <li>Hola, {firstName} </li>
             <li className='rojo hover'><Link to={'/'} className='nav-link' onClick={logout}>Logout</Link></li>
             </>
           ) : (
