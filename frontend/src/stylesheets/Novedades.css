@@ -1,27 +1,39 @@
 .novedades {
-    margin-left: 100px;
-    margin-top: 50px;
-    width: 70%;
+    margin-left: 40px;
+    width: 90%;
+    background-color: white;
+    padding: 25px;
 }
 
 .titulo {
     color: #fb1720;
+    margin: 20px auto 40px auto;
+}
+
+.profesional{
+    font-size: 24px;
+    font-weight:500;
+    margin: 5px 0 5px 0;
 }
 
 .novedadBox {
     width: 80%;
-    margin: 20px;
-    padding: 10px;
+    padding: 10px 10px 10px 20px;
     border-style: hidden;
     border-radius: 8px;
-    box-shadow: 4px 4px 8px 6px #f6eded;
-
+    box-shadow: 2px 2px 4px 4px #f6eded;
+    margin-top: 10px;
 }
 
 .novedadBoxFecha {
     width: 40%;
     background-color: #ff464d;
     color: white;
-    padding: 10px;
-    border-radius: 10px;
+    padding: 5px;
+    border-radius: 10px; 
+}
+
+.novedadBoxFecha p{
+    margin-top: 5px;
+    margin-left: 8px;
 }

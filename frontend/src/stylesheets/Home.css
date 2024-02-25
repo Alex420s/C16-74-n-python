@@ -38,34 +38,60 @@
 
 .info_GO {
     width: 90%;
-    margin: 40px 0 20px 5%;
-    background-color: white;
+    margin: 50px 0 50px 5%;
+    background-color: black;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    align-items: start;
     padding: 30px;
     gap: 30px;
+    color: white;
+    position: relative;
 }
 
-.texto1 {
-    width: 50%;
+.logo{
+    z-index: 300;
+    position: absolute;
+    left: 210px;
+}
+
+.infoGral{
+    padding-top: 150px;
+    z-index: 200;
+    position: absolute;
+    right: 50px;
+    left: 500px;
+}
+
+.texto {
     line-height: 30px;
     font-size: 20px;
 }
 
-.texto1 p {
+.texto p {
     margin: 5px 0;
 }
 
-.texto1 ul {
+.img-container{
+  max-width: 50px;
+  z-index: 100;
+  position: absolute;
+  top: 20px;
+  left: 10px;
+}
+
+.texto ul {
     list-style-type: none;
-    text-align: center;
+    text-align: left;
 }
 
 .negrita {
     font-weight: bold;
-    text-align: center;
-    font-size: 30px;
+    text-align: Left;
+    font-size: 25px;
+}
+
+.searchbar{
+    margin-top: 180px;
 }
 
 .infos {
@@ -89,16 +115,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
 }
 
 .contenedor-registrar{
-    width: 40%;
+    width: 70%;
     display: flex;
     justify-content: center;
     margin: 50px auto;
     gap: 10px;
-    padding: 15px;
 }
 
 .registroHome {

@@ -1,8 +1,17 @@
-.saludo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.saludo{
     color: white;
-    margin: 20px 10%; 
+    background-color: black;
 }
 
+.hola-fulana{
+    align-items: start;
+    margin: 40px 0 0px 200px;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.fecha-hoy{
+    align-items: start;
+    margin: 0 0 20px 200px;
+    font-size: 16px;
+}

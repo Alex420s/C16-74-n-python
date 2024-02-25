@@ -13,13 +13,13 @@ const UserHome = () => {
     <div>
       <Header />
       <Saludo />
-        <UserContainer>
-          <div class="main">
-            <Sidebar />
-            <Novedades />
+          <div className="main">
+            <div className='side-novedades'>
+              <Sidebar />
+              <Novedades />
+            </div>
             <UserSearchbar />
           </div>
-          </UserContainer>  
       <Footer />
     </div>
   )
