@@ -1,14 +1,13 @@
 .searchbar {
-    width: 90%;
+    width: 1200px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 10px;
     margin: 20px auto;
 }
 
 .h2 {
     color: white;
+    position: absolute;
 }
 
 .buscar {
@@ -17,4 +16,14 @@
     color: white;
     background-color: red;
     cursor: pointer;
+}
+
+.inputsBuscador{
+    display: flex;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 50px 0 0 0;
+    justify-content: space-between;
 }

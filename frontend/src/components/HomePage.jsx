@@ -7,6 +7,7 @@ import Promo4 from '../images/promo4.jpg'
 import Searchbar from '../components/Searchbar.jsx'
 import '../stylesheets/Home.css'
 import { Link } from 'react-router-dom'
+import ImgGral from '../images/img-principal.jpg'
 
 const HomePage = () => {
   return (
@@ -28,22 +29,18 @@ const HomePage = () => {
         </ul>
       </div>
       <div className="info_GO">
-        <img src={ Gofit } alt="" />
-        <div className="texto1">        
-          <p className="negrita">¿Tenés un espacio vacío entre dos actividades?</p>
-          <p>Con GoFitApp gestiona tu entrenamiento y el de los miembros de tu familia. Como profesional hacete visible y extendé tus horizontes</p>
-            <ul>
-              <li>Flexibilidad Total </li>
-              <li>Notificaciones en Tiempo Real</li>
-              <li>Reservas para Toda la Familia</li> 
-              <li>Interfaz Intuitiva</li>
-            </ul>
-          <p className="negrita">¡No pierdas más tiempo valioso esperando!</p>
+      <img src={ Gofit } alt="" className='logo'/>
+        <div className='img-container'><img src={ImgGral} alt="" className="imgPricipal"/></div>
+        <div className="texto infoGral">
+          <p className="negrita">Plataforma de autogestión de turnos para entrenar</p>
+          <p>GoFitApp es la app que te facilita la gestión de tus entrenamientos y el de los miembros de tu familia. Manteniendo actualizada la disponibilidad de los entrenadores en tu zona.<br/>Como profesional te ayuda a visibilizarte y llegar a mas clientes.</p>
         </div>
       </div>
       <br />
       <br />
-      <Searchbar/>
+      <div className='searchbar'>
+        <Searchbar/>
+      </div>
       <br />
       <br />
       <div className="infos">

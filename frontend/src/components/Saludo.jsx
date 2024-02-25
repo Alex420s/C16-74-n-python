@@ -5,9 +5,9 @@ const Saludo = () => {
     const fecha = new Date().toLocaleString('es-ES',{weekday: 'long', year: 'numeric', month: 'short', day: 'numeric'});
 
     return (
-        <div class="saludo">
-            <h1 className="h1">Hola Fulana!</h1>
-            <h3>{ fecha }</h3>
+        <div className="saludo">
+            <div className='hola-fulana'><p>Hola Fulana!</p></div>
+            <div className='fecha-hoy'><p>{ fecha }</p></div>
         </div>   
     )
 }

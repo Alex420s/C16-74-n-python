@@ -7,7 +7,7 @@ const Novedades = () => {
        <h1 class="titulo">Proximos Turnos</h1>
        <div class="novedadBox">
         <p>Disciplina</p>
-        <h3>Profesional</h3>
+        <p className='profesional'>Profesional</p>
         <div class="novedadBoxFecha">
           <p>Dia de la semana + n </p>
           <p>00:00 - 00:00 </p>
@@ -16,7 +16,7 @@ const Novedades = () => {
 
        <div class="novedadBox">
         <p>Disciplina</p>
-        <h3>Profesional</h3>
+        <p className='profesional'>Profesional</p>
         <div class="novedadBoxFecha">
           <p>Dia de la semana + n </p>
           <p>00:00 - 00:00 </p>
@@ -25,7 +25,7 @@ const Novedades = () => {
 
        <div class="novedadBox">
         <p>Disciplina</p>
-        <h3>Profesional</h3>
+        <p className='profesional'>Profesional</p>
         <div class="novedadBoxFecha">
           <p>Dia de la semana + n </p>
           <p>00:00 - 00:00 </p>
