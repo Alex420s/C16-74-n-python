@@ -3,7 +3,7 @@ import Header from '../components/footer-header/Header.jsx'
 import Footer from '../components/footer-header/Footer.jsx'
 import ProfessionalPage from '../components/ProfessionalPage.jsx'
 import Saludo from '../components/Saludo.jsx'
-import Sidebar from '../components/Sidebar.jsx'
+import SidebarProf from '../components/SidebarProf.jsx'
 import '../stylesheets/ProfessionalHome.css'
 
 const ProfessionalHome = () => {
@@ -13,7 +13,7 @@ const ProfessionalHome = () => {
       <Saludo />
           <div className="main">
             <div className='side-novedades'>
-              <Sidebar />
+              <SidebarProf />
               <ProfessionalPage />
             </div>
           </div>

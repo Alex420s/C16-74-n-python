@@ -21,3 +21,7 @@
 .sidebar li {
     margin-bottom: 30px;
 }
+
+.sidebar img {
+    width: 70px;
+}

@@ -52,7 +52,7 @@ button {
 }
 
 .mover {
-    width: 25px;
+    width: 15px;
     background-color: white;
 }
   
@@ -63,6 +63,6 @@ button {
 .navegacion-semanal {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 80px;
     margin: 20px 0;
 }

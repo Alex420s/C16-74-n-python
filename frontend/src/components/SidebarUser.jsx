@@ -3,7 +3,7 @@ import '../stylesheets/Sidebar.css'
 import { LuCalendarPlus } from "react-icons/lu";
 import { MdOutlineEditCalendar, MdOutlineCalendarToday, MdOutlineReceipt } from "react-icons/md";
 
-const Sidebar = () => {
+const SidebarUser = () => {
   return (
     <div className="sidebar">
         <ul>
@@ -28,4 +28,4 @@ const Sidebar = () => {
   )
 }
 
-export default Sidebar
+export default SidebarUser
