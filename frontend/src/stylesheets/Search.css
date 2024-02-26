@@ -1,94 +1,87 @@
-.texto_rojo {
-  color: red;
-}
-
-.lista_prof {
-  width: 95%;
-  border-collapse: collapse;
-  border-radius: 10px;
-  margin: 15px auto 0;
-}
-  
-.lista_prof th, td {
-  width: 200px;
-  /*border: 1px solid rgb(231, 229, 229);*/
-  border-radius: 10px;
-  padding: 8px;
-  text-align: center;
-}
-  
-.lista_prof thead {
-  background-color: rgb(231, 229, 229);
-  color: black;
-  margin: 15% 0;
-}
-  
-.lista_prof tbody {
-  background-color: white;
-}
-
-.reservar, .ver {
-    width: 80%;
-    height: 40px;
-    border-style: none;
-    background-color: red;
-    color: white;
-    font-size: 14px;
-    border-collapse: collapse;
-    cursor: pointer;
-    margin: auto;
-    border-radius: 10px;
-}
-
-.calendario-table {
-  width: 90%;
-  border-collapse: collapse;
-  margin: 15px auto 0;
-}
-
-.calendario-table thead {
-  margin: 15% 0;
-}
-
-.calendario-table td {
-  width: 200px;
-  border: 1px solid rgb(231, 229, 229);
-  border-radius: 10px;
-  padding: 8px;
-  text-align: center;
-}
-
-.mover {
-  width: 25px;
-  background-color: white;
-}
-
-.mover img{
-  width: 100%;
-}
-
-.calendario div{
+.searchbar {
+  width: 1200px;
   display: flex;
-  gap: 20px;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
+  padding: 10px;
+  margin: 20px auto;
 }
 
-button {
-  border: none;
-  cursor: pointer;
+.h2 {
+  color: black;
+  position: absolute;
 }
 
-.posicion2 {
-  text-align: end;
-}
-
-.reserva {
+.buscar {
   padding: 20px 40px;
   border-style: none;
   color: white;
   background-color: red;
   cursor: pointer;
+}
+
+.inputsBuscador{
+  display: flex;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin: 50px auto 0;
+  justify-content: space-between;
+}
+
+.texto_rojo {
+  color: red;
+}
+
+.lista_prof {
+  width: 100%;
+  border: 1px solid rgb(105, 105, 105);
   border-radius: 10px;
+  margin: 15px auto 0;
+}
+  
+.encabezado {
+  display: flex;
+  width: 100%;
+  background-color: rgb(231, 229, 229);
+  border: 1px solid rgb(105, 105, 105);
+  border-radius: 10px;
+  padding: 20px;
+  gap: 80px;
+  text-align: center;
+}
+
+.columna {
+  flex: 1; 
+  font-size: 20px; 
+  width: 100px;
+  margin: auto 0;
+}
+  
+.titulos-encab {
+  background-color: rgb(231, 229, 229);
+  color: black;
+  font-size: 20px;
+}
+  
+.fila-prof {
+  background-color: white;
+  display: flex;
+  width: 100%;
+  border: 1px solid rgb(105, 105, 105);
+  border-radius: 10px;
+  padding: 10px;
+  gap: 80px;
+  text-align: center;
+}
+
+.ver {
+  width: 80px; /* Ajusta el ancho del botón según lo necesites */
+  height: 40px;
+  border-style: none;
+  background-color: red;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 10px;
+  align-self: center; /* Para centrar verticalmente el botón en la fila */
 }
