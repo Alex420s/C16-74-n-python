@@ -9,6 +9,7 @@ import UserHome from './pages/UserHome.jsx';
 import Search from './pages/Search.jsx';
 import ProfessionalHome from './pages/ProfessionalHome.jsx';
 import PerfilProf from './pages/PerfilProf.jsx';
+import ProfesionalEdit from './pages/ProfesionalEdit.jsx';
 import AgregarTurno from './pages/AgregarTurno.jsx';
 
 
@@ -26,6 +27,7 @@ function App() {
           <Route path='/agregar.turno' element={<AgregarTurno />} />
           <Route path="/search" element={<Search />} />
           <Route path="/perfilProf" element={<PerfilProf />} />
+          <Route path="/editProf" element={<ProfesionalEdit />} />
         </Routes>
       </div>
     </Router>

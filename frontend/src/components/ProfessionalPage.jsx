@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import '../stylesheets/ProfessionalPage.css'
-import FullCalendar from '@fullcalendar/react'; // Importa el componente principal de FullCalendar
-import dayGridPlugin from '@fullcalendar/daygrid'; // Importa el plugin de visualización de día
+import FullCalendar from '@fullcalendar/react'; 
+import dayGridPlugin from '@fullcalendar/daygrid';
 
 const ProfessionalPage = () => {
   const [turnos, setTurnos] = useState([]);
@@ -9,38 +9,38 @@ const ProfessionalPage = () => {
   const [eventos, setEventos] = useState([
     {
       title: 'Clase',
-      start: '2024-02-26T13:00', // Fecha y hora de inicio del evento
-      end: '2024-02-26T14:00',   // Fecha y hora de finalización del evento
+      start: '2024-02-26T13:00', 
+      end: '2024-02-26T14:00',   
     },
     {
       title: 'Clase',
-      start: '2024-02-29T09:00', // Fecha y hora de inicio del evento
-      end: '2024-02-29T10:00',   // Fecha y hora de finalización del evento
+      start: '2024-02-29T09:00', 
+      end: '2024-02-29T10:00',   
     },
     {
       title: 'Clase',
-      start: '2024-03-01T12:00', // Fecha y hora de inicio del evento
-      end: '2024-03-01T13:00',   // Fecha y hora de finalización del evento
+      start: '2024-03-01T12:00', 
+      end: '2024-03-01T13:00',   
     },
     {
       title: 'Clase',
-      start: '2024-03-04T13:00', // Fecha y hora de inicio del evento
-      end: '2024-03-04T14:00',   // Fecha y hora de finalización del evento
+      start: '2024-03-04T13:00', 
+      end: '2024-03-04T14:00',   
     },
     {
       title: 'Clase',
-      start: '2024-03-07T09:00', // Fecha y hora de inicio del evento
-      end: '2024-03-07T10:00',   // Fecha y hora de finalización del evento
+      start: '2024-03-07T09:00', 
+      end: '2024-03-07T10:00',   
     },
     {
       title: 'Clase',
-      start: '2024-03-08T12:00', // Fecha y hora de inicio del evento
-      end: '2024-03-08T13:00',   // Fecha y hora de finalización del evento
+      start: '2024-03-08T12:00', 
+      end: '2024-03-08T13:00',   
     },
     {
       title: 'Clase',
-      start: '2024-03-11T13:00', // Fecha y hora de inicio del evento
-      end: '2024-03-11T14:00',   // Fecha y hora de finalización del evento
+      start: '2024-03-11T13:00', 
+      end: '2024-03-11T14:00',   
     }
   ]);
 
