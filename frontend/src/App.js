@@ -8,11 +8,8 @@ import Professional from './pages/ProfessionalRegistrationForm.jsx';
 import UserHome from './pages/UserHome.jsx';
 import Search from './pages/Search.jsx';
 import ProfessionalHome from './pages/ProfessionalHome.jsx';
-<<<<<<< Updated upstream
 import PerfilProf from './pages/PerfilProf.jsx';
-=======
 import AgregarTurno from './pages/AgregarTurno.jsx';
->>>>>>> Stashed changes
 
 
 function App() {
