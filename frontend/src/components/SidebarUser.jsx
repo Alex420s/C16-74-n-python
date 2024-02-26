@@ -1,29 +1,26 @@
 import React from 'react'
 import '../stylesheets/Sidebar.css'
-import { LuCalendarPlus } from "react-icons/lu";
-import { MdOutlineEditCalendar, MdOutlineCalendarToday, MdOutlineReceipt } from "react-icons/md";
+import images from '../images/image.png'
+import { MdOutlineEditCalendar } from "react-icons/md";
+import { TbLogout } from "react-icons/tb";
 
 const SidebarUser = () => {
   return (
     <div className="sidebar">
-        <ul>
-            <li>
-              <span className="sidebarIcons"> <LuCalendarPlus /> </span>
-               <p>Nuevos Turnos</p>
-            </li>
-            <li>
-            <span className="sidebarIcons"> <MdOutlineEditCalendar /> </span>
-              <p>Editar Turnos</p>
-            </li>
-            <li>
-            <span className="sidebarIcons"> <MdOutlineReceipt /> </span>
-              <p>Pago</p>
-            </li>
-            <li>
-            <span className="sidebarIcons"> <MdOutlineCalendarToday /> </span>
-              <p>Calendario</p>
-            </li>
-        </ul>
+      <ul>
+        <li>
+          <span className="sidebarIcons"> <img src={images} alt="Logo" /> </span>
+          <p>Inicio</p>
+        </li>
+        <li>
+          <span className="sidebarIcons"> <MdOutlineEditCalendar /> </span>
+          <p>Nuevos Turnos</p>
+        </li>
+        <li>
+          <span className="sidebarIcons"> <TbLogout /> </span>
+          <p>Logout</p>
+        </li>
+      </ul>
     </div>
   )
 }

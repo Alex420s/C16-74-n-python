@@ -9,13 +9,13 @@
 }
 
 .sidebarIcons {
-    font-size: 60px;
+    font-size: 40px;
 }
 
 .sidebar ul {
     list-style-type: none;
     font-size: 14px;
-    margin: 10px;
+    margin: 20px 10px;
 }
 
 .sidebar li {
@@ -23,5 +23,5 @@
 }
 
 .sidebar img {
-    width: 70px;
+    width: 40px;
 }

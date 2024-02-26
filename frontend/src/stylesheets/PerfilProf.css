@@ -1,0 +1,95 @@
+.main { 
+    display: flex;
+    justify-content: space-between;
+    margin-top: -60px;
+    z-index: 500;
+}
+
+.side-novedadesp{
+    background-color: white;
+    display: flex;
+    width: 100%;
+    justify-content: start;
+    margin-top: 80px;
+}
+
+.infoTrain {
+    margin: 20px 80px;
+    display: flex;
+}
+
+.fotoTrainer {
+    width: 300px;
+}
+
+.data {
+    margin: 20px 0 0 60px;
+}
+
+.h2p {
+    margin-bottom: 30px;
+}
+
+.h3 {
+    margin: 15px 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.clases {
+    margin: 20px 0;
+}
+
+.lista {
+    width: 80%;
+    border: 1px solid rgb(105, 105, 105);
+    border-radius: 10px;
+    margin: 15px auto 0;
+}
+    
+.encabezado2 {
+    display: flex;
+    width: 100%;
+    background-color: rgb(231, 229, 229);
+    border: 1px solid rgb(105, 105, 105);
+    border-radius: 10px;
+    padding: 20px;
+    gap: 80px;
+    text-align: center;
+}
+  
+.columna2 {
+    flex: 1; 
+    font-size: 16px; 
+    width: 80px;
+    margin: auto 0;
+}
+    
+.titulos-encab2 {
+  background-color: rgb(231, 229, 229);
+  color: black;
+  font-size: 20px;
+}
+    
+.clase {
+  background-color: white;
+  display: flex;
+  width: 100%;
+  border: 1px solid rgb(105, 105, 105);
+  border-radius: 10px;
+  padding: 10px;
+  gap: 80px;
+  text-align: center;
+}
+  
+.reservar {
+    width: 80px; 
+    height: 40px;
+    border-style: none;
+    background-color: red;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 10px;
+    align-self: center; 
+}

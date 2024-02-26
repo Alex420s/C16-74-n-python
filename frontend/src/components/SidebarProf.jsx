@@ -1,7 +1,7 @@
 import React from 'react'
 import '../stylesheets/Sidebar.css'
 import images from '../images/image.png'
-import { MdOutlineEditCalendar, MdOutlineCalendarToday, MdOutlineReceipt } from "react-icons/md";
+import { TbLogout, TbUserEdit } from "react-icons/tb";
 
 const SidebarUser = () => {
   return (
@@ -12,16 +12,12 @@ const SidebarUser = () => {
                 <p>Inicio</p>
             </li>
             <li>
-                <span className="sidebarIcons"> <MdOutlineEditCalendar /> </span>
-                <p>Editar Turnos</p>
+                <span className="sidebarIcons"> <TbUserEdit /> </span>
+                <p>Editar Perfil</p>
             </li>
             <li>
-                <span className="sidebarIcons"> <MdOutlineReceipt /> </span>
-                <p>Pagos</p>
-            </li>
-            <li>
-                <span className="sidebarIcons"> <MdOutlineCalendarToday /> </span>
-                <p>Calendario</p>
+                <span className="sidebarIcons"> <TbLogout /> </span>
+                <p>Logout</p>
             </li>
         </ul>
     </div>

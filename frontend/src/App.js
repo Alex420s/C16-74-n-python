@@ -8,6 +8,7 @@ import Professional from './pages/ProfessionalRegistrationForm.jsx';
 import UserHome from './pages/UserHome.jsx';
 import Search from './pages/Search.jsx';
 import ProfessionalHome from './pages/ProfessionalHome.jsx';
+import PerfilProf from './pages/PerfilProf.jsx';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/usuario" element={<UserHome />} />
           <Route path="/profesional" element={<ProfessionalHome />} />
           <Route path="/search" element={<Search />} />
+          <Route path="/perfilProf" element={<PerfilProf />} />
         </Routes>
       </div>
     </Router>

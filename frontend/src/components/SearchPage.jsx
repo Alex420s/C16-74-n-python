@@ -27,9 +27,7 @@ const objetoPrueba = [
 ]
 
 const SearchPage = () => {
-    const handleVer = (id) => {
-      };
-
+    
     return (
       <div>
         <div className="searchbar2">
@@ -75,7 +73,7 @@ const SearchPage = () => {
                 <div className="columna">{persona.barrio}</div>
                 <div className="columna">{persona.provincia}</div>
                 <div className="columna">
-                  <button className="ver" onClick={() => handleVer(index)}>Ver</button>
+                  <Link style={{textDecoration: 'none'}} to={'/perfilProf'}><button className="ver">Ver</button></Link>
                 </div>
               </div>
             ))}
