@@ -47,6 +47,7 @@ const LoginForm = () => {
         console.log('Logged in user:', response.data);
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('firstName', response.data.first_name);
+        localStorage.setItem('id', response.data.id);
         if (response.data.category === 'instructor') {
           navigate('/profesional');
         } else {

@@ -8,7 +8,6 @@ const Header = () => {
   // TODO: Ajustar el logout
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [firstName, setFirstName] = useState('');
   const navigate = useNavigate();
 
   const logout = () => {
@@ -20,11 +19,7 @@ const Header = () => {
   
   useEffect(() => {
     const token = localStorage.getItem('token');
-    const userFirstName = localStorage.getItem('firstName');
     setIsLoggedIn(!!token);
-    if (userFirstName) {
-      setFirstName(userFirstName);
-    }
   }, []); 
   
   return (
@@ -34,7 +29,6 @@ const Header = () => {
         <ul>
           {isLoggedIn ? (
             <>
-            <li>Hola, {firstName} </li>
             <li className='rojo hover'><Link to={'/'} className='nav-link' onClick={logout}>Logout</Link></li>
             </>
           ) : (

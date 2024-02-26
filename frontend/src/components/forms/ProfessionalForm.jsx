@@ -29,38 +29,38 @@ const ProfessionalForm = () => {
     }
   };
 
-  const handleWeekdayChange = (e) => {
-    const { name } = e.target;
-    const day = name.substring(0, 3).toLowerCase(); 
+  // const handleWeekdayChange = (e) => {
+  //   const { name } = e.target;
+  //   const day = name.substring(0, 3).toLowerCase(); 
   
-    setFormData(prevState => ({
-      ...prevState,
-      available_times: {
-        ...prevState.available_times,
-        [day]: {} 
-      }
-    }));
-    console.log(formData);
-  };
+  //   setFormData(prevState => ({
+  //     ...prevState,
+  //     available_times: {
+  //       ...prevState.available_times,
+  //       [day]: {} 
+  //     }
+  //   }));
+  //   console.log(formData);
+  // };
   
 
-  const handleTimeChange = (e) => {
-    const { name, value } = e.target;
-    const day = name.substring(0, 3).toLowerCase();
-    const timeSlot = name.substring(3); 
+  // const handleTimeChange = (e) => {
+  //   const { name, value } = e.target;
+  //   const day = name.substring(0, 3).toLowerCase();
+  //   const timeSlot = name.substring(3); 
   
-    setFormData(prevState => ({
-      ...prevState,
-      available_times: {
-        ...prevState.available_times,
-        [day]: {
-          ...prevState.available_times[day], 
-          [timeSlot]: value 
-        }
-      }
-    }));
-    console.log(formData);
-  };
+  //   setFormData(prevState => ({
+  //     ...prevState,
+  //     available_times: {
+  //       ...prevState.available_times,
+  //       [day]: {
+  //         ...prevState.available_times[day], 
+  //         [timeSlot]: value 
+  //       }
+  //     }
+  //   }));
+  //   console.log(formData);
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -121,7 +121,7 @@ const ProfessionalForm = () => {
             <input type="text" name="city" id="Barrio" required placeholder="Barrio" value={formData.barrio} onChange={handleChange} />
             <input type="text" name="province" id="Provincia" required placeholder="Provincia/Estado" value={formData.province} onChange={handleChange} />
           </div>
-          <div id="contenedor">
+          {/* <div id="contenedor">
             <div className="general">
               <div className="posicion">
                 <div className="opciones-checkbox">
@@ -326,13 +326,13 @@ const ProfessionalForm = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="contenedor-enviar">
           <input className={!passwordsMatch ? 'disabled hover' : 'enviar hover'} type="submit" name="registro" value="Registrarte" />
         </div>
         <div className="caja">
-          <input type="checkbox" name="condiciones" value="condiciones" onChange={handleChange}/> <label>Acepto <Link to="../Terminos y Condiciones.pdf" target="_blank">los términos y las condiciones</Link></label>
+          <input type="checkbox" name="condiciones" value="condiciones" onChange={handleChange}/> <label>Acepto <Link to="../../terminos-y-condiciones.pdf" target="_blank">los términos y las condiciones</Link></label>
         </div>
       </form>
     </div>

@@ -8,7 +8,11 @@ import Professional from './pages/ProfessionalRegistrationForm.jsx';
 import UserHome from './pages/UserHome.jsx';
 import Search from './pages/Search.jsx';
 import ProfessionalHome from './pages/ProfessionalHome.jsx';
+<<<<<<< Updated upstream
 import PerfilProf from './pages/PerfilProf.jsx';
+=======
+import AgregarTurno from './pages/AgregarTurno.jsx';
+>>>>>>> Stashed changes
 
 
 function App() {
@@ -22,6 +26,7 @@ function App() {
           <Route path="/nuevo-profesional" element={<Professional />} />
           <Route path="/usuario" element={<UserHome />} />
           <Route path="/profesional" element={<ProfessionalHome />} />
+          <Route path='/agregar.turno' element={<AgregarTurno />} />
           <Route path="/search" element={<Search />} />
           <Route path="/perfilProf" element={<PerfilProf />} />
         </Routes>

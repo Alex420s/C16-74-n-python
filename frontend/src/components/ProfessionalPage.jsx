@@ -1,9 +1,29 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 import flechaIzq from '../images/flechaIzquierda.png';
 import flechaDer from '../images/flechaDerecha.png';
+import axios from 'axios'
 import '../stylesheets/ProfessionalPage.css'
 
 const ProfessionalPage = () => {
+  const [turnos, setTurnos] = useState([]);
+  const [id, setId] = useState([]);
+
+  // useEffect(() => {
+  //   setId(localStorage.getItem('id'));
+  //   const fetchShifts = async () => {
+  //     try {
+  //       const response = await axios.post(`http://127.0.0.1:5000/api/shifts/${localStorage.getItem('id')}`);
+  //       setTurnos(response.data);
+  //       console.log(turnos);
+  //       console.log(response.data);
+  //     } catch (error) {
+  //       console.error('Error fetching shifts:', error);
+  //     }
+  //   };
+  //   fetchShifts();
+  // }, []);
+  
+
   const handleAnteriorSemana = () => {
     /*const nuevaFecha = new Date(fechaActual);
     nuevaFecha.setDate(nuevaFecha.getDate() - 7);
