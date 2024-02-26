@@ -1,16 +1,16 @@
-.searchbar {
+.searchbar2 {
   width: 1200px;
   display: flex;
   padding: 10px;
   margin: 20px auto;
 }
 
-.h2 {
+.t2 {
   color: black;
   position: absolute;
 }
 
-.buscar {
+.buscar2 {
   padding: 20px 40px;
   border-style: none;
   color: white;
@@ -18,7 +18,7 @@
   cursor: pointer;
 }
 
-.inputsBuscador{
+.inputsBuscador2 {
   display: flex;
   width: 90%;
   display: flex;

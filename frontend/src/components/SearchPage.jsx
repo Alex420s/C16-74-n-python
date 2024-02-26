@@ -32,9 +32,9 @@ const SearchPage = () => {
 
     return (
       <div>
-        <div className="searchbar">
-          <h2 className="h2">Buscar</h2>
-          <div className='inputsBuscador'>
+        <div className="searchbar2">
+          <h2 className="t2">Buscar</h2>
+          <div className='inputsBuscador2'>
             <div>  
               <input type="text" name="barrio" placeholder="Barrio" />
             </div>
@@ -52,7 +52,7 @@ const SearchPage = () => {
               </select>
             </div>
             <div>
-              <Link style={{textDecoration: 'none'}} to={'/search'}><input className='buscar hover' type="submit" name="buscar" value="Buscar" /></Link>
+              <Link style={{textDecoration: 'none'}} to={'/search'}><input className='buscar2 hover' type="submit" name="buscar" value="Buscar" /></Link>
             </div>
           </div>
         </div>
