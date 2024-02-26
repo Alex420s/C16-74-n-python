@@ -5,7 +5,7 @@ import { TbLogout, TbUserEdit } from "react-icons/tb";
 import { MdOutlineEditCalendar, MdOutlineCalendarToday, MdOutlineReceipt } from "react-icons/md";
 import { Link } from 'react-router-dom';
 
-const SidebarUser = () => {
+const SidebarProf = () => {
   return (
     <div className="sidebar">
         <ul>
@@ -26,4 +26,4 @@ const SidebarUser = () => {
   )
 }
 
-export default SidebarUser
+export default SidebarProf

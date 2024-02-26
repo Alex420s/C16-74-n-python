@@ -1,90 +1,82 @@
 import { useState, useEffect } from 'react'
-import flechaIzq from '../images/flechaIzquierda.png';
-import flechaDer from '../images/flechaDerecha.png';
-import axios from 'axios'
 import '../stylesheets/ProfessionalPage.css'
+import FullCalendar from '@fullcalendar/react'; // Importa el componente principal de FullCalendar
+import dayGridPlugin from '@fullcalendar/daygrid'; // Importa el plugin de visualización de día
 
 const ProfessionalPage = () => {
   const [turnos, setTurnos] = useState([]);
   const [id, setId] = useState([]);
+  const [eventos, setEventos] = useState([
+    {
+      title: 'Clase',
+      start: '2024-02-26T13:00', // Fecha y hora de inicio del evento
+      end: '2024-02-26T14:00',   // Fecha y hora de finalización del evento
+    },
+    {
+      title: 'Clase',
+      start: '2024-02-29T09:00', // Fecha y hora de inicio del evento
+      end: '2024-02-29T10:00',   // Fecha y hora de finalización del evento
+    },
+    {
+      title: 'Clase',
+      start: '2024-03-01T12:00', // Fecha y hora de inicio del evento
+      end: '2024-03-01T13:00',   // Fecha y hora de finalización del evento
+    },
+    {
+      title: 'Clase',
+      start: '2024-03-04T13:00', // Fecha y hora de inicio del evento
+      end: '2024-03-04T14:00',   // Fecha y hora de finalización del evento
+    },
+    {
+      title: 'Clase',
+      start: '2024-03-07T09:00', // Fecha y hora de inicio del evento
+      end: '2024-03-07T10:00',   // Fecha y hora de finalización del evento
+    },
+    {
+      title: 'Clase',
+      start: '2024-03-08T12:00', // Fecha y hora de inicio del evento
+      end: '2024-03-08T13:00',   // Fecha y hora de finalización del evento
+    },
+    {
+      title: 'Clase',
+      start: '2024-03-11T13:00', // Fecha y hora de inicio del evento
+      end: '2024-03-11T14:00',   // Fecha y hora de finalización del evento
+    }
+  ]);
 
-  // useEffect(() => {
-  //   setId(localStorage.getItem('id'));
-  //   const fetchShifts = async () => {
-  //     try {
-  //       const response = await axios.post(`http://127.0.0.1:5000/api/shifts/${localStorage.getItem('id')}`);
-  //       setTurnos(response.data);
-  //       console.log(turnos);
-  //       console.log(response.data);
-  //     } catch (error) {
-  //       console.error('Error fetching shifts:', error);
-  //     }
-  //   };
-  //   fetchShifts();
-  // }, []);
   
-
-  const handleAnteriorSemana = () => {
-    /*const nuevaFecha = new Date(fechaActual);
-    nuevaFecha.setDate(nuevaFecha.getDate() - 7);
-    setFechaActual(nuevaFecha);*/
-  };
-
-  const handleSiguienteSemana = () => {
-    /*const nuevaFecha = new Date(fechaActual);
-    nuevaFecha.setDate(nuevaFecha.getDate() + 7);
-    setFechaActual(nuevaFecha);*/
-  };
-
+    // useEffect(() => {
+    //   setId(localStorage.getItem('id'));
+    //   const fetchShifts = async () => {
+    //     try {
+    //       const response = await axios.post(`http://127.0.0.1:5000/api/shifts/${localStorage.getItem('id')}`);
+    //       setTurnos(response.data);
+    //       console.log(turnos);
+    //       console.log(response.data);
+    //     } catch (error) {
+    //       console.error('Error fetching shifts:', error);
+    //     }
+    //   };
+    //   fetchShifts();
+    // }, []);
+  
   return (
     <div className="cuerpo">
-      <h1 className="titulo">Proximos Turnos</h1>
+      <h1 className="titulo">Próximos Turnos</h1>
       <div className="turnosBox">
-        <table>
-          <thead>
-            <tr>
-              <th>Lunes 00/00</th>
-              <th>Martes 00/00</th>
-              <th>Miércoles 00/00</th>
-              <th>Jueves 00/00</th>
-              <th>Viernes 00/00</th>
-              <th>Sábado 00/00</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="turnosHorarios">
-              <td>13:00 - 14:00 <br /> 8/10</td>
-              <td>13:00 - 14:00 <br /> 8/10</td>
-              <td>13:00 - 14:00 <br /> 8/10</td>
-              <td>13:00 - 14:00 <br /> 8/10</td>
-              <td>13:00 - 14:00 <br /> 8/10</td>
-              <td>13:00 - 14:00 <br /> 8/10</td>
-            </tr>  
-            <tr>
-              <td>13:00 - 14:00 <br /> 8/10</td>
-              <td>13:00 - 14:00 <br /> 8/10</td>
-              <td>13:00 - 14:00 <br /> 8/10</td>
-              <td>13:00 - 14:00 <br /> 8/10</td>
-              <td>13:00 - 14:00 <br /> 8/10</td>
-              <td>13:00 - 14:00 <br /> 8/10</td>
-            </tr>
-            <tr>
-              <td>13:00 - 14:00 <br /> 8/10</td>
-              <td>13:00 - 14:00 <br /> 8/10</td>
-              <td>13:00 - 14:00 <br /> 8/10</td>
-              <td>13:00 - 14:00 <br /> 8/10</td>
-              <td>13:00 - 14:00 <br /> 8/10</td>
-              <td>13:00 - 14:00 <br /> 8/10</td>
-            </tr>
-          </tbody>  
-        </table>
-        <div className="navegacion-semanal">
-          <button className='mover' onClick={handleAnteriorSemana}><img src={flechaIzq} alt="" /> </button>
-          <button className='mover' onClick={handleSiguienteSemana}><img src={flechaDer} alt="" /> </button>
-        </div>
-      </div>   
+        <FullCalendar
+          plugins={[dayGridPlugin]}
+          initialView="dayGridMonth"
+          events={eventos}
+          fixedWeekCount={false}
+          buttonText={{
+            prev: '<<',
+            next: '>>',
+          }}
+        />
+      </div>
     </div>
-  )
+  );
 }
-  
+    
 export default ProfessionalPage
