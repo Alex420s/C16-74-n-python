@@ -8,6 +8,8 @@ import Searchbar from '../components/Searchbar.jsx'
 import '../stylesheets/Home.css'
 import { Link } from 'react-router-dom'
 import ImgGral from '../images/img-principal.jpg'
+import ImgUser from '../images/img-index-usuario.jpg'
+import ImgProf from '../images/img-index-prof.jpg'
 
 const HomePage = () => {
   return (
@@ -41,41 +43,37 @@ const HomePage = () => {
       <div className='searchbar'>
         <Searchbar/>
       </div>
-      <br />
-      <br />
-      <div className="infos">
-        <h2>USUARIOS</h2>
-        <div className="fila">
-          <div className="texto2">
-            <p>Con <span className="resaltado">GoFitApp</span> podrás:</p>
-            <ul>
-              <li>Reservar turnos en cualquier momento y lugar</li>
-              <li>Elegir el día y la hora</li>
-              <li>Verificar la disponibilidad en tiempo real</li>
-              <li>Recibir notificaciones y recordatorios</li>
-            </ul> 
+      <div className='infoUserProf'>
+        <div className="user">
+          <p className='titUserProf'>USUARIOS</p>
+          <div className='detalleUserProf'>
+            <div className='infoBtn'>
+              <div className="texto textoUserProf">
+                <p>Con <b>GoFitApp</b> podrás:</p>
+                <p>Reservar turnos en cualquier momento y lugar.<br/>Elegir el día y la hora.<br/>Verificar la disponibilidad en tiempo real.<br/>Recibir notificaciones y recordatorios.</p>
+              </div>
+              <div className="contenedor-registrar">
+                  <Link style={{ textDecoration: 'none' }} to={'/nuevo-usuario'}><input type="submit" name="registro_usuario" value="Reserva tu turno" className="registroHome hover" /></Link>  
+              </div>
+            </div>
+            <div className="imgUserProf"><img src={ImgUser} alt="" className="imgUserProf"/></div>
           </div>
-          <div className="contenedor-registrar">
-            <Link style={{ textDecoration: 'none' }} to={'/nuevo-usuario'}><input type="submit" name="registro_usuario" value="Reserva tu turno" className="registroHome hover" /></Link>  
+        </div>
+        <div className="prof">
+          <p className='titUserProf'>PROFESIONALES</p>
+          <div className='detalleUserProf'>
+            <div className="imgUserProf"><img src={ImgProf} alt="" className="imgUserProf"/></div>
+            <div className='infoBtn'>
+              <div className="texto textoUserProf">
+                <p>Con <b>GoFitApp</b> podrás:</p>
+                <p>Armar la vidriera de tu servicio.<br/>Gestionar tu agenda de manera eficiente.<br/>Confirmar y rechazar turnos.<br/>Recibir notificaciones cuando un usuario reserve.</p>
+              </div>
+              <div className="contenedor-registrar">
+              <Link style={{ textDecoration: 'none' }} to={'/nuevo-profesional'}><input type="submit" name="registro_profesional" value="Publica tus clases" className="registroHome hover" /></Link>
+              </div>
+            </div>
           </div>
-        </div>  
-      </div>
-      <div className="infos">
-        <h2>PROFESIONALES</h2>
-        <div className="fila">
-          <div className="contenedor-registrar">
-            <Link style={{ textDecoration: 'none' }} to={'/nuevo-profesional'}><input type="submit" name="registro_profesional" value="Publica tus clases" className="registroHome hover" /></Link>
-          </div>
-          <div className="texto2">
-          <p>Con <span className="resaltado">GoFitApp</span> podrás:</p>
-            <ul>
-              <li>Armar la vidriera de tu servicio</li>
-              <li>Gestionar tu agenda de manera eficiente</li>
-              <li>Confirmar y rechazar turnos</li>
-              <li>Recibir notificaciones cuando un usuario reserve</li>
-            </ul>  
-          </div>
-        </div>  
+        </div>
       </div>
     </div>
   )

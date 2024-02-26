@@ -73,15 +73,9 @@
 
 .img-container{
   max-width: 50px;
-  z-index: 100;
   position: absolute;
   top: 20px;
   left: 10px;
-}
-
-.texto ul {
-    list-style-type: none;
-    text-align: left;
 }
 
 .negrita {
@@ -94,42 +88,59 @@
     margin-top: 180px;
 }
 
-.infos {
-    width: 60%;
-    margin: 0 auto 40px;
-    text-align: justify;
+.titUserProf{
+    z-index: 900;
+    color: black;
+    font-size: 80px;
+    font-weight: bolder;
+    position: absolute;
+}
+
+.infoUserProf{
+    width: 100%;
+    height: auto;
     background-color: white;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
     padding: 30px;
+    color: black;
 }
 
-.infos h2 {
-    font-size: 40px;
-}
-
-.fila {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-}
-
-.contenedor-registrar{
-    width: 70%;
+.user{
     display: flex;
     justify-content: center;
-    margin: 50px auto;
-    gap: 10px;
+}
+
+.prof{
+    display: flex;
+    justify-content: center;
+}
+
+.textoUserProf{
+    padding-top: 0;
+    right: 50px;
+}
+
+.detalleUserProf{
+    z-index: 0;
+    width: 100%;
+    margin: 30px 0 50px 0;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    gap: 70px;
+    color: black;
+    position: relative;
+}
+
+.infoBtn{
+    margin-top: 50px;
 }
 
 .registroHome {
     width: 100%;
     padding: 20px 30px;
-    font-size: 30px;
+    font-size: 25px;
     border-style: none;
     color: white;
     background-color: red;
@@ -140,16 +151,10 @@
     text-decoration: none;
 }
 
-.resaltado {
-    font-weight: bold;
-}
-
-.texto2 {
-    width: 60%;
-    line-height: 30px;
-    font-size: 20px;
-}
-
-.texto2 ul{
-    margin-left: 40px;
+.contenedor-registrar{
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    margin: 30px auto 5px auto;
+    gap: 10px;
 }
