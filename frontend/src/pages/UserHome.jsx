@@ -2,10 +2,9 @@ import React from 'react'
 import Header from '../components/footer-header/Header.jsx'
 import Footer from '../components/footer-header/Footer.jsx'
 import Saludo from '../components/Saludo.jsx'
-import Sidebar from '../components/Sidebar.jsx'
+import SidebarUser from '../components/SidebarUser.jsx'
 import Novedades from '../components/Novedades.jsx'
 import UserSearchbar from '../components/UserSearchbar.jsx'
-import UserContainer from '../components/containers/UserContainer.jsx'
 import '../stylesheets/UserHome.css'
 
 const UserHome = () => {
@@ -15,7 +14,7 @@ const UserHome = () => {
       <Saludo />
           <div className="main">
             <div className='side-novedades'>
-              <Sidebar />
+              <SidebarUser />
               <Novedades />
             </div>
             <UserSearchbar />

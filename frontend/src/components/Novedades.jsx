@@ -3,35 +3,34 @@ import '../stylesheets/Novedades.css'
 
 const Novedades = () => {
   return (
-    <div class="novedades">
-       <h1 class="titulo">Proximos Turnos</h1>
-       <div class="novedadBox">
+    <div className="novedades">
+       <h1 className="titulo">Proximos Turnos</h1>
+       <div className="novedadBox">
         <p>Disciplina</p>
         <p className='profesional'>Profesional</p>
-        <div class="novedadBoxFecha">
+        <div className="novedadBoxFecha">
           <p>Dia de la semana + n </p>
           <p>00:00 - 00:00 </p>
         </div>
        </div> 
 
-       <div class="novedadBox">
+       <div className="novedadBox">
         <p>Disciplina</p>
         <p className='profesional'>Profesional</p>
-        <div class="novedadBoxFecha">
+        <div className="novedadBoxFecha">
           <p>Dia de la semana + n </p>
           <p>00:00 - 00:00 </p>
         </div>
        </div> 
 
-       <div class="novedadBox">
+       <div className="novedadBox">
         <p>Disciplina</p>
         <p className='profesional'>Profesional</p>
-        <div class="novedadBoxFecha">
+        <div className="novedadBoxFecha">
           <p>Dia de la semana + n </p>
           <p>00:00 - 00:00 </p>
         </div>
        </div> 
-      
     </div>
   )
 }
