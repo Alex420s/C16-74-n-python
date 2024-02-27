@@ -41,9 +41,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=20)
     address = models.CharField(max_length=255)
-    city = models.CharField(max_length=255, default='' )
-    province = models.CharField(max_length=255, default='')
-    country = models.CharField(max_length=255, default='Argentina')
     registration_date = models.DateTimeField(auto_now_add=True)
     role = models.CharField(max_length=20, choices=[('professional', 'Professional'), ('user', 'User')], default="user")
     is_active = models.BooleanField(default=True)
@@ -66,10 +63,10 @@ class Professional(models.Model):
     description = models.TextField(max_length=100, default="Profesional de confianza")
     session_rate = models.DecimalField(max_digits=10, decimal_places=2, default=250)
     availability_hours = models.CharField(max_length=255, blank=True)
-    role = models.CharField(max_length=20, choices=[('professional', 'Professional'), ('user', 'User')])
+    role = models.CharField(max_length=20, choices=[('professional', 'Professional'), ('user', 'User')], default = 'professional')
     
     def __str__(self):
-        return f"Professional: {self.user_id.first_name} {self.user_id.last_name}"
+        return f"Professional: {self.user_id.first_name} {self.user_id.last_name} {self.speciality}"
 
 
 
