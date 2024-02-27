@@ -13,7 +13,7 @@ from django.shortcuts import render
 #### Render 
 from django.shortcuts import render
 
-def list_profesionales(request):
+def list_professionals(request):
     """
     Filtra y muestra una lista paginada de profesionales según la ciudad, provincia y país.
 
