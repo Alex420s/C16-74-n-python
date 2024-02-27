@@ -30,8 +30,11 @@ const TurnoForm = () => {
   }
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    // const { name, value } = e.target;
+    // setFormData({ ...formData, [name]: value });
+    const { name, checked, value } = e.target;
+    const newValue = e.target.type === 'checkbox' ? checked : value;
+    setFormData({ ...formData, [name]: newValue });
     console.log(formData);
   }
 
@@ -60,7 +63,7 @@ const TurnoForm = () => {
         </div>
         <div>
           <label htmlFor='date'>Repetir semanalmente</label>
-          <input name='repeat' type='checkbox' value={true} onChange={handleChange} />
+          <input name='repeat' type='checkbox' checked={formData.repeat} onChange={handleChange} />
         </div>
         <div>
         {/* input temporal */}
