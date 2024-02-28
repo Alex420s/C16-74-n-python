@@ -7,3 +7,4 @@ gunicorn
 whitenoise[brotli]
 djangorestframework-simplejwt 
 PyJWT
+pillow
