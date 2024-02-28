@@ -61,9 +61,10 @@ class Professional(models.Model):
     user_id = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     speciality = models.CharField(max_length=100, default="Contador")
     description = models.TextField(max_length=100, default="Profesional de confianza")
-    session_rate = models.DecimalField(max_digits=10, decimal_places=2, default=250)
     availability_hours = models.CharField(max_length=255, blank=True)
     role = models.CharField(max_length=20, choices=[('professional', 'Professional'), ('user', 'User')], default = 'professional')
+    neighborhood = models.CharField(max_length=100, blank=True, default="")
+    province = models.CharField(max_length=100, blank=True, default="Buenos Aires")
     
     def __str__(self):
         return f"Professional: {self.user_id.first_name} {self.user_id.last_name} {self.speciality}"
