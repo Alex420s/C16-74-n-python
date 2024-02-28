@@ -1,7 +1,6 @@
 #C16-74-n-python\backend\myproject\payments\views.py
 from django.http import HttpResponse, HttpResponseBadRequest
 from .models import Payment  # Importar Payment desde el mismo directorio
-
 import mercadopago
 import json
 from django.shortcuts import render, redirect

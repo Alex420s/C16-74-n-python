@@ -2,10 +2,32 @@
 from django.db import models
 from django.utils import timezone
 from users.models import Professional, CustomUser
+import mercadopago
+
+class Product(models.Model):
+	name = models.CharField(max_length=200)
+	price = models.DecimalField(max_digits=10,decimal_places=2)
+	digital = models.BooleanField(default=False,null=True, blank=True)
+	image = models.ImageField(null=True, blank=True)
+
+
+	def _str_(self):
+		return self.name
+
+	@property
+	def imageURL(self):
+		try:
+			url = self.image.url
+		except:
+			url = ''
+		return url
+
+
 
 class Availability(models.Model):
     availability_id = models.AutoField(primary_key=True)
     professional_id = models.ForeignKey(Professional, on_delete=models.CASCADE)
+    speciality_availability = models.CharField(max_length=100, default="Contador")
     day_of_week = models.CharField(max_length=10, choices=[("Lunes", "Lunes"), ("Martes", "Martes"), ("Miércoles", "Miércoles"),
                                                     ("Jueves", "Jueves"), ("Viernes", "Viernes"), ("Sábado", "Sábado"), ("Domingo", "Domingo")])
     start_time = models.TimeField()
@@ -13,6 +35,7 @@ class Availability(models.Model):
     max_users = models.PositiveIntegerField(default=1, help_text="Cantidad máxima de usuarios permitidos para esta disponibilidad")
     status = models.BooleanField(default=True)
     price = models.DecimalField(max_digits=10, decimal_places=2, help_text="Precio de la clase", default=1500)
+    image = models.ImageField(upload_to='avatares/', null=True, blank=True)
 
     # Relación muchos a muchos con CustomUser para permitir que varios usuarios registren turnos para esta disponibilidad
     users = models.ManyToManyField(CustomUser, through='Turn')
@@ -69,3 +92,31 @@ class Turn(models.Model):
     def _str_(self):
         return f"Appointment {self.turn_id}"
 
+
+    def generate_payment_link(self):
+        mp = mercadopago.MP("TU_CLIENT_ID", "TU_CLIENT_SECRET")  # Reemplaza con tus credenciales de Mercado Pago
+
+        preference = {
+            "items": [
+                {
+                    "title": "Turno con profesional",
+                    "quantity": 1,
+                    "currency_id": "ARS",
+                    "unit_price": float(self.price)
+                }
+            ],
+            "payer": {
+                "email": self.user_id.email  # Puedes cambiar esto según cómo tengas almacenado el email del usuario
+            },
+            "external_reference": str(self.turn_id),
+            "back_urls": {
+                "success": "templates/exito_reserva.html",
+                "failure": "templates/error_reserva.html",
+                "pending": "templates/pendiente_reserva.html"
+            }
+        }
+
+        preference_result = mp.create_preference(preference)
+        payment_link = preference_result['response']['sandbox_init_point']  # Cambia a 'init_point' para producción
+        
+        return payment_link

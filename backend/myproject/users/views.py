@@ -80,6 +80,7 @@ class UserRegister(generics.CreateAPIView):
         message = f"Usuario creado exitosamente con el rol de: {user.get_role_display()}"
         headers = self.get_success_headers(serializer.data)
         return Response({"detail": message, "user": serializer.data}, status=status.HTTP_201_CREATED, headers=headers)
+
 class UserLogin(APIView):
 	permission_classes = (permissions.AllowAny,)
 	authentication_classes = (SessionAuthentication,)

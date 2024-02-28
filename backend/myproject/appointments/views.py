@@ -5,20 +5,13 @@ from .models import Availability, Turn
 from django.http import HttpResponse
 from django.urls import reverse
 from django.http import HttpResponseRedirect
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializers import AvailabilitySerializer
+from rest_framework import permissions, status
 
 
-def create_appointment(request):
-    return HttpResponse("Create appointment view")
-
-def success_reservation(request):
-    return render(request, 'exito_reserva.html')
-
-def error_reservation(request):
-    return render(request, 'error_reserva.html')
-
-def list_availabilities(request):
-    availabilities = Availability.objects.all()
-    return render(request, 'list_availabilities', {'availabilities': availabilities})
 
 
 
@@ -64,4 +57,35 @@ def reserve_turn(request, availability_id):
     else:
         availability = Availability.objects.get(pk=availability_id)
         return render(request, 'reservar_turno.html', {'availability': availability})
+
+
+### API
+    
+# Crear Availability
+class AvailabilityAPIView(APIView): 
+    permission_classes = (permissions.AllowAny,)
+
+    def post(self, request): 
+        serializer = AvailabilitySerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+####
+def list_availabilities(request):
+    availabilities = Availability.objects.all()
+#    availabilities = Availability.objects.get(availability_id=availability_id)
+    return render(request, 'list_availabilities.html', {'availabilities': availabilities})
+
+def create_appointment(request):
+    return HttpResponse("Create appointment view")
+
+def success_reservation(request):
+    return render(request, 'exito_reserva.html')
+
+def error_reservation(request):
+    return render(request, 'error_reserva.html')
 
