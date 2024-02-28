@@ -1,0 +1,167 @@
+.cuerpoEdit {
+    width: 90%;
+    margin: 20px;
+    display: flex;
+}
+
+.columnas {
+    margin: 20px;
+}
+
+h3{
+    padding: 0 0 0 50px;
+    margin: 15px 0;
+}
+
+input{
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 1px solid black ;
+    margin: 5px 0;
+}
+
+.fila {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+input[type="checkbox"] {
+    width: 100%;
+}
+
+select{
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 1px solid black ;
+    margin: 5px 0;
+}
+
+.info-1, .info-2, .info-3{
+    margin: 20px 0 0;
+}
+
+.input-group input[type="file"] {
+  visibility: hidden;
+  position: absolute;
+}
+  
+.camera-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.info-1 div div div{
+    display: flex;
+    justify-content: space-between;
+}
+
+#usuario{
+    width: 100%;
+}
+
+.info-2 div{
+    display: flex;
+    flex-direction: column;
+}
+
+.info-2 div textarea{
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 1px solid black ;
+    margin: 5px 0;
+}
+
+#Barrio{
+    width: 100%;
+}
+   
+#contenedor{
+    margin: 10px 0 0 0;
+}
+
+#contenedor .general, .tiempo{
+    display: flex;
+    justify-content: space-around;
+}
+
+.general {
+    margin: 10px 0;
+}
+
+#contenedor .posicion{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+}
+
+#contenedor .posicion label{
+    margin: 0 0 0 10px;
+}
+
+.columna-de-tiempo{
+    display: flex;
+    flex-direction: column;
+}
+
+.opciones-checkbox{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.opciones-checkbox input[type="checkbox"]{
+    width: 20px;
+}
+
+.opciones-checkbox input{
+    margin: 0;    
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator, input[type="time"]::-webkit-clear-button {
+    -webkit-appearance: none;
+    display: none;
+}
+
+.cupo-horario {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.cupos {
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tiempo input {
+    font-size: 14px;
+    margin: 5px;
+    height: 50px;
+    width: 100%;
+}
+
+.contenedor-guardar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto 0;
+    width: 50%;
+}
+
+.guardar{
+    padding: 20px 40px;
+    border-style: none;
+    color: white;
+    background-color: red;
+    cursor: pointer;
+}

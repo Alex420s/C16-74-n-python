@@ -2,6 +2,9 @@ import { React, useEffect, useState } from 'react';
 import logo from '../../images/Logo.png';
 import '../../stylesheets/footer-header/Header.css';
 import { useNavigate, Link } from 'react-router-dom';
+import { VscAccount, VscBell } from "react-icons/vsc";
+import { CiLogin } from "react-icons/ci";
+import { IoIosLogOut } from "react-icons/io";
 
 const Header = () => {
 
@@ -29,10 +32,12 @@ const Header = () => {
         <ul>
           {isLoggedIn ? (
             <>
-            <li className='rojo hover'><Link to={'/'} className='nav-link' onClick={logout}>Logout</Link></li>
+            <li className='hover'><Link to={'/ingresar'} className='nav-link'><VscBell className='navbar-logo' /></Link></li>
+            <li className='hover'><Link to={'/ingresar'} className='nav-link'><VscAccount className='navbar-logo' /></Link></li>
+            <li className='hover'><Link to={'/'} className='nav-link' onClick={logout}><IoIosLogOut className='navbar-logo' /></Link></li>
             </>
           ) : (
-            <li className='rojo hover'><Link to={'/ingresar'} className='nav-link'>Ingresar</Link></li>
+            <li className='hover'><Link to={'/ingresar'} className='nav-link'><CiLogin className='navbar-logo' /></Link></li>
           )}
         </ul>
       </header>

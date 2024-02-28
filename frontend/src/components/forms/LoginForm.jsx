@@ -9,13 +9,13 @@ const LoginForm = () => {
   // TODO: Manejar el token recibido por el servidor
 
   const [formData, setFormData] = useState({
-    username: '',
+    email: '',
     password: ''
   });
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const [emptyPasswordFieldError, setEmptyPasswordFieldError] = useState(false);
-  const [emptyUsernameFieldError, setEmptyUsernameFieldError] = useState(false);
+  const [emptyemailFieldError, setEmptyemailFieldError] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,20 +28,20 @@ const LoginForm = () => {
       setEmptyPasswordFieldError(false);
     }
     if (name === 'user' && value.trim() === '') {
-      setEmptyUsernameFieldError(true);
+      setEmptyemailFieldError(true);
     } else {
-      setEmptyUsernameFieldError(false);
+      setEmptyemailFieldError(false);
     }
 
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!emptyPasswordFieldError || !emptyUsernameFieldError) {
+    if (!emptyPasswordFieldError || !emptyemailFieldError) {
       console.log("click")
       try {
-        const response = await axios.post('http://127.0.0.1:5000/api/login', {
-          username: formData.username,
+        const response = await axios.post('https://render-api-a6du.onrender.com/user/login', {
+          email: formData.email,
           password: formData.password
         });
         console.log('Logged in user:', response.data);
@@ -64,15 +64,15 @@ const LoginForm = () => {
       <form onSubmit={handleSubmit}>
         <h2>Ingresá</h2>
         <div>
-          <input type="text" name="username" id="user_p" placeholder="Ingrese su usuario" onChange={handleChange} />
+          <input type="text" name="email" id="user_p" placeholder="Ingrese su usuario" onChange={handleChange} />
         </div>
-        {emptyUsernameFieldError && <p style={{ color: 'red' }}>Este campono puede estar vacío</p>}
+        {emptyemailFieldError && <p style={{ color: 'red' }}>Este campono puede estar vacío</p>}
         <div>  
           <input type="password" name="password" id="password_p" placeholder="Contraseña" onChange={handleChange} />
         </div>
         {emptyPasswordFieldError && <p style={{ color: 'red' }}>Este campo no puede estar vacío</p>}
         <div className="contenedor-ingresar">
-          <input className={emptyPasswordFieldError || emptyUsernameFieldError ? 'disabled' : 'hover ingresar'} type="submit" name="ingreso" value="Ingresar" />
+          <input className={emptyPasswordFieldError || emptyemailFieldError ? 'disabled' : 'hover ingresar'} type="submit" name="ingreso" value="Ingresar" />
         </div>
         {error && <p style={{ color: 'red' }}>{error}</p>}
         <div class="registro">

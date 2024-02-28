@@ -35,17 +35,15 @@ class CustomUserManager(BaseUserManager):
         return self.create_user(email, nick_name, first_name, last_name, phone_number, address, password, **extra_fields)
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
+    id = models.AutoField(primary_key=True)
     email = models.EmailField(unique=True)
     nick_name = models.CharField(max_length=100)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=20)
-    address = models.CharField(max_length=255)
-    city = models.CharField(max_length=255, default='' )
-    province = models.CharField(max_length=255, default='')
-    country = models.CharField(max_length=255, default='Argentina')
+    address = models.CharField(max_length=255, default='CDMX')
     registration_date = models.DateTimeField(auto_now_add=True)
-    role = models.CharField(max_length=20, choices=[('professional', 'Professional'), ('user', 'User')], default="user")
+    role = models.CharField(max_length=20, choices=[('professional', 'Professional'), ('user', 'User')],)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
@@ -59,17 +57,16 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     
 # Si el usuario define el rol 'profesional' 
 # Se usara un signal para crear la tabla de profesional al guardar la tabla de usuario
-class Professional(models.Model):
+class Professional(CustomUser):
     professional_id = models.AutoField(primary_key=True)
-    user_id = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     speciality = models.CharField(max_length=100, default="Contador")
     description = models.TextField(max_length=100, default="Profesional de confianza")
-    session_rate = models.DecimalField(max_digits=10, decimal_places=2, default=250)
     availability_hours = models.CharField(max_length=255, blank=True)
-    role = models.CharField(max_length=20, choices=[('professional', 'Professional'), ('user', 'User')])
-    
+    neighborhood = models.CharField(max_length=100, blank=True, default="")
+    province = models.CharField(max_length=100, blank=True, default="Buenos Aires")
+    image = models.ImageField(upload_to="user_images", default="default.jpg")
     def __str__(self):
-        return f"Professional: {self.user_id.first_name} {self.user_id.last_name}"
+        return f"Professional: {self.user_id.first_name} {self.user_id.last_name} {self.speciality}"
 
 
 
