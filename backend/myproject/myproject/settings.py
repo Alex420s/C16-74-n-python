@@ -1,12 +1,12 @@
 #C16-74-n-python\backend\myproject\myproject\settings.py
+from datetime import timedelta
 import os
 import dj_database_url
 from pathlib import Path
-
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
 
 # # Cargar variables de entorno desde el archivo .env
-# load_dotenv()
+load_dotenv()
 
 # Obtener el valor de SECRET_KEY
 SECRET_KEY = os.getenv('SECRET_KEY')
@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'appointments',
     'payments',
     #Third Party Apps
+    'rest_framework_simplejwt.token_blacklist',
     'rest_framework',
     'corsheaders',
 ]
@@ -160,6 +161,11 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.SessionAuthentication',
-    ),
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+
+}
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }

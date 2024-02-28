@@ -19,9 +19,9 @@ class Turn(models.Model):
     from users.models import Professional, CustomUser
 
     turn_id = models.AutoField(primary_key=True)
-    professional_id = models.ForeignKey(Professional, on_delete=models.CASCADE)
+    professional_id = models.ForeignKey(Professional, on_delete=models.CASCADE ,  related_name='turns')
     availability_id = models.ForeignKey(Availability, on_delete=models.CASCADE, default="")
-    user_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     date_and_time_of_turn = models.DateTimeField()
     start_time = models.TimeField()
     end_time = models.TimeField()
