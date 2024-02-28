@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import CheckOut from './CheckOut';
 import trainer from '../images/trainer.jpg';
 import '../stylesheets/PerfilProf.css';
 
@@ -39,10 +41,21 @@ const objetoPrueba = [
         horario: "9:00 a 10:00",
     }
 ]
-const PerfilP = () => {
-    return (
-        <div>
-            <div className="infoTrain">
+
+    const PerfilP = () => {
+        const [showModal, setShowModal] = useState(false);
+        const [selectedClass, setSelectedClass] = useState(null);
+
+        const handleReservarClick = (clase) => {
+            setSelectedClass(clase);
+            setShowModal(true);
+        };
+
+        const navigate = useNavigate();    
+
+  return (
+    <div>
+      <div className="infoTrain">
                 <div><img className="fotoTrainer" src={ trainer } alt="" /></div>
                 <div className="data">
                     <div>
@@ -71,18 +84,34 @@ const PerfilP = () => {
                     </div>
                     {objetoPrueba.map((clase, index) => (
                         <div key={index} id={`clase-${index}`} className="clase">
-                            <div className="columna2">{clase.dia}</div>
+                            <div className="columna2">{clase.dia}</div>*/
                             <div className="columna2">{clase.fecha}</div>
                             <div className="columna2">{clase.horario}</div>
                             <div className="columna2">
-                                <button className="reservar">Reservar</button>
+                                <button
+                                className="reservar"
+                                onClick={() => {
+                                    handleReservarClick(clase);
+                                    navigate('/check-out'); // Redirige a la ruta '/CheckOut'
+                                }} >
+                                    Reservar
+                                </button>
                             </div>
                         </div>
                     ))}
                 </div>
             </div>
-        </div>
-    )
-}
+            {showModal && selectedClass && (
+                <CheckOut
+                    clase={selectedClass}
+                    onClose={() => {
+                        setShowModal(false);
+                        setSelectedClass(null);
+                    }}
+                />
+            )}
+    </div>
+  );
+};
 
 export default PerfilP;

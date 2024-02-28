@@ -4,7 +4,6 @@ import Footer from '../components/footer-header/Footer.jsx'
 import Saludo from '../components/Saludo.jsx'
 import SidebarUser from '../components/SidebarUser.jsx'
 import Novedades from '../components/Novedades.jsx'
-import UserSearchbar from '../components/UserSearchbar.jsx'
 import '../stylesheets/UserHome.css'
 
 const UserHome = () => {
@@ -17,7 +16,6 @@ const UserHome = () => {
               <SidebarUser />
               <Novedades />
             </div>
-            <UserSearchbar />
           </div>
       <Footer />
     </div>
