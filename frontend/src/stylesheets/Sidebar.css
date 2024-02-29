@@ -10,6 +10,7 @@
 
 .sidebarIcons {
     font-size: 40px;
+    cursor: pointer;
 }
 
 .sidebar ul {

@@ -3,11 +3,17 @@ import '../stylesheets/Searchbar.css'
 import { Link } from 'react-router-dom'
 
 const Searchbar = () => {
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+
+  }
+
   return (
     <div className="searchbar">
       <h2 className="h2">Buscar</h2>
-      <div className='inputsBuscador'>
-        <div>  
+      <form className='inputsBuscador' onSubmit={handleSubmit}>
+        <div>
           <input type="text" name="barrio" placeholder="Barrio" />
         </div>
         <div>
@@ -23,11 +29,11 @@ const Searchbar = () => {
             <option value="Pilates">Pilates</option>
           </select>
         </div>
-      <div>
-        <Link style={{textDecoration: 'none'}} to={'/search'}><input className='buscar hover' type="submit" name="buscar" value="Buscar" /></Link>
-      </div>
+        <div>
+          <Link style={{ textDecoration: 'none' }} to={'/search'}><input className='buscar hover' type="submit" name="buscar" value="Buscar" /></Link>
+        </div>
+      </form>
     </div>
-  </div>
   )
 }
 

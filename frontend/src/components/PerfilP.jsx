@@ -98,7 +98,7 @@ const PerfilP = () => {
                             <div className="columna2">{clase.fecha}</div>
                             <div className="columna2">{clase.horario}</div>
                             <div className="columna2">
-                                <button className='hover reservar' onClick={() => handleReservarClick(objetoPrueba[0])}>Reservar</button>
+                                <button className='hover reservar' onClick={() => handleReservarClick(objetoPrueba[index])}>Reservar</button>
                                 {showModal && selectedClass && (
                                     <div className="modal-overlay">
                                         <CheckOut

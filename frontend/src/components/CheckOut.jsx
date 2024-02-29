@@ -18,10 +18,6 @@ const CheckOut = ({ clase, onClose }) => {
     onClose();
   }
 
-  const handleModalClick = (e) => {
-    e.stopPropagation();
-  };
-
   return (
     <div className="checkout-container">
       <div className="checkout-texto">

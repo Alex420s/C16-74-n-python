@@ -5,6 +5,9 @@ const Saludo = () => {
     const fecha = new Date().toLocaleString('es-ES',{weekday: 'long', year: 'numeric', month: 'short', day: 'numeric'});
     const [firstName, setFirstName] = useState('');
 
+    // Temporal, para mostrar el nombre del usuario
+    localStorage.setItem('firstName', 'Fulano/a');
+
     useEffect(() => {
         const userFirstName = localStorage.getItem('firstName');
         if (userFirstName) {
