@@ -1,13 +1,20 @@
-import React from 'react'
+import { useState } from 'react'
 import '../stylesheets/Searchbar.css'
 import { Link } from 'react-router-dom'
+import SearchPage from './SearchPage'
 
 const Searchbar = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [selectedClass, setSelectedClass] = useState(null);
 
   const handleSubmit = (event) => {
-    event.preventDefault()
-
+    event.preventDefault();
+    // Perform any form submission logic if needed
   }
+
+  const handleBuscarClick = () => {
+    setShowModal(true);
+  };
 
   return (
     <div className="searchbar">
@@ -30,9 +37,20 @@ const Searchbar = () => {
           </select>
         </div>
         <div>
-          <Link style={{ textDecoration: 'none' }} to={'/search'}><input className='buscar hover' type="submit" name="buscar" value="Buscar" /></Link>
+          <button className='hover buscar' onClick={handleBuscarClick}>Buscar</button>
         </div>
       </form>
+      {showModal && (
+        <div className="modal-overlay">
+          <SearchPage
+            clase={selectedClass}
+            onClose={() => {
+              setShowModal(false);
+              setSelectedClass(null);
+            }}
+          />
+        </div>
+      )}
     </div>
   )
 }

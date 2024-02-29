@@ -52,7 +52,6 @@ body {
 }
 
 .close-button {
-    margin-left: 115%; /* Solo de prueba  */
     width: 40px;
     height: 40px;
     cursor: pointer;
