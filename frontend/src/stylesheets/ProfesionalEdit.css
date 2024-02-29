@@ -1,13 +1,5 @@
 .cuerpoEdit {
     width: 90%;
-<<<<<<< HEAD
-    margin: 20px;
-    display: flex;
-}
-
-.columnas {
-    margin: 20px;
-=======
     margin: 40px;
     display: flex;
     gap: 40px;
@@ -15,7 +7,6 @@
 
 .fotoSubir {
     width: 300px;
->>>>>>> 541bed861f396a6b9647f35f47535623e1e43645
 }
 
 h3{
@@ -37,13 +28,6 @@ input{
     gap: 20px;
 }
 
-<<<<<<< HEAD
-input[type="checkbox"] {
-    width: 100%;
-}
-
-=======
->>>>>>> 541bed861f396a6b9647f35f47535623e1e43645
 select{
     padding: 10px;
     font-size: 18px;
@@ -56,22 +40,6 @@ select{
     margin: 20px 0 0;
 }
 
-<<<<<<< HEAD
-.input-group input[type="file"] {
-  visibility: hidden;
-  position: absolute;
-}
-  
-.camera-icon {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-}
-
-=======
->>>>>>> 541bed861f396a6b9647f35f47535623e1e43645
 .info-1 div div div{
     display: flex;
     justify-content: space-between;
@@ -100,8 +68,7 @@ select{
     width: 100%;
 }
    
-<<<<<<< HEAD
-#contenedor{
+/* #contenedor{
     margin: 10px 0 0 0;
 }
 
@@ -165,10 +132,8 @@ input[type="time"]::-webkit-calendar-picker-indicator, input[type="time"]::-webk
     margin: 5px;
     height: 50px;
     width: 100%;
-}
+} */
 
-=======
->>>>>>> 541bed861f396a6b9647f35f47535623e1e43645
 .contenedor-guardar{
     display: flex;
     justify-content: center;

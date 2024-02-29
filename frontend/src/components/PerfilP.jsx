@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import CheckOut from './CheckOut';
 import trainer from '../images/trainer.jpg';
 import '../stylesheets/PerfilProf.css';
@@ -52,24 +51,22 @@ const objetoPrueba = [
 localStorage.setItem('name', "Gabriela Sastre");
 localStorage.setItem('speciality', "Nutricionista");
 localStorage.setItem('neighborhood', "San Isidro");
-localStorage.setItem('description',"Kitty ipsum dolor sit amet, shed everywhere shed everywhere stretching attack your ankles chase the red dot, hairball run catnip eat the grass sniff. Kitty ipsum dolor sit amet, shed everywhere shed everywhere stretching attack your ankles chase the red dot, hairball run catnip eat the grass sniff. I don't what is the problem with this anyone here");
+localStorage.setItem('description', "Kitty ipsum dolor sit amet, shed everywhere shed everywhere stretching attack your ankles chase the red dot, hairball run catnip eat the grass sniff. Kitty ipsum dolor sit amet, shed everywhere shed everywhere stretching attack your ankles chase the red dot, hairball run catnip eat the grass sniff. I don't what is the problem with this anyone here");
 
 
-    const PerfilP = () => {
-        const [showModal, setShowModal] = useState(false);
-        const [selectedClass, setSelectedClass] = useState(null);
+const PerfilP = () => {
+    const [showModal, setShowModal] = useState(false);
+    const [selectedClass, setSelectedClass] = useState(null);
 
-        const handleReservarClick = (clase) => {
-            setSelectedClass(clase);
-            setShowModal(true);
-        };
+    const handleReservarClick = (clase) => {
+        setSelectedClass(clase);
+        setShowModal(true);
+    };
 
-        const navigate = useNavigate();    
-
-  return (
-    <div>
-      <div className="infoTrain">
-                <div><img className="fotoTrainer" src={ trainer } alt="" /></div>
+    return (
+        <div>
+            <div className="infoTrain">
+                <div><img className="fotoTrainer" src={trainer} alt="" /></div>
                 <div className="data">
                     <div>
                         <h2 className="h2p">{localStorage.getItem('name')}</h2>
@@ -101,30 +98,35 @@ localStorage.setItem('description',"Kitty ipsum dolor sit amet, shed everywhere 
                             <div className="columna2">{clase.fecha}</div>
                             <div className="columna2">{clase.horario}</div>
                             <div className="columna2">
-                                <button
-                                className="reservar"
-                                onClick={() => {
-                                    handleReservarClick(clase);
-                                    navigate('/check-out'); // Redirige a la ruta '/CheckOut'
-                                }} >
-                                    Reservar
-                                </button>
+                                <button className='hover reservar' onClick={() => handleReservarClick(objetoPrueba[0])}>Reservar</button>
+                                {showModal && selectedClass && (
+                                    <div className="modal-overlay">
+                                        <CheckOut
+                                            clase={selectedClass}
+                                            onClose={() => {
+                                                setShowModal(false);
+                                                setSelectedClass(null);
+                                            }}
+                                        />
+                                    </div>
+                                )}
                             </div>
                         </div>
                     ))}
                 </div>
             </div>
-            {showModal && selectedClass && (
-                <CheckOut
-                    clase={selectedClass}
-                    onClose={() => {
-                        setShowModal(false);
-                        setSelectedClass(null);
-                    }}
-                />
-            )}
-    </div>
-  );
+        </div>
+    );
 };
 
 export default PerfilP;
+
+//  {showModal && selectedClass && (
+//                 <CheckOut
+//                     clase={selectedClass}
+//                     onClose={() => {
+//                         setShowModal(false);
+//                         setSelectedClass(null);
+//                     }}
+//                 />
+//             )} 
