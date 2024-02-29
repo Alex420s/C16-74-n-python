@@ -7,47 +7,53 @@ import '../stylesheets/PerfilProf.css';
 const objetoPrueba = [
     {
         id: "2",
-        dia: "Lunes",
+        dia: "Lun",
         fecha: "26/02/24",
         horario: "9:00 a 10:00",
     },
     {
         id: "4",
-        dia: "Miércoles",
+        dia: "Mié",
         fecha: "28/02/24",
         horario: "13:00 a 14:00",
     },
     {
         id: "6",
-        dia: "Viernes",
+        dia: "Vie",
         fecha: "01/03/24",
         horario: "10:00 a 11:00",
     },
     {
         id: "8",
-        dia: "Lunes",
+        dia: "Lun",
         fecha: "04/03/24",
         horario: "9:00 a 10:00",
     },
     {
         id: "10",
-        dia: "Miércoles",
+        dia: "Mié",
         fecha: "06/03/24",
         horario: "13:00 a 14:00",
     },
     {
         id: "12",
-        dia: "Viernes",
+        dia: "Vie",
         fecha: "08/03/24",
         horario: "10:00 a 11:00",
     },
     {
         id: "14",
-        dia: "Lunes",
+        dia: "Lun",
         fecha: "11/03/24",
         horario: "9:00 a 10:00",
     }
 ]
+
+localStorage.setItem('name', "Gabriela Sastre");
+localStorage.setItem('speciality', "Nutricionista");
+localStorage.setItem('neighborhood', "San Isidro");
+localStorage.setItem('description',"Kitty ipsum dolor sit amet, shed everywhere shed everywhere stretching attack your ankles chase the red dot, hairball run catnip eat the grass sniff. Kitty ipsum dolor sit amet, shed everywhere shed everywhere stretching attack your ankles chase the red dot, hairball run catnip eat the grass sniff. I don't what is the problem with this anyone here");
+
 
     const PerfilP = () => {
         const [showModal, setShowModal] = useState(false);
@@ -91,7 +97,7 @@ const objetoPrueba = [
                     </div>
                     {objetoPrueba.map((clase, index) => (
                         <div key={index} id={`clase-${index}`} className="clase">
-                            <div className="columna2">{clase.dia}</div>*/
+                            <div className="columna2">{clase.dia}</div>
                             <div className="columna2">{clase.fecha}</div>
                             <div className="columna2">{clase.horario}</div>
                             <div className="columna2">
