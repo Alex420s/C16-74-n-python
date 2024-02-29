@@ -6,36 +6,43 @@ import '../stylesheets/PerfilProf.css';
 
 const objetoPrueba = [
     {
+        id: "2",
         dia: "Lunes",
         fecha: "26/02/24",
         horario: "9:00 a 10:00",
     },
     {
+        id: "4",
         dia: "Miércoles",
         fecha: "28/02/24",
         horario: "13:00 a 14:00",
     },
     {
+        id: "6",
         dia: "Viernes",
         fecha: "01/03/24",
         horario: "10:00 a 11:00",
     },
     {
+        id: "8",
         dia: "Lunes",
         fecha: "04/03/24",
         horario: "9:00 a 10:00",
     },
     {
+        id: "10",
         dia: "Miércoles",
         fecha: "06/03/24",
         horario: "13:00 a 14:00",
     },
     {
+        id: "12",
         dia: "Viernes",
         fecha: "08/03/24",
         horario: "10:00 a 11:00",
     },
     {
+        id: "14",
         dia: "Lunes",
         fecha: "11/03/24",
         horario: "9:00 a 10:00",
@@ -59,17 +66,17 @@ const objetoPrueba = [
                 <div><img className="fotoTrainer" src={ trainer } alt="" /></div>
                 <div className="data">
                     <div>
-                        <h2 className="h2p">Nombre Profesional</h2>
+                        <h2 className="h2p">{localStorage.getItem('name')}</h2>
                     </div>
                     <div>
-                        <p className="h3">Disciplina</p>
+                        <p className="h3">{localStorage.getItem('speciality')}</p>
                     </div>
                     <div>
-                        <p className="h3">Barrio</p>
+                        <p className="h3">{localStorage.getItem('neighborhood')}</p>
                     </div>
                     <div>
-                        <p className="h3">Descripción</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, exercitationem, ipsa perferendis dolores a repudiandae amet nobis culpa tenetur enim eveniet? Repellat error nisi sapiente nam labore tenetur harum porro?</p>
+                        <p className="h3">Descripción:</p>
+                        <p>{localStorage.getItem('description')}</p>
                     </div>
                 </div>
             </div>

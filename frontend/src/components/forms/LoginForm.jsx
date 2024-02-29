@@ -6,7 +6,6 @@ import '../../stylesheets/forms/Login.css'
 const LoginForm = () => {
 
   // TODO: Agregar error handling
-  // TODO: Manejar el token recibido por el servidor
 
   const [formData, setFormData] = useState({
     email: '',
@@ -75,7 +74,7 @@ const LoginForm = () => {
           <input className={emptyPasswordFieldError || emptyemailFieldError ? 'disabled' : 'hover ingresar'} type="submit" name="ingreso" value="Ingresar" />
         </div>
         {error && <p style={{ color: 'red' }}>{error}</p>}
-        <div class="registro">
+        <div className="registro">
         <p>¿No tenés cuenta?</p>
         <p>Registrate como <Link to={'/nuevo-usuario'}> <span> Usuario</span></Link> o <Link to={'/nuevo-profesional'}><span>Profesional</span></Link></p>
         </div>
