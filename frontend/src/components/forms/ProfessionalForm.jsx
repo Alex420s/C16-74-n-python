@@ -78,33 +78,33 @@ const ProfessionalForm = () => {
 
   return (
     <div>
-      <h2>Registrate como<br />
+      <h2 className='h2FormP'>Registrate como<br />
         <span>profesional</span></h2>
       <form onSubmit={handleSubmit}>
         <div className="info-1">
-          <h3>Información personal</h3>
+          <p className='h3FormP'>Información personal</p>
           <div>
             <div className="fila">
-              <input className="input-box" type="text" placeholder="Nombre" required name="first_name" value={formData.first_name} onChange={handleChange} />
-              <input type="text" placeholder="Apellido" required name="last_name" value={formData.last_name} onChange={handleChange} />
+              <input className="input-box inputFormP" type="text" placeholder="Nombre" required name="first_name" value={formData.first_name} onChange={handleChange} />
+              <input className="inputFormP" type="text" placeholder="Apellido" required name="last_name" value={formData.last_name} onChange={handleChange} />
             </div>
             <div className="fila">
-              <input type="email" name="email" id="email" required placeholder="Email" value={formData.email} onChange={handleChange} />
+              <input className="inputFormP" type="email" name="email" id="email" required placeholder="Email" value={formData.email} onChange={handleChange} />
             </div>
             <div>
-              <input type="text" name="username" id="usuario" placeholder="Usuario" required value={formData.username} onChange={handleChange} />
+              <input className="inputFormP" type="text" name="username" id="usuario" placeholder="Usuario" required value={formData.username} onChange={handleChange} />
             </div>
             <div className="fila">
-              <input type="password" name="password" placeholder="Contraseña" required value={formData.password} onChange={handleChange} />
-              <input type="password" name="passwordMatch" placeholder="Verifique su contraseña" required />
+              <input className="inputFormP" type="password" name="password" placeholder="Contraseña" required value={formData.password} onChange={handleChange} />
+              <input className="inputFormP" type="password" name="passwordMatch" placeholder="Verifique su contraseña" required />
             </div>
             {!passwordsMatch && <p style={{ color: 'red' }}>Las contraseñas no coinciden</p>}
           </div>
         </div>
         <div className="info-2">
-          <h3>Informacion profesional</h3>
+          <p className='h3FormP'>Información profesional</p>
           <div>
-            <select name="category" id="discipline" value={formData.speciality} onChange={handleChange}>
+            <select className="inputFormP" name="category" id="discipline" value={formData.speciality} onChange={handleChange}>
               <option value="Boxeo">Boxeo</option>
               <option value="Zumba">Zumba</option>
               <option value="Crossfit">Crossfit</option>
@@ -116,10 +116,10 @@ const ProfessionalForm = () => {
           </div>
         </div>
         <div className="info-3">
-          <h3>Información clases</h3>
+          <p className='h3FormP'>Información clases</p>
           <div className="fila">
-            <input type="text" name="city" id="Barrio" required placeholder="Barrio" value={formData.barrio} onChange={handleChange} />
-            <input type="text" name="province" id="Provincia" required placeholder="Provincia/Estado" value={formData.province} onChange={handleChange} />
+            <input className="inputFormP" type="text" name="city" id="Barrio" required placeholder="Barrio" value={formData.barrio} onChange={handleChange} />
+            <input className="inputFormP" type="text" name="province" id="Provincia" required placeholder="Provincia/Estado" value={formData.province} onChange={handleChange} />
           </div>
           {/* <div id="contenedor">
             <div className="general">
@@ -332,7 +332,7 @@ const ProfessionalForm = () => {
           <input className={!passwordsMatch ? 'disabled hover' : 'enviar hover'} type="submit" name="registro" value="Registrarte" />
         </div>
         <div className="caja">
-          <input type="checkbox" name="condiciones" value="condiciones" onChange={handleChange}/> <label>Acepto <Link to="../../terminos-y-condiciones.pdf" target="_blank">los términos y las condiciones</Link></label>
+          <input className='checkBoxP' type="checkbox" name="condiciones" value="condiciones" onChange={handleChange}/> <label>Acepto <Link to="../../terminos-y-condiciones.pdf" target="_blank">los términos y las condiciones</Link></label>
         </div>
       </form>
     </div>

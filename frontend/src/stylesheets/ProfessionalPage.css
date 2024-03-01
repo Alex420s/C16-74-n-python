@@ -7,14 +7,17 @@
 .titulo {
     color: #fb1720;
     margin: 20px auto 40px 60px;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: left;
 }
 
 .turnosBox {
-    width: 80%;
+    width: 90%;
     padding: 20px;
     border-style: hidden;
     border-radius: 10px;
-    box-shadow: 2px 2px 4px 4px #7c7676;
+    box-shadow: 0px 0px 10px #f1d2d2;
     margin: 20px auto;
 }
 
@@ -24,6 +27,10 @@
     font-size: 18px; 
 }
 
+.fc-daygrid-event-dot {
+    border-color: #FF464D;
+}
+
 .fc-daygrid-day {
     font-size: 18px; 
     line-height: 15px;
@@ -31,7 +38,7 @@
 
 .fc-toolbar .fc-prev-button,  
 .fc-toolbar .fc-next-button {
-    background-color: rgb(209, 208, 208); 
+    background-color: #dcdcdc; 
     color: black; 
     border: none; 
     border-radius: 5px; 

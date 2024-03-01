@@ -1,23 +1,31 @@
-h2{
+.h2FormP{
     font-size: 30px;
     text-align: center;
+    font-weight: bold;
+    text-align: center;
+    line-height: 40px;
+    margin-bottom: 20px;
 }
 
-h2 span{
+.h2FormP span{
     color: red;
 }
 
-h3{
+.h3FormP{
+    font-size: 22px;
+    font-weight: bold;
     padding: 0 0 0 50px;
-    margin: 15px 0;
+    margin: 40px 0 10px 0;
 }
 
-input{
+.inputFormP{
     padding: 10px;
     font-size: 20px;
+    width: 100%;
     border-radius: 10px;
-    border: 1px solid black ;
-    margin: 5px 0;
+    border: 1px solid #7F7F7F;
+    margin: 8px 0;
+    color: #7F7F7F;
 }
 
 .fila {
@@ -26,21 +34,13 @@ input{
     gap: 20px;
 }
 
-input[type="checkbox"] {
+/*.checkBoxP {
     width: 100%;
-}
+}*/
 
-select{
-    padding: 10px;
-    font-size: 20px;
-    border-radius: 10px;
-    border: 1px solid black ;
-    margin: 5px 0;
-}
-
-.info-1, .info-2, .info-3{
-    margin: 20px 0 0;
-}
+/* .info-1, .info-2, .info-3{
+    margin-top: 80px;
+} */
 
 .info-1 div div div{
     display: flex;
@@ -62,7 +62,7 @@ select{
     padding: 10px;
     font-size: 20px;
     border-radius: 10px;
-    border: 1px solid black ;
+    border: 1px solid #7F7F7F ;
     margin: 5px 0;
 }
 
@@ -70,7 +70,7 @@ select{
     width: 100%;
 }
    
-#contenedor{
+/* #contenedor{
     margin: 10px 0 0 0;
 }
 
@@ -96,14 +96,14 @@ select{
 .columna-de-tiempo{
     display: flex;
     flex-direction: column;
-}
+}*/
 
 .opciones-checkbox{
     display: flex;
     justify-content: flex-start;
 }
 
-.opciones-checkbox input[type="checkbox"]{
+/*.opciones-checkbox input[type="checkbox"]{
     width: 20px;
 }
 
@@ -134,7 +134,7 @@ input[type="time"]::-webkit-calendar-picker-indicator, input[type="time"]::-webk
     margin: 5px;
     height: 50px;
     width: 100%;
-}
+} */
 
 .contenedor-enviar{
     display: flex;

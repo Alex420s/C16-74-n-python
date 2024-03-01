@@ -62,7 +62,7 @@ const ProfessionalPage = () => {
   
   return (
     <div className="cuerpo">
-      <h1 className="titulo">Próximos Turnos</h1>
+      <p className="titulo">Próximos Turnos</p>
       <div className="turnosBox">
         <FullCalendar
           plugins={[dayGridPlugin]}
