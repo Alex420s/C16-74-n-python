@@ -9,12 +9,13 @@ const Searchbar = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Perform any form submission logic if needed
+
   }
 
-  const handleBuscarClick = () => {
-    setShowModal(true);
-  };
+  // Modal popup
+  // const handleBuscarClick = () => {
+  //   setShowModal(true);
+  // };
 
   return (
     <div className="searchbar">
@@ -37,10 +38,10 @@ const Searchbar = () => {
           </select>
         </div>
         <div>
-          <button className='hover buscar' onClick={handleBuscarClick}>Buscar</button>
+          <Link to={'/search'}><button className='hover buscar' /*onClick={handleSubmit}*/>Buscar</button></Link>
         </div>
       </form>
-      {showModal && (
+      {/* {showModal && (
         <div className="modal-overlay">
           <SearchPage
             clase={selectedClass}
@@ -50,7 +51,7 @@ const Searchbar = () => {
             }}
           />
         </div>
-      )}
+      )} */}
     </div>
   )
 }

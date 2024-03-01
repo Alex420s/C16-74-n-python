@@ -1,7 +1,7 @@
 import React from 'react'
 import '../stylesheets/Search.css'
 import { Link } from 'react-router-dom'
-import { IoCloseCircleOutline } from "react-icons/io5";
+// import { IoCloseCircleOutline } from "react-icons/io5";
 
 const objetoPrueba = [
   {
@@ -34,7 +34,7 @@ const SearchPage = ({ onClose }) => {
     
   return (
     <div className="inner-container">
-              <IoCloseCircleOutline className='close-button' onClick={handleClose}/>
+              {/* <IoCloseCircleOutline className='close-button' onClick={handleClose}/> */}
       <div className="searchbar2">
 
         <div className='inputsBuscador2'>
