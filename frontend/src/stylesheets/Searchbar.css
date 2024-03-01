@@ -27,6 +27,7 @@
     padding: 10px;
     margin: 50px 0 0 0;
     justify-content: space-between;
+    color: #7F7F7F;
 }
 
 .modal-overlay {
@@ -40,4 +41,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.disciplina{
+    color: #7F7F7F;
+    text-align: left;
 }

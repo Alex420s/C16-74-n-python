@@ -27,7 +27,7 @@ const Searchbar = () => {
           <input type="text" name="provincia" placeholder="Provincia/Estado" />
         </div>
         <div>
-          <select name="disciplina">
+          <select name="disciplina" className='disciplina'>
             <option value="">Todas las disciplinas</option>
             <option value="Boxeo">Boxeo</option>
             <option value="Zumba">Zumba</option>

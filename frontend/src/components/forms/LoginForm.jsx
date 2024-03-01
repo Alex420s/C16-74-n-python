@@ -61,13 +61,13 @@ const LoginForm = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h2>Ingresá</h2>
+        <p className='h2Login'>Ingresá</p>
         <div>
-          <input type="text" name="email" id="user_p" placeholder="Ingrese su usuario" onChange={handleChange} />
+          <input className='inputLogin' type="text" name="email" id="user_p" placeholder="Ingrese su usuario" onChange={handleChange} />
         </div>
         {emptyemailFieldError && <p style={{ color: 'red' }}>Este campono puede estar vacío</p>}
         <div>  
-          <input type="password" name="password" id="password_p" placeholder="Contraseña" onChange={handleChange} />
+          <input className='inputLogin' type="password" name="password" id="password_p" placeholder="Contraseña" onChange={handleChange} />
         </div>
         {emptyPasswordFieldError && <p style={{ color: 'red' }}>Este campo no puede estar vacío</p>}
         <div className="contenedor-ingresar">
