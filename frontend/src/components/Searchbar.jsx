@@ -19,13 +19,13 @@ const Searchbar = () => {
 
   return (
     <div className="searchbar">
-      <h2 className="h2">Buscar</h2>
+      <p className="h2Busca">Buscar</p>
       <form className='inputsBuscador' onSubmit={handleSubmit}>
         <div>
-          <input type="text" name="barrio" placeholder="Barrio" />
+          <input className='inputsBuscar' type="text" name="barrio" placeholder="Barrio" />
         </div>
         <div>
-          <input type="text" name="provincia" placeholder="Provincia/Estado" />
+          <input className='inputsBuscar' type="text" name="provincia" placeholder="Provincia/Estado" />
         </div>
         <div>
           <select name="disciplina" className='disciplina'>
