@@ -84,7 +84,7 @@ const PerfilP = () => {
                 </div>
             </div>
             <div className="clases">
-                <h2>Reserva tu clase</h2>
+                <p className="texto2">Reserva tu clase</p>
                 <div className="lista">
                     <div className="encabezado2">
                         <div className="columna2 titulos-encab2">Día</div>

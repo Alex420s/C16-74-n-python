@@ -5,11 +5,6 @@
   margin: 10px auto;
 }
 
-.t2 {
-  color: black;
-  position: absolute;
-}
-
 .buscar2 {
   padding: 20px 40px;
   border-style: none;
@@ -18,13 +13,13 @@
   cursor: pointer;
 }
 
-.inputsBuscador2 {
+.inputBuscador2 {
   display: flex;
-  width: 90%;
+  width: 100%;
   display: flex;
   align-items: center;
   padding: 10px;
-  margin: 50px auto 0;
+  margin: 10px auto 0;
   justify-content: space-between;
 }
 
@@ -37,6 +32,11 @@
   margin: 10px 0;
 }
 
+.disciplina{
+  color: #7F7F7F;
+  text-align: left;
+  width: 100%;
+}
 
 .texto_rojo {
   color: #fb1720;

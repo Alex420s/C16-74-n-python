@@ -96,7 +96,7 @@ const ProfEdit = () => {
         <input className="enviar hover" type="submit" name="guardar" value="Guardar" />
       </div>
     </div>
-  );
+  ); 
 }
     
 export default ProfEdit

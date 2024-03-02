@@ -34,11 +34,11 @@ const SearchPage = ({ onClose }) => {
     
   return (
     <div className="inner-container">
-      <p className="texto_rojo">Nuevo turno</p>
+      <p className="texto_rojo">Buscar</p>
               {/* <IoCloseCircleOutline className='close-button' onClick={handleClose}/> */}
       <div className="searchbar2">
 
-        <div className='inputsBuscador2'>
+        <div className='inputBuscador2'>
           <div>  
             <input className='inputsBuscar2' type="text" name="barrio" placeholder="Barrio" />
           </div>

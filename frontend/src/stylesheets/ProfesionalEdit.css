@@ -45,9 +45,9 @@ select{
     justify-content: space-between;
 }
 
-#usuario{
+/*#usuario{
     width: 100%;
-}
+}*/
 
 .info-2 div{
     display: flex;
@@ -64,7 +64,7 @@ select{
     margin: 5px 0;
 }
 
-#Barrio{
+#Barrio, #email{
     width: 100%;
 }
    
