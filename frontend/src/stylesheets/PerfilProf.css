@@ -30,17 +30,6 @@
     margin-bottom: 30px;
 }
 
-.texto2 {
-    font-size: 30px;
-    font-weight: bold;
-    text-align: left;
-    color: #fb1720;
-    margin: 20px 80px 20px 0;
-    font-size: 30px;
-    font-weight: bold;
-    text-align: left;
-}
-
 .h3 {
     margin: 15px 0;
     font-size: 20px;
@@ -49,6 +38,17 @@
 
 .clases {
     margin: 20px 0;
+}
+
+.texto2 {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: left;
+    color: #fb1720;
+    margin: 40px 0 20px 80px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: left;
 }
 
 .lista {
