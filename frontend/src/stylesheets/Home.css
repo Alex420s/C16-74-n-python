@@ -146,6 +146,7 @@
     color: white;
     background-color: red;
     cursor: pointer;
+    border-radius: 10px;
 }
 
 .registroHome a{

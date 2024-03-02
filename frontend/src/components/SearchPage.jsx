@@ -33,7 +33,7 @@ const SearchPage = ({ onClose }) => {
   }
     
   return (
-    <div className="inner-container">
+    <div className="bodySearch">
       <p className="texto_rojo">Buscar</p>
               {/* <IoCloseCircleOutline className='close-button' onClick={handleClose}/> */}
       <div className="searchbar2">

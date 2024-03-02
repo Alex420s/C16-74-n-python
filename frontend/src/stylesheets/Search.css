@@ -1,16 +1,27 @@
+.bodySearch{
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  padding-left: 50px;
+}
+
 .searchbar2 {
-  width: 1200px;
+  width: 100%;
   display: flex;
   padding: 10px;
-  margin: 10px auto;
 }
 
 .buscar2 {
-  padding: 20px 40px;
+  padding: 15px 40px;
   border-style: none;
   color: white;
   background-color: red;
   cursor: pointer;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .inputBuscador2 {
@@ -100,5 +111,9 @@
   cursor: pointer;
   border-radius: 10px;
   align-self: center; /* Para centrar verticalmente el botón en la fila */
+  border-radius: 10px;
 }
 
+.listado{
+  margin-top: 40px;
+}
