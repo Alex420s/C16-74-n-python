@@ -34,18 +34,19 @@ const SearchPage = ({ onClose }) => {
     
   return (
     <div className="inner-container">
+      <p className="texto_rojo">Nuevo turno</p>
               {/* <IoCloseCircleOutline className='close-button' onClick={handleClose}/> */}
       <div className="searchbar2">
 
         <div className='inputsBuscador2'>
           <div>  
-            <input type="text" name="barrio" placeholder="Barrio" />
+            <input className='inputsBuscar2' type="text" name="barrio" placeholder="Barrio" />
           </div>
           <div>
-            <input type="text" name="provincia" placeholder="Provincia/Estado" />
+            <input className='inputsBuscar2' type="text" name="provincia" placeholder="Provincia/Estado" />
           </div>
           <div>
-            <select name="disciplina">
+            <select className='disciplina' name="disciplina">
               <option value="">Todas las disciplinas</option>
               <option value="Boxeo">Boxeo</option>
               <option value="Zumba">Zumba</option>
@@ -60,7 +61,7 @@ const SearchPage = ({ onClose }) => {
         </div>
       </div>
       <div className="listado">
-        <h1 className="texto_rojo">Resultados búsqueda</h1>
+        <p className="texto_rojo">Resultados búsqueda</p>
         <div className="lista_prof">
           <div className="encabezado">
             <div className="columna titulos-encab">Nombre</div>
