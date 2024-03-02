@@ -12,6 +12,7 @@ import PerfilProf from './pages/PerfilProf.jsx';
 import ProfesionalEdit from './pages/ProfesionalEdit.jsx';
 import AgregarTurno from './pages/AgregarTurno.jsx';
 import CheckOut from './components/CheckOut.jsx';
+import ReservasProf from './pages/ReservasProf.jsx';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <Route path="/perfilProf" element={<PerfilProf />} />
           <Route path='/check-out' element={<CheckOut />}/>
           <Route path="/editProf" element={<ProfesionalEdit />} />
+          <Route path="/reservasProf/:claseId" element={<ReservasProf />} />
         </Routes>
       </div>
     </Router>

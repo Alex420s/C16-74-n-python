@@ -2,63 +2,207 @@ import { useState, useEffect } from 'react'
 import '../stylesheets/ProfessionalPage.css'
 import FullCalendar from '@fullcalendar/react'; 
 import dayGridPlugin from '@fullcalendar/daygrid';
+import { useNavigate } from 'react-router-dom';
 
 const ProfessionalPage = () => {
-  const [turnos, setTurnos] = useState([]);
-  const [id, setId] = useState([]);
-  const [eventos, setEventos] = useState([
+  const pruebaDatos = [
     {
+      claseId: '1',
       title: 'Clase',
-      start: '2024-02-26T13:00', 
-      end: '2024-02-26T14:00',   
+      start: '2024-03-04T13:00:00',
+      extendedProps: {
+        reservaInfo: [
+          {
+            firstName: 'Daniela',
+            lastName: 'García',
+            price: '1500',
+            state: ['Confirmado', 'Pagado', 'Completado'],
+          },
+          {
+            firstName: 'Gabriel',
+            lastName: 'Pérez',
+            price: '1500',
+            state: ['Confirmado', 'Pagado', 'Completado'],
+          },
+          {
+            firstName: 'Samuel',
+            lastName: 'Quiroz',
+            price: '1500',
+            state: ['Confirmado', 'Pagado', 'Completado'],
+          },
+        ],
+      },   
+    },
+    {
+      claseId: '2',
+      title: 'Clase',
+      start: '2024-03-06T15:00:00',
+      extendedProps: {
+        reservaInfo: [
+          {
+            firstName: 'Daniela',
+            lastName: 'García',
+            price: '1500',
+            state: ['Confirmado', 'Pagado', 'Completado'],
+          },
+          {
+            firstName: 'Gabriel',
+            lastName: 'Pérez',
+            price: '1500',
+            state: ['Confirmado', 'Pagado', 'Completado'],
+          },
+          {
+            firstName: 'Samuel',
+            lastName: 'Quiroz',
+            price: '1500',
+            state: ['Confirmado', 'Pagado', 'Completado'],
+          },
+        ],
+      },   
     },
     {
       title: 'Clase',
-      start: '2024-02-29T09:00', 
-      end: '2024-02-29T10:00',   
+      start: '2024-03-08T18:00:00',
+      extendedProps: {
+        reservaInfo: [
+          {
+            firstName: 'Daniela',
+            lastName: 'García',
+            price: '1500',
+            state: ['Confirmado', 'Pagado', 'Completado'],
+          },
+          {
+            firstName: 'Gabriel',
+            lastName: 'Pérez',
+            price: '1500',
+            state: ['Confirmado', 'Pagado', 'Completado'],
+          },
+          {
+            firstName: 'Samuel',
+            lastName: 'Quiroz',
+            price: '1500',
+            state: ['Confirmado', 'Pagado', 'Completado'],
+          },
+        ],
+      },   
     },
     {
       title: 'Clase',
-      start: '2024-03-01T12:00', 
-      end: '2024-03-01T13:00',   
+      start: '2024-03-12T09:00:00',
+      extendedProps: {
+        reservaInfo: [
+          {
+            firstName: 'Daniela',
+            lastName: 'García',
+            price: '1500',
+            state: ['Confirmado', 'Pagado', 'Completado'],
+          },
+          {
+            firstName: 'Gabriel',
+            lastName: 'Pérez',
+            price: '1500',
+            state: ['Confirmado', 'Pagado', 'Completado'],
+          },
+          {
+            firstName: 'Samuel',
+            lastName: 'Quiroz',
+            price: '1500',
+            state: ['Confirmado', 'Pagado', 'Completado'],
+          },
+        ],
+      },   
     },
     {
       title: 'Clase',
-      start: '2024-03-04T13:00', 
-      end: '2024-03-04T14:00',   
+      start: '2024-03-15T11:00:00',
+      extendedProps: {
+        reservaInfo: [
+          {
+            firstName: 'Daniela',
+            lastName: 'García',
+            price: '1500',
+            state: ['Confirmado', 'Pagado', 'Completado'],
+          },
+          {
+            firstName: 'Gabriel',
+            lastName: 'Pérez',
+            price: '1500',
+            state: ['Confirmado', 'Pagado', 'Completado'],
+          },
+          {
+            firstName: 'Samuel',
+            lastName: 'Quiroz',
+            price: '1500',
+            state: ['Confirmado', 'Pagado', 'Completado'],
+          },
+        ],
+      },   
     },
     {
       title: 'Clase',
-      start: '2024-03-07T09:00', 
-      end: '2024-03-07T10:00',   
+      start: '2024-03-16T18:00:00',
+      extendedProps: {
+        reservaInfo: [
+          {
+            firstName: 'Daniela',
+            lastName: 'García',
+            price: '1500',
+            state: ['Confirmado', 'Pagado', 'Completado'],
+          },
+          {
+            firstName: 'Gabriel',
+            lastName: 'Pérez',
+            price: '1500',
+            state: ['Confirmado', 'Pagado', 'Completado'],
+          },
+          {
+            firstName: 'Samuel',
+            lastName: 'Quiroz',
+            price: '1500',
+            state: ['Confirmado', 'Pagado', 'Completado'],
+          },
+        ],
+      },   
     },
     {
       title: 'Clase',
-      start: '2024-03-08T12:00', 
-      end: '2024-03-08T13:00',   
-    },
-    {
-      title: 'Clase',
-      start: '2024-03-11T13:00', 
-      end: '2024-03-11T14:00',   
+      start: '2024-03-20T12:00:00',
+      extendedProps: {
+        reservaInfo: [
+          {
+            firstName: 'Daniela',
+            lastName: 'García',
+            price: '1500',
+            state: ['Confirmado', 'Pagado', 'Completado'],
+          },
+          {
+            firstName: 'Gabriel',
+            lastName: 'Pérez',
+            price: '1500',
+            state: ['Confirmado', 'Pagado', 'Completado'],
+          },
+          {
+            firstName: 'Samuel',
+            lastName: 'Quiroz',
+            price: '1500',
+            state: ['Confirmado', 'Pagado', 'Completado'],
+          },
+        ],
+      },  
     }
-  ]);
+  ];
 
-  
-    // useEffect(() => {
-    //   setId(localStorage.getItem('id'));
-    //   const fetchShifts = async () => {
-    //     try {
-    //       const response = await axios.post(`http://127.0.0.1:5000/api/shifts/${localStorage.getItem('id')}`);
-    //       setTurnos(response.data);
-    //       console.log(turnos);
-    //       console.log(response.data);
-    //     } catch (error) {
-    //       console.error('Error fetching shifts:', error);
-    //     }
-    //   };
-    //   fetchShifts();
-    // }, []);
+  const [eventos] = useState(pruebaDatos);
+
+  const navigate = useNavigate();
+
+  const handleEventClick = (event) => {
+    if (event.extendedProps && event.extendedProps.reservaInfo) {
+      const claseId = event.extendedProps.reservaInfo[0].claseId;
+      console.log(claseId);
+      navigate(`/reservarProf/${claseId}`);
+    }
+  };
   
   return (
     <div className="cuerpo">
@@ -73,6 +217,7 @@ const ProfessionalPage = () => {
             prev: '<<',
             next: '>>',
           }}
+          eventClick={handleEventClick}
         />
       </div>
     </div>
