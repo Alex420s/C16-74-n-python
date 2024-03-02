@@ -69,17 +69,16 @@ const PerfilP = () => {
                 <div><img className="fotoTrainer" src={trainer} alt="" /></div>
                 <div className="data">
                     <div>
-                        <h2 className="h2p">{localStorage.getItem('name')}</h2>
+                        <p className="h2p">{localStorage.getItem('name')}</p>
                     </div>
                     <div>
-                        <p className="h3">{localStorage.getItem('speciality')}</p>
+                        <p className="h3-especialidad">{localStorage.getItem('speciality')}</p>
                     </div>
                     <div>
-                        <p className="h3">{localStorage.getItem('neighborhood')}</p>
+                        <p className="h3-zona">{localStorage.getItem('neighborhood')}</p>
                     </div>
                     <div>
-                        <p className="h3">Descripción:</p>
-                        <p>{localStorage.getItem('description')}</p>
+                        <p className='textDesc'>{localStorage.getItem('description')}</p>
                     </div>
                 </div>
             </div>
