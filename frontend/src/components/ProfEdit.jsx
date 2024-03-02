@@ -14,14 +14,28 @@ const ProfEdit = () => {
     province: ''
   });
 
-  const handleChange = () => {
+  const handleChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      setFormData({
+        ...formData,
+        image: reader.result, // Reemplaza la imagen por defecto con la subida
+      });
     };
 
-  const handleWeekdayChange = () => {
-    };
-  
-  const handleTimeChange = () => {
-    };
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  };
 
   return (
     <div className="todo">
@@ -31,10 +45,19 @@ const ProfEdit = () => {
             <h3>Información personal</h3>
             <div>
               <div className="imagen-subir">
-                <img className="fotoSubir" src={ image } alt="Imagen a subir" />
-                <MdAddAPhoto />
-                <input type="file" className="imagen-subir-input" />
-              </div>
+                <img className="fotoSubir" src={formData.image || require('../images/image.jpg')} alt="Imagen de perfil" />
+                <label htmlFor="file-upload" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}>
+                  <MdAddAPhoto className="camera-icon" />
+                </label>
+                <input
+                  id="file-upload"
+                  type="file"
+                  className="imagen-subir-input"
+                  onChange={handleImageUpload}
+                  accept="image/*"
+                  style={{ opacity: 0 }} 
+                />
+              </div>  
               <div className="fila">
                 <input className="input-box" type="text" placeholder="Nombre" required name="first_name" value={formData.first_name} onChange={handleChange} />
                 <input type="text" placeholder="Apellido" required name="last_name" value={formData.last_name} onChange={handleChange} />
@@ -63,7 +86,7 @@ const ProfEdit = () => {
           <div className="info-3">
             <h3>Información clases</h3>
             <div className="fila">
-              <input type="text" name="city" id="Barrio" required placeholder="Barrio" value={formData.barrio} onChange={handleChange} />
+              <input type="text" name="city" id="Barrio" required placeholder="Barrio" value={formData.city} onChange={handleChange} />
               <input type="text" name="province" id="Provincia" required placeholder="Provincia/Estado" value={formData.province} onChange={handleChange} />
             </div>
           </div>
