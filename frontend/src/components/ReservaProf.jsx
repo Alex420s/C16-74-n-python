@@ -1,4 +1,3 @@
-import react from 'react'
 import '../stylesheets/Reserva.css'
 
 const ReservaProf = () => {
