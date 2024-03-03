@@ -3,10 +3,10 @@ from datetime import timedelta
 import os
 import dj_database_url
 from pathlib import Path
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
 # render
 # # # Cargar variables de entorno desde el archivo .env
-# load_dotenv()
+load_dotenv()
 
 # Obtener el valor de SECRET_KEY
 SECRET_KEY = os.getenv('SECRET_KEY')
@@ -104,6 +104,7 @@ default_db_url = "postgres://postgres:bBaC3DD4FF-CdBbg*2dbffB6-cfGDDC5@monorail.
 DATABASES = {
     'default': dj_database_url.config(default=os.getenv('DATABASE_URL', default_db_url))
 }
+
 
 
 # Password validation
