@@ -4,7 +4,7 @@ import '../stylesheets/Novedades.css'
 const Novedades = () => {
   return (
     <div className="novedades">
-       <h1 className="titulo">Proximos Turnos</h1>
+       <p className="tituloNov">Proximos Turnos</p>
        <div className="novedadBox">
         <p>Disciplina</p>
         <p className='profesional'>Profesional</p>

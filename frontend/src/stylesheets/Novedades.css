@@ -5,9 +5,13 @@
     padding: 25px;
 }
 
-.titulo {
+.tituloNov {
+    text-align: left;
     color: #fb1720;
-    margin: 20px auto 40px auto;
+    margin: 20px 0 20px 0;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: left;
 }
 
 .profesional{
@@ -22,7 +26,7 @@
     border-style: hidden;
     border-radius: 8px;
     box-shadow: 2px 2px 4px 4px #f6eded;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .novedadBoxFecha {
