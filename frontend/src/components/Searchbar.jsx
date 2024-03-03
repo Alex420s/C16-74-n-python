@@ -1,11 +1,10 @@
 import { useState } from 'react'
 import '../stylesheets/Searchbar.css'
 import { Link } from 'react-router-dom'
-import SearchPage from './SearchPage'
 
 const Searchbar = () => {
-  const [showModal, setShowModal] = useState(false);
-  const [selectedClass, setSelectedClass] = useState(null);
+  //const [showModal, setShowModal] = useState(false);
+  //const [selectedClass, setSelectedClass] = useState(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
