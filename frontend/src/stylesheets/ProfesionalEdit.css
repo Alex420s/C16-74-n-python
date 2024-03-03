@@ -2,13 +2,13 @@
     margin-bottom: 50px;
 }
 .cuerpoEdit {
-    width: 90%;
-    margin: 40px;
+    width: 100%;
+    margin: 40px 10px 40px 80px;
     display: flex;
     gap: 40px;
 }
 
-.fotoSubir {
+.imagen-subir {
     width: 300px;
 }
 

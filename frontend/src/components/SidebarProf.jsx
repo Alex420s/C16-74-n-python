@@ -2,6 +2,7 @@ import React from 'react'
 import '../stylesheets/Sidebar.css'
 import images from '../images/image.png'
 import { TbLogout, TbUserEdit } from "react-icons/tb";
+import { FaRegCalendarCheck } from "react-icons/fa";
 import { useNavigate, Link } from 'react-router-dom';
 
 const SidebarProf = () => {
@@ -24,6 +25,10 @@ const SidebarProf = () => {
             <li>
                 <span className="sidebarIcons"><Link style={{textDecoration: 'none', color: 'black'}} to={'/editProf'}> <TbUserEdit /> </Link></span>
                 <p>Editar Perfil</p>
+            </li>
+            <li>
+                <span className="sidebarIcons"><Link style={{textDecoration: 'none', color: 'black'}} to={'/reservasProf'}> <FaRegCalendarCheck /> </Link></span>
+                <p>Mis Reservas</p>
             </li>
             <li>
                 <span className="sidebarIcons" onClick={logout}> <TbLogout /> </span>

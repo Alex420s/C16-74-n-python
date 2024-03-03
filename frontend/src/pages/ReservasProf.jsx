@@ -1,18 +1,23 @@
 import React from 'react'
 import Header from '../components/footer-header/Header'
 import Footer from '../components/footer-header/Footer'
-import FormContainer from '../components/containers/FormContainer'
 import ReservaProf from '../components/ReservaProf'
+import Saludo from '../components/Saludo'
+import SidebarProf from '../components/SidebarProf'
 
 const ReservasProf = () => {
   return (
-    <>
+    <div>
       <Header />
-      <FormContainer>
-        <ReservaProf />
-      </FormContainer>
+      <Saludo />
+          <div className="main">
+            <div className='side-novedades'>
+              <SidebarProf />
+              <ReservaProf />
+            </div>
+          </div>
       <Footer />
-    </>
+    </div>
   )
 }
 
