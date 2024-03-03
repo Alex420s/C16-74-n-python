@@ -20,8 +20,8 @@ const CheckOut = ({ clase, onClose }) => {
 
   return (
     <div className="checkout-container">
-      <div className="checkout-texto">
       <IoCloseCircleOutline className='close-button' onClick={handleClose}/>
+      <div className="checkout-texto">
         <p className="reserva">Reserva</p>
         <p>
           Profesor: {objetoPrueba.nombre}<br />
