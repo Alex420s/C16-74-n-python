@@ -9,7 +9,7 @@ from django.contrib.auth.hashers import make_password
 
 UserModel = get_user_model()
 # json de prueba
-"""" login
+"""" login superusuario
 {
     "email": "test@test.com",
     "password": "test"
@@ -33,7 +33,7 @@ class UserRegisterSerializer(serializers.ModelSerializer):
     role = serializers.CharField(default='user')  # Valor por defecto
     class Meta:
         model = UserModel
-        fields = ('id','first_name', 'password', 'nick_name', 'last_name', 'phone_number', 'address', 'email', 'role')
+        fields = ('id','first_name', 'password', 'username', 'last_name', 'phone_number', 'address', 'email', 'role')
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
@@ -52,7 +52,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
             token['first_name'] = user.first_name
             token['last_name'] = user.last_name
             token['email'] = user.email
-            token['nick_name'] = user.nick_name
+            token['username'] = user.nick_name
 
         elif user.role == 'professional':
             token['first_name'] = user.first_name

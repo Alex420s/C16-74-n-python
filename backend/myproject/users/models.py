@@ -1,56 +1,19 @@
 #C16-74-n-python\backend\myproject\users\models.py
+from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
-class CustomUserManager(BaseUserManager):
-    def create_user(self,nick_name, email, first_name, last_name, phone_number, address, password=None, **extra_fields):
-        if not email:
-            raise ValueError('El campo email es obligatorio')
-        if not first_name:
-            raise ValueError('El campo first_name es obligatorio')
-        if not last_name:
-            raise ValueError('El campo last_name es obligatorio')
-        if not phone_number:
-            raise ValueError('El campo phone_number es obligatorio')
-        if not address:
-            raise ValueError('El campo address es obligatorio')
-        if not nick_name:
-            raise ValueError('El campo nick_name es obligatorio')
-        email = self.normalize_email(email)
-        user = self.model(email=email, nick_name=nick_name, first_name=first_name, last_name=last_name, phone_number=phone_number, address=address, **extra_fields)
-        
-        user.set_password(password)
-        user.save(using=self._db)
-        return user
-
-    def create_superuser(self, nick_name, email, first_name, last_name, phone_number, address, password=None, is_superuser=True, **extra_fields):
-        extra_fields.setdefault('is_staff', True)
-        extra_fields.setdefault('is_superuser', True)
-
-        if extra_fields.get('is_staff') is not True:
-            raise ValueError('Superuser debe tener is_staff=True.')
-        if extra_fields.get('is_superuser') is not True:
-            raise ValueError('Superuser debe tener is_superuser=True.')
-
-        return self.create_user(email, nick_name, first_name, last_name, phone_number, address, password, **extra_fields)
-
-class CustomUser(AbstractBaseUser, PermissionsMixin):
-    id = models.AutoField(primary_key=True)
+class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
-    nick_name = models.CharField(max_length=100)
+    username = models.CharField(max_length=100)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=20)
     address = models.CharField(max_length=255, default='CDMX')
     registration_date = models.DateTimeField(auto_now_add=True)
     role = models.CharField(max_length=20, choices=[('professional', 'Professional'), ('user', 'User')],)
-    is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
-
-    objects = CustomUserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'nick_name','last_name', 'phone_number', 'address','role']
+    REQUIRED_FIELDS = ['first_name', 'username','last_name', 'phone_number', 'address','role']
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} - {self.role}"
