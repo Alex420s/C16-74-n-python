@@ -75,7 +75,7 @@ const ProfEdit = () => {
       <div className="cuerpoEdit">
         <div>
           <div className="info-1">
-            <h3>Información personal</h3>
+            <p className='tituloInfo'>Información personal</p>
             <div>
               <div className="imagen-subir">
                 <img className="fotoSubir" src={formData.image || require('../images/image.jpg')} alt="Imagen de perfil" />
@@ -103,7 +103,7 @@ const ProfEdit = () => {
         </div>
         <div>
           <div className="info-2">
-            <h3>Informacion profesional</h3>
+            <p className='tituloInfo'>Informacion profesional</p>
             <div>
               <select name="speciality" id="discipline" value={formData.speciality} onChange={handleChange}>
                 <option value="Boxeo">Boxeo</option>
@@ -117,7 +117,7 @@ const ProfEdit = () => {
             </div>
           </div>
           <div className="info-3">
-            <h3>Información clases</h3>
+            <p className='tituloInfo'>Información clases</p>
             <div className="fila">
               <input className="editP" type="text" name="city" id="Barrio" required placeholder="Barrio" value={formData.city} onChange={handleChange} />
               <input className="editP" type="text" name="province" id="Provincia" required placeholder="Provincia/Estado" value={formData.province} onChange={handleChange} />
@@ -128,7 +128,7 @@ const ProfEdit = () => {
       <div className="contenedor-guardar">
         <input className="guardar hover" type="submit" name="guardar" value="Guardar" />
       </div>
-      <h2>Agendá nuevos turnos</h2>
+      <p className='h2NvosTurnos'>Agendá nuevos turnos</p>
       {additionalRows.map((row, index) => (
           <div className='turnoAgendar' key={index}>
             <input className="editP" readOnly={true} value={row.day}/>
