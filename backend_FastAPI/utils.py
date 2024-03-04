@@ -6,3 +6,8 @@ from fastapi.middleware.cors import CORSMiddleware
 import secrets
 # from enum import Enum
 from models import *
+from views import *
+from urls import *
+
+
+
