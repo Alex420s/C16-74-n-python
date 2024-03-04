@@ -173,3 +173,17 @@ input[type="time"]::-webkit-calendar-picker-indicator, input[type="time"]::-webk
 .caja input {
     width: 30px;
 }
+
+@media only screen and (max-width: 700px) {
+
+    .fila {
+        flex-direction: column; /* Cambiar a columna para pantallas más pequeñas */
+        align-items: center;
+        gap: 0;
+    }
+
+    .h3FormP{
+        padding: 0;
+        margin: 40px 0 10px 0;
+    }
+}

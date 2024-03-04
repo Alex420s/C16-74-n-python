@@ -72,12 +72,10 @@
     .novedades {
         margin-left: 5%;
         width: 90%;
-        background-color: white;
         padding: 25px;
     }
     
     .tituloNov {
-        color: #fb1720;
         margin: 20px 0;
         font-size: 40px;
         font-weight: bold;
@@ -104,8 +102,6 @@
     }
     
     .boxFecha {
-        background-color: #ff464d;
-        color: white;
         border-radius: 10px;
         padding: 15px;
     }

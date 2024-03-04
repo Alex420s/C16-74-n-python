@@ -72,3 +72,32 @@
 .caja input {
     width: 30px;
 }
+
+@media only screen and (max-width: 700px) {
+
+    .fila {
+        flex-direction: column; /* Cambiar a columna para pantallas más pequeñas */
+        align-items: center;
+        gap: 0;
+    }
+  
+    .inputFormU {
+        width: 100%; /* Considerando el padding de 10px en ambos lados */
+        margin-top: 5px 0 5px;
+    }
+  
+    .enviar,
+    .disabled {
+        width: 100%; /* Ancho completo para el botón enviar */
+    }
+
+    .enviar{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 10px;
+        padding: 15px 40px;
+        cursor: pointer;
+        margin: 10px;
+    }
+}
