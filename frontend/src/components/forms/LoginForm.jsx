@@ -39,7 +39,7 @@ const LoginForm = () => {
     if (!emptyPasswordFieldError || !emptyemailFieldError) {
       console.log("click")
       try {
-        const response = await axios.post('https://render-api-a6du.onrender.com/user/login', {
+        const response = await axios.post('https://render-api-a6du.onrender.com/user/token', {
           email: formData.email,
           password: formData.password
         });

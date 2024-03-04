@@ -1,6 +1,8 @@
 #C16-74-n-python\backend\myproject\users\models.py
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
@@ -18,9 +20,8 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return f"{self.first_name} {self.last_name} - {self.role}"
     
-# Si el usuario define el rol 'profesional' 
-# Se usara un signal para crear la tabla de profesional al guardar la tabla de usuario
-class Professional(CustomUser):
+class Professional(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name='professional')
     professional_id = models.AutoField(primary_key=True)
     speciality = models.CharField(max_length=100, default="Contador")
     description = models.TextField(max_length=100, default="Profesional de confianza")
@@ -28,10 +29,14 @@ class Professional(CustomUser):
     neighborhood = models.CharField(max_length=100, blank=True, default="")
     province = models.CharField(max_length=100, blank=True, default="Buenos Aires")
     image = models.ImageField(upload_to="user_images", default="default.jpg")
+    
     def __str__(self):
-        return f"Professional: {self.user_id.first_name} {self.user_id.last_name} {self.speciality}"
-
-
+        return f"{self.user.first_name} {self.user.last_name} - {self.speciality}"
+    
+@receiver(post_save, sender=CustomUser)
+def create_professional(sender, instance, created, **kwargs):
+    if created and instance.is_superuser and instance.role == 'professional':
+        Professional.objects.create(user=instance)
 
 class Rating(models.Model):
     from appointments.models import Turn

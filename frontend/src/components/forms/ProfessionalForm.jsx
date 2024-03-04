@@ -66,7 +66,7 @@ const ProfessionalForm = () => {
     e.preventDefault();
     try {
       if (passwordsMatch) {
-        const response = await axios.post('http://127.0.0.1:5000/api/register/instructor', formData);
+        const response = await axios.post('https://render-api-a6du.onrender.com/user/register-professional', formData);
         console.log('Response:', response.data);
       } else {
         console.log('Passwords do not match');

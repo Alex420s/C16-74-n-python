@@ -5,53 +5,43 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework_simplejwt.tokens import RefreshToken
+from django.db.models import Q
 from rest_framework.permissions import AllowAny, IsAuthenticated
-from .serializers import UserRegisterSerializer, UserLoginSerializer, UserSerializer, ProfessionalRegisterSerializer, MyTokenObtainPairSerializer
+from .serializers import UserRegisterSerializer, UserSerializer, ProfessionalSerializer, ProfessionalRegisterSerializer, MyTokenObtainPairSerializer
 from .models import Professional, CustomUser
 from appointments.models import Availability
 from django.shortcuts import render
-from rest_framework import generics
+from rest_framework import generics, status
+from rest_framework.views import APIView
 
-#### Render 
-from django.shortcuts import render
+# Filtro de professional
+class ProfessionalListView(APIView):
+	permission_classes = (AllowAny,)
+	def get(self, request):
+		profesionales = Professional.objects.all()
 
-def list_professionals(request):
-	"""
-	Filtra y muestra una lista paginada de profesionales según la ciudad, provincia y país.
+		filtro_localidad = request.data
 
-	Filtra por:
-		- Localidad (ciudad, provincia, país)
+		filtro_localidad = request.query_params
 
-	Devuelve una lista paginada de profesionales (20 por página por defecto) en la plantilla indicada.
-	"""
+		if filtro_localidad:
+			try:
+				neighborhood = filtro_localidad.get('neighborhood', None)
+				province = filtro_localidad.get('province', None)
+				speciality = filtro_localidad.get('speciality', None)
 
-	profesionales = Professional.objects.all()
+				if neighborhood:
+					profesionales = profesionales.filter(neighborhood__icontains=neighborhood)
+				if province:
+					profesionales = profesionales.filter(province__icontains=province)
+				if speciality:
+					profesionales = profesionales.filter(speciality__icontains=speciality)
+			except:
+				pass  # Manejar la entrada no válida con elegancia
 
-	# Filtrar por localidad (sin distinción de mayúsculas/minúsculas)
-	filtro_localidad = request.GET.get("ciudad, provincia, país", False)
-	if filtro_localidad:
-		try:
-			
-			terminos_localidad = [termino.strip() for termino in filtro_localidad.split(',')]
-			profesionales = profesionales.filter(ciudad__istartswith=terminos_localidad[0])
-			if len(terminos_localidad) > 1:
-				for termino in terminos_localidad[1:]:
-					profesionales = profesionales.filter(provincia__istartswith=termino) | profesionales.filter(país__istartswith=termino)
-		except:
-			pass  # Manejar la entrada no válida con elegancia (por ejemplo, mostrar un mensaje de error)
-
-	
-	pagina = request.GET.get('pagina', 1)
-	paginador = profesionales.order_by('city').distinct('city')  
-	p20 = paginador.page(pagina)
-
-	contexto = {
-		'profesionales': p20,
-		'f_localidad': filtro_localidad if filtro_localidad else '',
-	}
-
-	return render(request, 'professional.html', contexto)
-
+		serializer = ProfessionalSerializer(profesionales, many=True)
+		return Response(serializer.data)
 
 
 def view_professional_profile(request, professional_id):
@@ -81,60 +71,71 @@ class ProfessionalRegister(generics.CreateAPIView):
 	permission_classes = (AllowAny,)
 	queryset = Professional.objects.all()
 	serializer_class = ProfessionalRegisterSerializer
-# Loguearse
-# class UserLogin(APIView):
-# 	permission_classes = (permissions.AllowAny,)
-# 	authentication_classes = [TokenAuthentication]
-# 	##
-# 	def post(self, request):
-# 		data = request.data
-# 		# Validador para el email de usuario
-# 		if 'email' not in data or not data['email']:
-# 			return Response({'error': 'El email de usuario es obligatorio'}, status=status.HTTP_400_BAD_REQUEST)
-		
-# 		# Validador para la contraseña
-# 		if 'password' not in data or not data['password']:
-# 			return Response({'error': 'La contraseña es obligatoria'}, status=status.HTTP_400_BAD_REQUEST)
-		
-		
-# 		email = data['email']
-# 		password = data['password']
-# 				# Autenticar al usuario
-# 		user = authenticate(request, email=email, password=password)
-	
-# 		if user:
-# 			token, created = Token.objects.get_or_create(user=user)
-# 			login(request, user)
-# 			return Response({'token': token.key, "user": request.data})
-		
-# 		else:
-# 			return Response({'error': 'Invalid credentials'}, status=401)
-# # Cerrar Sesión
-# class UserLogout(APIView):
-# 	permission_classes = (permissions.AllowAny,)
-# 	authentication_classes = ()
-# 	def post(self, request):
-# 		logout(request)
-# 		return Response(status=status.HTTP_200_OK)
-
-# # Devuelve la info del usuario.
-# class UserView(APIView):          
-# 	permission_classes = (permissions.IsAuthenticated,)
-# 	authentication_classes = [TokenAuthentication]
-
-# ##
-# 	def get(self, request):
-# 		serializer = UserSerializer(request.user)
-# 		return Response({'user': serializer.data}, status=status.HTTP_200_OK)
-
-# # Devuelve todos los profesionales.
-# class ProfessionalView(APIView):       
-# 	permission_classes = (permissions.IsAuthenticated,)
-# 	authentication_classes = [TokenAuthentication]
 
 
-# 	def get(self, request):
-# 		profesionales = Professional.objects.all()
-# 		serializer = ProfessionalSerializer(profesionales, many=True)
-# 		return Response(serializer.data)
-	
+class UserUpdateAPIView(APIView):
+	permission_classes = (AllowAny,)
+
+	def get(self, request):
+		# Obtener el usuario actual
+		user = request.user
+		# Serializar el usuario
+		serializer = UserSerializer(user)
+		# Devolver la respuesta con los datos del usuario
+		return Response(serializer.data)
+
+	def put(self, request):
+		# Obtener el usuario actual
+		user = request.user
+		# Serializar el usuario con los datos proporcionados en la solicitud
+		serializer = UserSerializer(user, data=request.data)
+		# Validar y guardar los datos actualizados del usuario
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data)
+		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+	def patch(self, request):
+		# Obtener el usuario actual
+		user = request.user
+		# Serializar el usuario con los datos proporcionados en la solicitud
+		serializer = UserSerializer(user, data=request.data, partial=True)
+		# Validar y guardar los datos actualizados del usuario
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data)
+		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+	def delete(self, request):
+		# Obtener el usuario actual
+		user = request.user
+		# Eliminar el usuario
+		user.delete()
+		return Response(status=status.HTTP_204_NO_CONTENT)
+
+# Devuelve todos los profesionales.
+class ProfessionalView(APIView):       
+	permission_classes = (IsAuthenticated,)
+	def get(self, request):
+		# Obtén el profesional actualmente autenticado
+		professional = request.user.professional
+
+		# Serializa los datos del profesional
+		serializer = ProfessionalSerializer(professional)
+			
+		# Devuelve los datos serializados como respuesta
+		return Response(serializer.data)
+
+	def put(self, request):
+		# Obtén el profesional actualmente autenticado
+		professional = request.user.professional
+
+		# Serializa los datos del profesional con los datos proporcionados en la solicitud
+		serializer = ProfessionalSerializer(professional, data=request.data)
+
+		# Valida y guarda los datos si son válidos
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data)
+		else:
+			return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -3,6 +3,8 @@ import CheckOut from './CheckOut';
 import trainer from '../images/trainer.jpg';
 import '../stylesheets/PerfilProf.css';
 
+
+// https://render-api-a6du.onrender.com/appointments/id/
 const objetoPrueba = [
     {
         id: "2",

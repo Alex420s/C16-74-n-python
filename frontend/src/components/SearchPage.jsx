@@ -3,6 +3,7 @@ import '../stylesheets/Search.css'
 import { Link } from 'react-router-dom'
 // import { IoCloseCircleOutline } from "react-icons/io5";
 
+// https://render-api-a6du.onrender.com/user/filter
 const objetoPrueba = [
   {
     nombre: "John",

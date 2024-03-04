@@ -8,6 +8,7 @@ const SidebarProf = () => {
 
     const navigate = useNavigate();
     
+    // /user/token/
     const logout = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('firstName');

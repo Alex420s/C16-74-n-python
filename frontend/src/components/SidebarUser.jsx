@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 const SidebarUser = () => {
 
   const navigate = useNavigate();
-    
     const logout = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('firstName');

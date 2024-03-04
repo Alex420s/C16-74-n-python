@@ -6,13 +6,12 @@ import { Link } from 'react-router-dom'
 const UserForm = () => {
   const [formData, setFormData] = useState({
     first_name: "",
-    nick_name: "",
+    username: "",
     last_name: "",
     phone_number: "",
     address: "",
     email: "",
     password: "",
-    role: "user"
   });
 
   const [passwordsMatch, setPasswordsMatch] = useState(true);
@@ -47,7 +46,7 @@ const UserForm = () => {
       <form onSubmit={handleSubmit}>
         <div className="info">
           <div className="unico">
-            <input className='inputFormU' type="text" name="nick_name" placeholder="Usuario" required onChange={handleChange} />
+            <input className='inputFormU' type="text" name="username" placeholder="Usuario" required onChange={handleChange} />
           </div>
           <div className="fila">
             <input className="input-box inputFormU" type="text" placeholder="Nombre" required name="first_name" onChange={handleChange} />
