@@ -78,8 +78,8 @@ const ProfessionalForm = () => {
 
   return (
     <div>
-      <h2 className='h2FormP'>Registrate como<br />
-        <span>profesional</span></h2>
+      <p className='h2FormP'>Registrate como<br />
+        <span>profesional</span></p>
       <form onSubmit={handleSubmit}>
         <div className="info-1">
           <p className='h3FormP'>Información personal</p>

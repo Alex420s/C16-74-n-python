@@ -1,0 +1,73 @@
+.texto_reser {
+  color: #fb1720;
+  margin: 20px auto 20px 60px;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: left;
+}
+  
+.lista_reser {
+  width: 100%;
+  box-shadow: 0px 0px 10px #f1d2d2;
+  border-radius: 10px;
+  margin: 30px auto 0;
+  padding-bottom: 6px;
+}
+    
+.encabezado2 {
+  display: flex;
+  width: 100%;
+  background-color: #e7e7e7;
+  border-radius: 10px;
+  padding: 20px;
+  gap: 80px;
+  text-align: center;
+  font-weight: 500;
+}
+  
+.columna-r {
+  flex: 1; 
+  font-size: 20px; 
+  width: 120px;
+  margin: auto 0;
+}
+   
+.titulos-encab2 {
+  background-color: rgb(231, 229, 229);
+  color: black;
+  font-size: 20px;
+}
+    
+.fila-reser {
+  background-color: white;
+  display: flex;
+  width: 99%;
+  border: 1px solid #e7e7e7;
+  border-radius: 10px;
+  padding: 10px;
+  gap: 80px;
+  text-align: center;
+  margin: 4px 6px 4px 6px;
+}
+  
+#state {
+  width: 130px;
+  height: 40px;
+  border-style: none;
+  background-color: red;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 10px;
+  align-self: center; 
+  border-radius: 10px;
+}
+
+#state option {
+    color: black;
+    background-color: white;
+}
+  
+.todo2{
+  margin: 40px 0 40px 80px;
+}

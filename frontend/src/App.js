@@ -32,6 +32,7 @@ function App() {
           <Route path='/check-out' element={<CheckOut />}/>
           <Route path="/editProf" element={<ProfesionalEdit />} />
           <Route path="/reservasProf/:claseId" element={<ReservasProf />} />
+          
         </Routes>
       </div>
     </Router>

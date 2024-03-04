@@ -29,9 +29,9 @@ const objetoPrueba = [
 ]
 
 const SearchPage = ({ onClose }) => {
-  const handleClose = () => {
-    onClose();
-  }
+  //const handleClose = () => {
+  //  onClose();
+  //}
     
   return (
     <div className="bodySearch">

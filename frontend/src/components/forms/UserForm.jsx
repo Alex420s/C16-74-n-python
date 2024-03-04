@@ -41,8 +41,8 @@ const UserForm = () => {
 
   return (
     <div>
-      <h2 className='h2FormU'>Registrate como<br />
-        <span>usuario</span></h2>
+      <p className='h2FormU'>Registrate como<br />
+        <span>usuario</span></p>
       <form onSubmit={handleSubmit}>
         <div className="info">
           <div className="unico">
@@ -66,7 +66,7 @@ const UserForm = () => {
             <input className='inputFormU' type="text" name="address" placeholder="Direccion" required onChange={handleChange} />
           </div>
           <div className="contenedor-enviar">
-            <input className={!passwordsMatch ? 'disabled hover' : 'enviar hover'} type="submit" name="registro" value="Registrarte" />
+            <input className={!passwordsMatch ? 'disabled hover' : 'enviar hover'} type="submit" name="registro" value="Registrate" />
           </div>
           <div className="caja">
             <input type="checkbox" name="condiciones" value="condiciones" onChange={handleChange}/> <label>Acepto <Link to="../Terminos y Condiciones.pdf" target="_blank">los términos y las condiciones</Link></label>

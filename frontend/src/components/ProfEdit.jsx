@@ -76,7 +76,7 @@ const ProfEdit = () => {
       <div className="cuerpoEdit">
         <div>
           <div className="info-1">
-            <h3>Información personal</h3>
+            <p className='tituloInfo'>Información personal</p>
             <div>
               <div className="imagen-subir">
                 <img className="fotoSubir" src={formData.image || require('../images/image.jpg')} alt="Imagen de perfil" />
@@ -104,7 +104,7 @@ const ProfEdit = () => {
         </div>
         <div>
           <div className="info-2">
-            <h3>Informacion profesional</h3>
+            <p className='tituloInfo'>Informacion profesional</p>
             <div>
               <select name="speciality" id="discipline" value={formData.speciality} onChange={handleChange}>
                 <option value="Boxeo">Boxeo</option>
@@ -118,7 +118,7 @@ const ProfEdit = () => {
             </div>
           </div>
           <div className="info-3">
-            <h3>Información clases</h3>
+            <p className='tituloInfo'>Información clases</p>
             <div className="fila">
               <input className="editP" type="text" name="city" id="Barrio" required placeholder="Barrio" value={formData.city} onChange={handleChange} />
               <input className="editP" type="text" name="province" id="Provincia" required placeholder="Provincia/Estado" value={formData.province} onChange={handleChange} />
@@ -129,7 +129,7 @@ const ProfEdit = () => {
       <div className="contenedor-guardar">
         <input className="guardar hover" type="submit" name="guardar" value="Guardar" />
       </div>
-      <h2>Agendá nuevos turnos</h2>
+      <p className='h2NvosTurnos'>Agendá nuevos turnos</p>
       {additionalRows.map((row, index) => (
           <div className='turnoAgendar' key={index}>
             <input className="editP" readOnly={true} value={row.day}/>
@@ -163,44 +163,3 @@ const ProfEdit = () => {
 }
 
 export default ProfEdit
-
-
-// {formData.additionalRows.length > 0 && (
-//   <div className="mas hover" style={{ position: "absolute", right: "0", bottom: "0" }}>
-//     <span onClick={addRow}>
-//       <FaPlus />
-//     </span>
-//     <br />
-//   </div>
-// )}
-// {formData.additionalRows.map((row, index) => (
-//   <><div key={index} className="turnoAgendar" style={{ order: `${index + 2}` }}>
-//     <select
-//       name={`day-${index}`} // Add an index to the name for unique IDs
-//       id={`dia-${index}`}
-//       value={row.day}
-//       onChange={(e) => {
-//         // Update the specific row using its index
-//         const updatedRows = [...formData.additionalRows];
-//         updatedRows[index].day = e.target.value;
-//         setFormData({ ...formData, additionalRows: updatedRows });
-//       }}
-//     >
-//       <option value="lunes">Lunes</option>
-//       <option value="martes">Martes</option>
-//       <option value="miercoles">Miércoles</option>
-//       <option value="jueves">Jueves</option>
-//       <option value="viernes">Viernes</option>
-//       <option value="sabado">Sábado</option>
-//     </select>
-//     <input className="editP" type="date" name="date" required value={formData.date} onChange={handleChange} />
-//     <input className="editP" type="time" name="time" required value={formData.time} onChange={handleChange} />
-//     <input className="editP" type="number" min="0" name="price" required placeholder="Precio" value={formData.price} onChange={handleChange} />
-//     <input className="editP" type="number" min="0" name="capacity" required placeholder='Cupo' value={formData.capacity} onChange={handleChange} />
-//     <div className="mas hover">
-//       <span onClick={addRow}> <FaPlus /></span>
-//     </div>
-//   </div><div className="mas hover">
-//       <span onClick={addRow}> <FaPlus /></span>
-//     </div></>
-// ))}

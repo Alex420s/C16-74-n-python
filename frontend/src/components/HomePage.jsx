@@ -13,7 +13,7 @@ import ImgProf from '../images/img-index-prof.jpg'
 
 const HomePage = () => {
   return (
-    <div>
+    <div className='bodyHome'>
       <div className="promos">
         <ul>
           <li>

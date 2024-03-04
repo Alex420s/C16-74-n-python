@@ -50,6 +50,7 @@ const objetoPrueba = [
     }
 ]
 
+
 localStorage.setItem('name', "Gabriela Sastre");
 localStorage.setItem('speciality', "Nutricionista");
 localStorage.setItem('neighborhood', "San Isidro");

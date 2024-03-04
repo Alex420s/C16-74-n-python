@@ -3,7 +3,7 @@ import '../stylesheets/Sidebar.css'
 import images from '../images/image.png'
 import { MdOutlineEditCalendar } from "react-icons/md";
 import { TbLogout } from "react-icons/tb";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SidebarUser = () => {
 
@@ -18,11 +18,11 @@ const SidebarUser = () => {
     <div className="sidebar">
       <ul>
         <li>
-          <span className="sidebarIcons"> <img src={images} alt="Logo" /> </span>
+          <span className="sidebarIcons"><Link style={{textDecoration: 'none', color: 'black'}} to={'/usuario'}> <img src={images} alt="Logo" /> </Link> </span>
           <p>Inicio</p>
         </li>
         <li>
-          <span className="sidebarIcons"> <MdOutlineEditCalendar /> </span>
+          <span className="sidebarIcons"><Link style={{textDecoration: 'none', color: 'black'}} to={'/search'}> <MdOutlineEditCalendar /> </Link> </span>
           <p>Nuevos Turnos</p>
         </li>
         <li>

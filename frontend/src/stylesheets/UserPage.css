@@ -1,0 +1,116 @@
+.novedades {
+    margin-left: 5%;
+    width: 90%;
+    background-color: white;
+    padding: 25px;
+}
+
+.tituloNov {
+    text-align: left;
+    color: #fb1720;
+    margin: 20px 0 20px 0;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.profesional{
+    width: 100%;
+    align-items: center;
+    font-size: 24px;
+    font-weight:600;
+    margin: 5px 0 5px 0;
+}
+
+.disciplina{
+    font-size: 24px;
+    margin: 5px 0 5px 0;
+    border: none;
+    padding: 0;
+    color: black;
+}
+
+.novedadBox {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    padding: 10px 10px 10px 20px;
+    border-style: hidden;
+    border-radius: 8px;
+    box-shadow: 2px 2px 4px 4px #f6eded;
+    margin-top: 20px;
+}
+
+.boxProf {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 80px;
+}
+
+.boxFecha {
+    width: 50%;
+    background-color: #ff464d;
+    color: white;
+    border-radius: 10px; 
+    padding: 15px 10px 15px auto;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    justify-items: end;
+}
+
+.fechaHora {
+    font-size: 20px;
+    line-height: 25px;
+    font-weight:500;
+    margin-left: 8px;
+}
+
+@media only screen and (max-width: 1067px) {
+    .novedades {
+        margin-left: 5%;
+        width: 90%;
+        padding: 25px;
+    }
+    
+    .tituloNov {
+        margin: 20px 0;
+        font-size: 40px;
+        font-weight: bold;
+        text-align: left;
+    }
+    
+    .novedadBox {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 2px 2px 4px 4px #f6eded;
+        margin-top: 20px;
+    }
+    
+    .boxProf,
+    .boxFecha {
+        width: 70%;
+    }
+    
+    .boxProf {
+        margin-bottom: 20px;
+    }
+    
+    .boxFecha {
+        border-radius: 10px;
+        padding: 15px;
+    }
+    
+    .fechaHora {
+        font-size: 20px;
+        line-height: 25px;
+        font-weight: 500;
+        margin-left: 8px;
+    }
+    
+}

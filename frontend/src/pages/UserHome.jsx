@@ -3,7 +3,7 @@ import Header from '../components/footer-header/Header.jsx'
 import Footer from '../components/footer-header/Footer.jsx'
 import Saludo from '../components/Saludo.jsx'
 import SidebarUser from '../components/SidebarUser.jsx'
-import Novedades from '../components/Novedades.jsx'
+import UserPage from '../components/UserPage.jsx'
 import '../stylesheets/UserHome.css'
 
 const UserHome = () => {
@@ -14,7 +14,7 @@ const UserHome = () => {
           <div className="main">
             <div className='side-novedades'>
               <SidebarUser />
-              <Novedades />
+              <UserPage />
             </div>
           </div>
       <Footer />
