@@ -33,12 +33,12 @@ const UserPage = () => {
       {objetoPrueba.sort((a, b) => new Date(a.date) - new Date(b.date)).map((persona, index) => (
         <div className="novedadBox">
           <div className="boxProf">
-            <h2>{persona.speciality}</h2>
-            <h3>Prof.: {persona.professional}</h3>
+            <p className='profesional'>{persona.professional}</p>
+            <p className='disciplina'>{persona.speciality}</p>
           </div>  
           <div className="boxFecha">
-            <p><span className="bold">Fecha:&nbsp; </span> {persona.day} {persona.date}</p>
-            <p><span className="bold">Horario:&nbsp;</span> {persona.time} hs</p>
+            <p className="fechaHora"><span>Fecha:&nbsp;</span> {persona.day} {persona.date}</p>
+            <p className="fechaHora"><span>Horario:&nbsp;</span> {persona.time} hs</p>
           </div>
         </div> 
       ))}
