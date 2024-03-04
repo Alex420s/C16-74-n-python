@@ -14,7 +14,7 @@ import ImgProf from '../images/img-index-prof.jpg'
 const HomePage = () => {
   return (
     <div className='bodyHome'>
-      <div className="promos">
+       <div className="promos">
         <ul>
           <li>
             <img src={ Promo1 } alt="Promo 1" />
@@ -45,7 +45,7 @@ const HomePage = () => {
       </div>
       <div className='infoUserProf'>
         <div className="user">
-          <p className='titUserProf'>USUARIOS</p>
+          <p className='titUserProf'>USUARIO</p>
           <div className='detalleUserProf'>
             <div className='infoBtn'>
               <div className="texto textoUserProf">
@@ -60,7 +60,7 @@ const HomePage = () => {
           </div>
         </div>
         <div className="prof">
-          <p className='titUserProf'>PROFESIONALES</p>
+          <p className='titUserProf'>PROFESIONAL</p>
           <div className='detalleUserProf'>
             <div className="imgUserProf"><img src={ImgProf} alt="" className="imgUserProf"/></div>
             <div className='infoBtn'>
