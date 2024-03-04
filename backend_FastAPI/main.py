@@ -1,11 +1,33 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from typing import List
-from typing import Optional
+from typing import List, Optional
 from datetime import datetime, time
-from enum import Enum
+from fastapi.middleware.cors import CORSMiddleware
+import secrets
+# from enum import Enum
 
 app = FastAPI()
+
+origins = [
+    "http://localhost",
+    "http://localhost:3000",
+]
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allow_headers=["*"],
+)
+
+
+def generate_dummy_token(user_id: int) -> str:
+    # Generate a dummy token using Python's secrets module
+    token = secrets.token_urlsafe(32)  # Generates a URL-safe random token with 32 bytes
+    return token
+
 
 # Definir los modelos de datos
 class UserBase(BaseModel):
@@ -17,17 +39,28 @@ class UserBase(BaseModel):
     address: str
     role: str
 
+
 class UserCreate(UserBase):
     password: str
 
+
 class UserUpdate(UserBase):
     password: str = None
+
 
 class User(UserBase):
     id: int
     registration_date: str
     is_active: bool
     is_staff: bool
+
+
+class UserResponse(BaseModel):
+    id: int
+    token: str
+    first_name: str
+    role: str
+
 
 class ProfessionalCreate(UserCreate):
     speciality: str = "Contador"
@@ -36,6 +69,7 @@ class ProfessionalCreate(UserCreate):
     neighborhood: str = ""
     province: str = "Buenos Aires"
     image: str = "default.jpg"
+
 
 class Professional(User):
     professional_id: int
@@ -46,10 +80,12 @@ class Professional(User):
     province: str
     image: str
 
+
 # Base de datos simulada
 database = []
 availabilities_db = []
 turns_db = []
+
 
 # Define los modelos de datos para los turnos y la disponibilidad
 class AvailabilityBase(BaseModel):
@@ -59,14 +95,17 @@ class AvailabilityBase(BaseModel):
     end_time: time
     status: bool
 
+
 class AvailabilityCreate(AvailabilityBase):
     pass
+
 
 class Availability(AvailabilityBase):
     availability_id: int
 
     class Config:
         orm_mode = True
+
 
 class TurnBase(BaseModel):
     professional_id: int
@@ -78,15 +117,16 @@ class TurnBase(BaseModel):
     turn_status: str
     message_to_professional: Optional[str]
 
+
 class TurnCreate(TurnBase):
     pass
+
 
 class Turn(TurnBase):
     turn_id: int
 
     class Config:
         orm_mode = True
-
 
 
 # Operaciones CRUD para disponibilidades
@@ -96,11 +136,13 @@ def create_availability(availability: AvailabilityCreate):
     availabilities_db.append(availability_dict)
     return availability_dict
 
+
 def get_availability(availability_id: int):
     for availability in availabilities_db:
         if availability["availability_id"] == availability_id:
             return availability
     return None
+
 
 # Operaciones CRUD para turnos
 def create_turn(turn: TurnCreate):
@@ -109,16 +151,19 @@ def create_turn(turn: TurnCreate):
     turns_db.append(turn_dict)
     return turn_dict
 
+
 def get_turn(turn_id: int):
     for turn in turns_db:
         if turn["turn_id"] == turn_id:
             return turn
     return None
 
+
 # Rutas para las operaciones CRUD de disponibilidades
 @app.post("/availabilities/", response_model=Availability)
 def create_availability(availability: AvailabilityCreate):
     return create_availability(availability)
+
 
 @app.get("/availabilities/{availability_id}", response_model=Availability)
 def read_availability(availability_id: int):
@@ -127,10 +172,12 @@ def read_availability(availability_id: int):
         raise HTTPException(status_code=404, detail="Disponibilidad no encontrada")
     return availability
 
+
 # Rutas para las operaciones CRUD de turnos
 @app.post("/turns/", response_model=Turn)
 def create_turn(turn: TurnCreate):
     return create_turn(turn)
+
 
 @app.get("/turns/{turn_id}", response_model=Turn)
 def read_turn(turn_id: int):
@@ -139,18 +186,21 @@ def read_turn(turn_id: int):
         raise HTTPException(status_code=404, detail="Turno no encontrado")
     return turn
 
+
 # Operaciones CRUD
-@app.post("/users/", response_model=User)
+@app.post("/users/", response_model=UserResponse)
 def create_user(user: UserCreate):
-    # Aquí agregarías la lógica para crear un usuario en la base de datos
-    # Por ahora, solo simulamos agregando el usuario a la lista de la base de datos
+    # Here, you would add the logic to create a user in the database
+    # For now, let's simulate adding the user to the database and generating some dummy data
     user_dict = user.dict()
     user_dict["id"] = len(database) + 1
-    user_dict["registration_date"] = "2024-03-02"  # Obtén la fecha actual
+    user_dict["registration_date"] = "2024-03-02"  # Get the current date
     user_dict["is_active"] = True
     user_dict["is_staff"] = False
-    database.append(user_dict)
-    return user_dict
+    # For demonstration purposes, generate a dummy token and add it to the response
+    user_dict["token"] = generate_dummy_token(user_dict["id"])
+    # Return the user data with additional fields
+    return UserResponse(**user_dict)
 
 @app.put("/users/{user_id}", response_model=User)
 def update_user(user_id: int, user: UserUpdate):
@@ -166,10 +216,12 @@ def update_user(user_id: int, user: UserUpdate):
             user_dict[key] = value
     return user_dict
 
+
 # Ruta para obtener todos los usuarios (solo para propósitos de demostración)
 @app.get("/users/", response_model=List[User])
 def get_users():
     return database
+
 
 # Ejecutar la aplicación
 if __name__ == "__main__":
