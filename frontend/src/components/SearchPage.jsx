@@ -40,13 +40,8 @@ const SearchPage = ({ onClose }) => {
       <div className="searchbar2">
 
         <div className='inputBuscador2'>
-          <div>  
             <input className='inputsBuscar2' type="text" name="barrio" placeholder="Barrio" />
-          </div>
-          <div>
             <input className='inputsBuscar2' type="text" name="provincia" placeholder="Provincia/Estado" />
-          </div>
-          <div>
             <select className='disciplina' name="disciplina">
               <option value="">Todas las disciplinas</option>
               <option value="Boxeo">Boxeo</option>
@@ -55,7 +50,6 @@ const SearchPage = ({ onClose }) => {
               <option value="Gap">Gap</option>
               <option value="Pilates">Pilates</option>
             </select>
-          </div>
           <div>
             <Link style={{textDecoration: 'none'}} to={'/search'}><input className='buscar2 hover' type="submit" name="buscar" value="Buscar" /></Link>
           </div>

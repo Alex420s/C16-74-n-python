@@ -26,7 +26,7 @@ function App() {
           <Route path="/nuevo-profesional" element={<Professional />} />
           <Route path="/usuario" element={<UserHome />} />
           <Route path="/profesional" element={<ProfessionalHome />} />
-          <Route path='/agregar-turno' element={<AgregarTurno />} />
+          {/*<Route path='/agregar-turno' element={<AgregarTurno />} />*/}
           <Route path="/search" element={<Search />} />
           <Route path="/perfilProf" element={<PerfilProf />} />
           <Route path='/check-out' element={<CheckOut />}/>
