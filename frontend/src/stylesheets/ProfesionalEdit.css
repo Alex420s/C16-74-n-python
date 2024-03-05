@@ -20,6 +20,17 @@
     width: 300px;
     height: 260px;
     margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.imagen-subir-input {
+    position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Ajusta el ancho al 100% del contenedor */
+  height: 100%; /* Ajusta la altura al 100% del contenedor */
+  opacity: 0
 }
 
 .tituloInfo{

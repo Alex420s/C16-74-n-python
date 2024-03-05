@@ -80,16 +80,12 @@ const ProfEdit = () => {
             <div>
               <div className="imagen-subir">
                 <img className="fotoSubir" src={formData.image || require('../images/image.jpg')} alt="Imagen de perfil" />
-                <label htmlFor="file-upload" style={{ position: 'absolute', top: '20px', left: 0, width: '100%', height: '100%' }}>
-                  <MdAddAPhoto className="camera-icon" />
-                </label>
                 <input
                   id="file-upload"
                   type="file"
                   className="imagen-subir-input"
                   onChange={handleImageUpload}
                   accept="image/*"
-                  style={{ opacity: 0 }}
                 />
               </div>
               <div className="fila">
