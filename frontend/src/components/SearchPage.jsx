@@ -59,20 +59,18 @@ const SearchPage = ({ onClose }) => {
         <p className="texto_rojo">Resultados búsqueda</p>
         <div className="lista_prof">
           <div className="encabezado">
-            <div className="columna titulos-encab">Nombre</div>
-            <div className="columna titulos-encab">Apellido</div>
+            <div className="columna titulos-encab">Nombre y apellido</div>
             <div className="columna titulos-encab">Disciplina</div>
             <div className="columna titulos-encab">Barrio</div>
-            <div className="columna titulos-encab">Provincia/Estado</div>
+            <div className="columna titulos-encab prov">Provincia/Estado</div>
             <div className="columna titulos-encab">Reservar</div>
           </div>
           {objetoPrueba.map((persona, index) => (
             <div key={index} id={`persona-${index}`} className="fila-prof">
-              <div className="columna">{persona.nombre}</div>
-              <div className="columna">{persona.apellido}</div>
-              <div className="columna">{persona.disciplina}</div>
-              <div className="columna">{persona.barrio}</div>
-              <div className="columna">{persona.provincia}</div>
+              <div className="columna nom">{persona.nombre} {persona.apellido}</div>
+              <div className="columna disc">{persona.disciplina}</div>
+              <div className="columna barrio">{persona.barrio}</div>
+              <div className="columna prov">{persona.provincia}</div>
               <div className="columna">
                 <Link style={{textDecoration: 'none'}} to={'/perfilProf'}><button className="hover ver">Ver</button></Link>
               </div>

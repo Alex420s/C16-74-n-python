@@ -63,16 +63,17 @@
 }
 
 .lista_prof {
-  width: 100%;
+  /*width: 100%;*/
   box-shadow: 0px 0px 10px #f1d2d2;
   border-radius: 10px;
-  margin: 30px auto 0;
+  margin: 30px 15px 15px;
   padding-bottom: 6px;
 }
   
 .encabezado {
   display: flex;
-  width: 100%;
+  flex-wrap: nowrap;
+ /* width: 100%;*/
   background-color: #e7e7e7;
   border-radius: 10px;
   padding: 20px;
@@ -140,6 +141,10 @@
         margin: 0 5px;
         width: 100%;
     }
+
+    .prov{
+      display: none;
+    }
 }
 
 @media (max-width: 836px) {
@@ -162,6 +167,39 @@
       margin: 20px auto 20px 20px;
       font-size: 32px;
     }
+
+    .encabezado{
+      display: none;
+    }
+
+    .lista_prof {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin: 30px auto 0;
+      padding-bottom: 6px;
+    }
+
+    .fila-prof{
+      width: max-content;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      margin: 6px;
+      padding: 30px;
+      gap: 15px;
+    }
+
+    .nom{
+      font-size: 20px;
+    }
+    .disc{
+      font-size: 18px;
+    }
+    .barrio{
+      font-size: 16px;
+    }
 }
 
 @media (max-width: 408px) {
@@ -181,6 +219,16 @@
   }
 
   .bodySearch{
+    width: 85%;
     padding: 0 0 0 10px;
+  }
+
+  .lista_prof {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px auto 0;
+    padding: 8px;
+    width: max-content;
   }
 }

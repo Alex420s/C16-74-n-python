@@ -34,7 +34,7 @@ const UserPage = () => {
         <div className="novedadBox">
           <div className="boxProf">
             <p className='profesional'>{persona.professional}</p>
-            <p className='disciplina'>{persona.speciality}</p>
+            <p className='disciplinaUser'>{persona.speciality}</p>
           </div>  
           <div className="boxFecha">
             <p className="fechaHora"><span>Fecha:&nbsp;</span> {persona.day} {persona.date}</p>
