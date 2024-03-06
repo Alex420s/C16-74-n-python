@@ -39,5 +39,13 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  </body>
+    <script type="module" src="/src/index.jsx"></script>
+    <script>
+      // Reemplaza todas las instancias de %PUBLIC_URL% en el DOM
+      document.querySelectorAll('[href^="%PUBLIC_URL%"]').forEach(element => {
+        element.setAttribute('href', element.getAttribute('href').replace('%PUBLIC_URL%', ''));
+      });
+    </script>
+
+  </body> 
 </html>
