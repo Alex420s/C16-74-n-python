@@ -2,10 +2,7 @@
     margin-bottom: 50px;
 }
 .cuerpoEdit {
-    width: 100%;
-    margin: 40px 10px 40px 80px;
-    width: 100%;
-    margin: 40px 10px 40px 80px;
+    margin: 40px 10px 5px 80px;
     display: flex;
     gap: 40px;
 }
@@ -26,11 +23,11 @@
 
 .imagen-subir-input {
     position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%; /* Ajusta el ancho al 100% del contenedor */
-  height: 100%; /* Ajusta la altura al 100% del contenedor */
-  opacity: 0
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0
 }
 
 .tituloInfo{
@@ -47,7 +44,7 @@
     font-weight: 600;
 }
 
-.editP {
+.editP, .editP2 {
     padding: 10px;
     font-size: 18px;
     border-radius: 10px;
@@ -146,4 +143,63 @@ select{
     font-size: 20px;
     margin: 2px 0 0 0;
     color: white;
+}
+
+@media (max-width: 1024px) {
+    .cuerpoEdit{
+        width: 80%;
+    }
+
+    .turnoAgendar{
+        flex-direction:row;
+        flex-wrap: wrap;
+        display: flex;
+        justify-content: space-between;
+        gap: 0;
+        margin: 20px 10px 20px 50px;
+    }
+
+    .editP2{
+        width: 30%
+    }
+}
+
+@media (max-width: 945px) {
+    .todo{
+        width: 100%;
+    }
+    .cuerpoEdit{
+        display: block;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        margin: 30px 10px 5px 30px;
+    }
+    .tituloInfo{
+        padding: 0;
+    }
+    .editP{
+        width: 100%;
+    }
+    .h2NvosTurnos{
+        padding: 0;
+        margin: 20px 20px 0 30px;
+        font-size: 32px;
+    }
+    .turnoAgendar{
+        margin: 30px 10px 20px 30px;
+    }
+}
+
+@media (max-width: 409px) {
+    .cuerpoEdit{
+        width:80%;
+    }
+    .imagen-subir{
+        width: 200px;
+        height: 175px;
+    }
+    .editP2{
+        width: 100%;
+    }
 }
