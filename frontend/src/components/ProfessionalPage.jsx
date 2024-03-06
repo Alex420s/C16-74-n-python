@@ -50,6 +50,16 @@ const ProfessionalPage = () => {
             prev: '<<',
             next: '>>',
           }}
+          aspectRatio={1.5}
+          headerToolbar={{
+            start: '',
+            center: '',
+            end: ''
+          }}
+          contentHeight="auto"
+          dayMaxEvents={true}
+          eventContent={true}
+          dayMaxEventRows={true}
         />
       </div>
     </div>
