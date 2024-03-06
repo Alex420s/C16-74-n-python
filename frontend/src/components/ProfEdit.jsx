@@ -15,6 +15,8 @@ const ProfEdit = () => {
     description: '',
     city: '',
     province: '',
+    cbu: '',
+    alias: '',
   });
 
   // Función para manejar cambios en los campos del formulario
@@ -90,8 +92,8 @@ const ProfEdit = () => {
                 <input className="editP" type="email" name="email" id="email" required placeholder="Email" value={formData.email} onChange={handleChange} />
               </div>
               <div className="fila">
-                <input className="editP" type="number" placeholder="CBU" required name="CBU" value={formData.first_name} onChange={handleChange} />
-                <input className="editP" type="text" placeholder="Alias cta" required name="Alias_transferencia" value={formData.last_name} onChange={handleChange} />
+                <input className="editP" type="number" placeholder="CBU" required name="CBU" value={formData.cbu} onChange={handleChange} />
+                <input className="editP" type="text" placeholder="Alias cta" required name="Alias_transferencia" value={formData.alias} onChange={handleChange} />
               </div>
             </div>
           </div>
