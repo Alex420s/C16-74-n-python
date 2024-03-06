@@ -1,16 +1,27 @@
 .bodySearch{
   display: flex;
   flex-direction: column;
+  width: 90%;
   background-color: #FFFFFF;
   margin-top: 10px;
   margin-bottom: 30px;
   padding-left: 50px;
-}
+}*/
 
 .searchbar2 {
   width: 100%;
   display: flex;
   padding: 10px;
+  flex-direction: column;
+}
+
+.inputBuscador2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+  margin: 10px auto 0;
+  justify-content: space-around;
 }
 
 .buscar2 {
@@ -22,31 +33,25 @@
   border-radius: 10px;
   font-size: 20px;
   font-weight: 600;
-}
-
-.inputBuscador2 {
-  display: flex;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  margin: 10px auto 0;
-  justify-content: space-between;
+  margin: 0 5px;
 }
 
 .inputsBuscar2{
   padding: 10px;
   font-size: 20px;
-  width: 100%;
   border-radius: 10px;
   border: 1px solid #7F7F7F;
-  margin: 10px 0;
+  margin: 0 5px;
 }
 
 .disciplina{
+  border: 1px solid #7F7F7F;
+  border-radius: 10px;
   color: #7F7F7F;
+  font-size: 20px;
+  padding: 10px;
+  margin: 0 5px;
   text-align: left;
-  width: 100%;
 }
 
 .texto_rojo {
@@ -58,16 +63,17 @@
 }
 
 .lista_prof {
-  width: 100%;
+  /*width: 100%;*/
   box-shadow: 0px 0px 10px #f1d2d2;
   border-radius: 10px;
-  margin: 30px auto 0;
+  margin: 30px 15px 15px;
   padding-bottom: 6px;
 }
   
 .encabezado {
   display: flex;
-  width: 100%;
+  flex-wrap: nowrap;
+ /* width: 100%;*/
   background-color: #e7e7e7;
   border-radius: 10px;
   padding: 20px;
@@ -116,4 +122,113 @@
 
 .listado{
   margin-top: 40px;
+}
+
+/*/////////////////////////////////////////*/
+
+@media (max-width: 1024px) {
+    .inputBuscador2{
+      width: 100%;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .disciplina, .inputsBuscar2{
+      width: 70%;
+    }
+
+    .searchbar2{
+        margin: 0 5px;
+        width: 100%;
+    }
+
+    .prov{
+      display: none;
+    }
+}
+
+@media (max-width: 836px) {
+    .inputBuscador2{
+        width: 100%;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .disciplina, .inputsBuscar2{
+      width: 70%;
+    }
+
+    .searchbar2 {
+        width: 90%;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .texto_rojo {
+      margin: 20px auto 20px 20px;
+      font-size: 32px;
+    }
+
+    .encabezado{
+      display: none;
+    }
+
+    .lista_prof {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin: 30px auto 0;
+      padding-bottom: 6px;
+    }
+
+    .fila-prof{
+      width: max-content;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      margin: 6px;
+      padding: 30px;
+      gap: 15px;
+    }
+
+    .nom{
+      font-size: 20px;
+    }
+    .disc{
+      font-size: 18px;
+    }
+    .barrio{
+      font-size: 16px;
+    }
+}
+
+@media (max-width: 408px) {
+  .inputBuscador2{
+    width: 100%;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .disciplina, .inputsBuscar2{
+    width: 100%;
+  }
+
+  .searchbar2 {
+    width: 90%;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .bodySearch{
+    width: 85%;
+    padding: 0 0 0 10px;
+  }
+
+  .lista_prof {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px auto 0;
+    padding: 8px;
+    width: max-content;
+  }
 }

@@ -26,3 +26,24 @@
 .sidebar img {
     width: 40px;
 }
+
+@media (max-width: 408px) {
+    .sidebar {
+        width: 15%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .sidebar img {
+        width: 25px;
+    }
+
+    .sidebarIcons {
+        font-size: 25px;
+        cursor: pointer;
+    }
+
+    .sidebar li {
+        margin-bottom: 20px;
+    }
+}
