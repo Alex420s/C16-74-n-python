@@ -1,3 +1,4 @@
+![Readme Logo](https://github.com/No-Country/C16-74-n-python/assets/142808592/0cc2ed40-2ab5-4348-b60b-92b52c1709e6)
 # Plataforma de Turnos GoFit
 
 Este repositorio contiene el código fuente de una plataforma de turnos para profesionales y usuarios finales. Aquí encontrarás tanto el backend desarrollado en Django como el frontend creado con React.
