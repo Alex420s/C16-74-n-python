@@ -129,7 +129,7 @@ select{
 }
 
 .mas {
-    width: 200px;
+    width: auto;
     height: 40px;
     border-radius: 50%;
     background-color: #FB1720;
@@ -137,11 +137,11 @@ select{
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    padding: 10px;
 }
 
 .mas span {
     font-size: 20px;
-    margin: 2px 0 0 0;
     color: white;
 }
 

@@ -70,10 +70,9 @@ const ReservaProf = () => {
     <div className="todo2">
       <p className="texto_reser">Mis Reservas</p>
       <div className="lista_reser">
-        <div className="encabezado2">
+        <div className="encabezar2">
           <div className="columna-r titulos-encab2">Fecha</div>
-          <div className="columna-r titulos-encab2">Nombre</div>
-          <div className="columna-r titulos-encab2">Apellido</div>
+          <div className="columna-r titulos-encab2">Nombre y apellido</div>
           <div className="columna-r titulos-encab2">Hora</div>
           <div className="columna-r titulos-encab2">Precio</div>
           <div className="columna-r titulos-encab2">Estado</div>
@@ -81,8 +80,7 @@ const ReservaProf = () => {
         {objetoPrueba.sort((a, b) => new Date(a.date) - new Date(b.date)).map((persona, index) => (
             <div key={index} id={`persona-${index}`} className="fila-reser">
             <div className="columna-r">{persona.date}</div>
-            <div className="columna-r">{persona.firstName}</div>
-            <div className="columna-r">{persona.lastName}</div>
+            <div className="columna-r">{persona.firstName} {persona.lastName}</div>
             <div className="columna-r">{persona.time}</div>
             <div className="columna-r"><p>$ {persona.price}</p></div>
             <div className="columna-r">
