@@ -15,10 +15,7 @@ const UserForm = () => {
         navigate('/usuario');
       }
     }
-    else {
-      navigate('/ingresar');
-    }
-  }, []); 
+  }, []);
 
   const [formData, setFormData] = useState({
     first_name: "",

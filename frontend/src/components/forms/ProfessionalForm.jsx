@@ -18,9 +18,6 @@ const ProfessionalForm = () => {
         navigate('/usuario');
       }
     }
-    else {
-      navigate('/ingresar');
-    }
   }, []); 
 
   const [formData, setFormData] = useState({
