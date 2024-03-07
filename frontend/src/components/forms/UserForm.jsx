@@ -45,7 +45,7 @@ const UserForm = () => {
         localStorage.setItem('firstName', response.data.first_name);
         localStorage.setItem('id', response.data.id);
         localStorage.setItem('role', response.data.role);
-        localStorage.setItem('address', response.data.role);
+        localStorage.setItem('address', response.data.address);
         navigate('/usuario');
       } else {
         console.log('Passwords do not match');

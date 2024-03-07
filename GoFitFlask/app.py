@@ -8,6 +8,7 @@ import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy import LargeBinary
 import base64
+from datetime import datetime
 # from models import *
 
 
@@ -52,13 +53,13 @@ class Professional(db.Model):
 class Turn(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     category = db.Column(db.String(50), nullable=False)
-    city = db.Column(db.String(100), nullable=False)
+    city = db.Column(db.String(100))
     address = db.Column(db.String(255), nullable=False)
     date = db.Column(db.Date, nullable=False)
     time = db.Column(db.Time, nullable=False)
     cost = db.Column(db.Float, nullable=False)
     capacity = db.Column(db.Integer, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     professional_id = db.Column(db.Integer, db.ForeignKey('professional.id'), nullable=False)
 
 
@@ -207,28 +208,61 @@ def edit_professional(id):
     return jsonify(response_data), 200
 
 
-@app.route('/crear-turno', methods=[''])
-def create_turn():
-    pass
+@app.route('/crear-turno/<int:prof_id>', methods=['POST'])
+def create_turn(prof_id):
+    data = request.json
+    print(data)
+    category = data.get('category')
+    date = datetime.strptime(data.get('date'), '%Y-%m-%d').date()
+    time = datetime.strptime(data.get('time'), '%H:%M').time()
+    address = data.get('address')
+    cost = data.get('cost')
+    capacity = data.get('capacity')
+    professional_id = prof_id
+
+    new_turn = Turn(
+        category=category,
+        address=address,
+        date=date,
+        time=time,
+        cost=cost,
+        capacity=capacity,
+        professional_id=professional_id
+    )
+    db.session.add(new_turn)
+    db.session.commit()
+    return jsonify({'message': 'Turn created successfully'}), 201
 
 
-@app.route('/inscribir-turno', methods=[''])
+@app.route('/inscribir-turno', methods=['POST'])
 def enroll_turn():
     pass
 
 
-@app.route('/buscar-turnos', methods=[''])
+@app.route('/buscar-turnos', methods=['GET'])
 def search_turns():
     pass
 
 
-@app.route('/turnos-profesional/<int:professional_id>', methods=[''])
-def get_professional_turns():
-    pass
+@app.route('/turnos-profesional/<int:prof_id>', methods=['GET'])
+def get_professional_turns(prof_id):
+    turns = Turn.query.filter_by(professional_id=prof_id).all()
+    turns_data = []
+    for turn in turns:
+        turn_data = {
+            'category': turn.category,
+            'date': turn.date.strftime('%Y-%m-%d'),
+            'time': turn.time.strftime('%H:%M'),
+            'address': turn.address,
+            'cost': turn.cost,
+            'capacity': turn.capacity
+        }
+        turns_data.append(turn_data)
+    return jsonify(turns_data)
 
 
-@app.route('/turnos_usuario/<int:user_id>', methods=[''])
-def get_user_turns():
+@app.route('/turnos_usuario/<int:user_id>', methods=['GET'])
+def get_user_turns(user_id):
     pass
 
 

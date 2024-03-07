@@ -82,7 +82,7 @@ const ProfessionalForm = () => {
         console.log('Response:', response.data);
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('firstName', response.data.first_name);
-        localStorage.setItem('id', response.data.professional_id);
+        localStorage.setItem('id', response.data.id);
         localStorage.setItem('role', response.data.role);
         navigate('/profesional');
       } else {

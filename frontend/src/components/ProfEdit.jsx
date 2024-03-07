@@ -1,17 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../stylesheets/ProfesionalEdit.css'
 import image from '../images/image.jpg'
 import { MdAddAPhoto } from "react-icons/md";
 import { FaPlus } from "react-icons/fa";
+import { ImCross } from "react-icons/im";
 import axios from 'axios';
 
 
 const ProfEdit = () => {
-  // Formulario utilizado para editar datos a un usuario existente
-  // https://render-api-a6du.onrender.com/user/professional
+
+  const id = localStorage.getItem('id')
+
   const [formData, setFormData] = useState({
-    // id: localStorage.getItem('id'),
-    id: 1,
+    id: id,
     first_name: '',
     last_name: '',
     email: '',
@@ -29,21 +30,6 @@ const ProfEdit = () => {
     console.log(formData); // Temporal; solo para probar
   };
 
-  // Función para manejar cambios en la imagen
-  // const handleImageUpload = (e) => {
-  //   const file = e.target.files[0];
-  //   const reader = new FileReader();
-
-  //   // Agregar campo de "foto" al objeto `formData`
-  //   reader.onloadend = () => {
-  //     setFormData({...formData, image: reader.result}); // Reemplaza la imagen por defecto con la subida
-  //   };
-
-  //   if (file) {
-  //     reader.readAsDataURL(file);
-  //   }
-  // };
-
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     setFormData({
@@ -60,7 +46,7 @@ const ProfEdit = () => {
     });
     console.log(formDataToSend);
     try {
-      const response = await axios.post('http://127.0.0.1:5000/editar-profesional/' + formData.id, formDataToSend);
+      const response = await axios.post('http://127.0.0.1:5000/editar-profesional/' + id, formDataToSend);
       console.log(response.data);
     } catch (error) {
       console.error(error);
@@ -68,32 +54,39 @@ const ProfEdit = () => {
   };
 
 
-  // Esta variable se debe llenar con los turnos registrados en la base de datos utilizando un useEffect
-  const [additionalRows, setAdditionalRows] = useState([
-    {
-      day: 'martes',
-      date: '05-03-2024',
-      time: '15:00',
-      category: 'Boxeo',
-      price: '5000',
-      capacity: '15',
-    },
-  ]);
+  const [rows, setRows] = useState([]);
+
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`http://127.0.0.1:5000/turnos-profesional/${id}`);
+        setRows(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, [id]);
 
   // Variable para agregar turnos
   const [newRow, setNewRow] = useState({
-    day: '',
+    category: 'Boxeo',
     date: '',
     time: '',
-    category: 'Boxeo',
-    price: '',
+    address: '',
+    cost: '',
     capacity: '',
   });
 
   // Función para agregar turnos
-  const addRow = () => {
-    setAdditionalRows((prevState) => [...prevState, { ...newRow }]);
-    setNewRow({ day: '', date: '', time: '', price: '', capacity: '' }); // Limpia el formulario
+  const addRow = async () => {
+    const response = await axios.post('http://127.0.0.1:5000/crear-turno/' + id, newRow);
+    console.log(response.data);
+    setRows((prevState) => [...prevState, { ...newRow }]);
+    setNewRow({ category: '', date: '', time: '', address: '', cost: '', capacity: '' }); // Limpia el formulario
   };
 
   // Función para manejar cambios en los turnos
@@ -142,27 +135,24 @@ const ProfEdit = () => {
         </div>
       </form>
       <p className='h2NvosTurnos'>Agendá nuevos turnos</p>
-      {additionalRows.map((row, index) => (
+      {rows.map((row, index) => (
         <div className='turnoAgendar' key={index}>
-          <input className="editP2" readOnly={true} value={row.day} />
+          <input className="editP2" readOnly={true} value={row.category} />
           <input className="editP2" readOnly={true} value={row.date} />
           <input className="editP2" readOnly={true} value={row.time} />
-          <input className="editP2" readOnly={true} value={row.price} />
+          <input className="editP2" readOnly={true} value={row.address} />
+          <input className="editP2" readOnly={true} value={row.cost} />
           <input className="editP2" readOnly={true} value={row.capacity} />
+          <span onClick={addRow}> <ImCross /></span>
         </div>
       ))}
       <div className="turnoAgendar">
-        <select name="day" id="dia" value={newRow.day} onChange={handleRowChange} className='editP2'>
-          <option value="lunes">Lunes</option>
-          <option value="martes">Martes</option>
-          <option value="miercoles">Miércoles</option>
-          <option value="jueves">Jueves</option>
-          <option value="viernes">Viernes</option>
-          <option value="sabado">Sábado</option>
-        </select>
+        
+        <input className="editP2" type="text" name="category" required placeholder="Categoría" value={newRow.category} onChange={handleRowChange} />
         <input className="editP2" type="date" name="date" required value={newRow.date} onChange={handleRowChange} />
         <input className="editP2" type="time" name="time" required value={newRow.time} onChange={handleRowChange} />
-        <input className="editP2" type="number" min="0" name="price" required placeholder="Precio" value={newRow.price} onChange={handleRowChange} />
+        <input className="editP2" type="text" name="address" required placeholder="Dirección" value={newRow.address} onChange={handleRowChange} />
+        <input className="editP2" type="number" min="0" name="cost" required placeholder="Precio" value={newRow.cost} onChange={handleRowChange} />
         <input className="editP2" type="number" min="0" name="capacity" required placeholder='Cupo' value={newRow.capacity} onChange={handleRowChange} />
         <div className="mas hover">
           <span onClick={addRow}> <FaPlus /></span>
