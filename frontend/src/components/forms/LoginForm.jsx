@@ -4,11 +4,8 @@ import { useNavigate, Link } from 'react-router-dom';
 import '../../stylesheets/forms/Login.css'
 
 const LoginForm = () => {
-
-  // TODO: Agregar error handling
-
   const [formData, setFormData] = useState({
-    email: '',
+    username: '',
     password: ''
   });
   const [error, setError] = useState('');
@@ -39,15 +36,17 @@ const LoginForm = () => {
     if (!emptyPasswordFieldError || !emptyemailFieldError) {
       console.log("click")
       try {
-        const response = await axios.post('https://render-api-a6du.onrender.com/user/token', {
-          email: formData.email,
+        const response = await axios.post('http://127.0.0.1:5000/login', {
+          username: formData.username,
           password: formData.password
         });
         console.log('Logged in user:', response.data);
-        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('token', response.data.access_token);
         localStorage.setItem('firstName', response.data.first_name);
+        localStorage.setItem('role', response.data.role);
         localStorage.setItem('id', response.data.id);
-        if (response.data.category === 'instructor') {
+        console.log(response.data.role)
+        if (response.data.role === 'professional') {
           navigate('/profesional');
         } else {
           navigate('/usuario');
@@ -63,7 +62,7 @@ const LoginForm = () => {
       <form onSubmit={handleSubmit}>
         <p className='h2Login'>Ingresá</p>
         <div>
-          <input className='inputLogin' type="text" name="email" id="user_p" placeholder="Ingrese su usuario" onChange={handleChange} />
+          <input className='inputLogin' type="text" name="username" id="user_p" placeholder="Ingrese su usuario" onChange={handleChange} />
         </div>
         {emptyemailFieldError && <p style={{ color: 'red' }}>Este campono puede estar vacío</p>}
         <div>  

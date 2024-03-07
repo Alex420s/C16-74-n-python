@@ -1,25 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../stylesheets/forms/ProfessionalForm.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import terms from '../../terminosycondiciones.pdf'
 
+
 const ProfessionalForm = () => {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      if (localStorage.getItem('role') === 'professional') {
+        navigate('/profesional');
+      }
+      else if (localStorage.getItem('role') === 'user') {
+        navigate('/usuario');
+      }
+    }
+    else {
+      navigate('/ingresar');
+    }
+  }, []); 
+
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
     username: '',
     email: '',
     password: '',
-    category: '',
     description: '',
-    city: '',
-    province: '',
-    available_times: {}
+    phone_number: '',
   });
 
   const [passwordsMatch, setPasswordsMatch] = useState(true);
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -67,8 +81,13 @@ const ProfessionalForm = () => {
     e.preventDefault();
     try {
       if (passwordsMatch) {
-        const response = await axios.post('https://render-api-a6du.onrender.com/user/register-professional', formData);
+        const response = await axios.post('http://127.0.0.1:5000/registro-profesional', formData);
         console.log('Response:', response.data);
+        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('firstName', response.data.first_name);
+        localStorage.setItem('id', response.data.professional_id);
+        localStorage.setItem('role', response.data.role);
+        navigate('/profesional');
       } else {
         console.log('Passwords do not match');
       }
@@ -105,22 +124,14 @@ const ProfessionalForm = () => {
         <div className="info-2">
           <p className='h3FormP'>Información profesional</p>
           <div>
-            <select className="inputFormP" name="category" id="discipline" value={formData.speciality} onChange={handleChange}>
-              <option value="Boxeo">Boxeo</option>
-              <option value="Zumba">Zumba</option>
-              <option value="Crossfit">Crossfit</option>
-              <option value="Gap">Gap</option>
-              <option value="Pilates">Pilates</option>
-              <option value="Yoga">Yoga</option>
-            </select>
             <textarea name="description" id="descripcion" placeholder="Descripción" value={formData.description} onChange={handleChange}></textarea>
           </div>
         </div>
         <div className="info-3">
           <p className='h3FormP'>Información clases</p>
           <div className="fila">
-            <input className="inputFormP" type="text" name="city" id="Barrio" required placeholder="Barrio" value={formData.barrio} onChange={handleChange} />
-            <input className="inputFormP" type="text" name="province" id="Provincia" required placeholder="Provincia/Estado" value={formData.province} onChange={handleChange} />
+            {/* <input className="inputFormP" type="text" name="address" id="Barrio" required placeholder="Dirección" value={formData.barrio} onChange={handleChange} /> */}
+            <input className="inputFormP" type="text" name="phone_number" id="Provincia" required placeholder="Teléfono" value={formData.province} onChange={handleChange} />
           </div>
           {/* <div id="contenedor">
             <div className="general">

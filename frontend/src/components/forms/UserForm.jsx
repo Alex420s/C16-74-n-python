@@ -1,10 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import '../../stylesheets/forms/UserForm.css'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import terms from '../../terminosycondiciones.pdf'
 
 const UserForm = () => {
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      if (localStorage.getItem('role') === 'professional') {
+        navigate('/profesional');
+      }
+      else if (localStorage.getItem('role') === 'user') {
+        navigate('/usuario');
+      }
+    }
+    else {
+      navigate('/ingresar');
+    }
+  }, []); 
+
   const [formData, setFormData] = useState({
     first_name: "",
     username: "",
@@ -16,22 +31,25 @@ const UserForm = () => {
   });
 
   const [passwordsMatch, setPasswordsMatch] = useState(true);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
     console.log(formData);
-    if (name === 'passwordMatch') {
-      setPasswordsMatch(formData.password === value);
-    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       if (passwordsMatch) {
-        const response = await axios.post('https://render-api-a6du.onrender.com/user/register', formData);
-        console.log('Response:', response.data);
+        const response = await axios.post('http://127.0.0.1:5000/registro-usuario', formData);
+        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('firstName', response.data.first_name);
+        localStorage.setItem('id', response.data.id);
+        localStorage.setItem('role', response.data.role);
+        localStorage.setItem('address', response.data.role);
+        navigate('/usuario');
       } else {
         console.log('Passwords do not match');
       }
@@ -39,6 +57,13 @@ const UserForm = () => {
       console.error('Error:', error.response.data);
     }
   };
+
+  const passwordCheck = (e) => {
+    const { name, value } = e.target;
+    if (name === 'passwordMatch') {
+      setPasswordsMatch(formData.password === value);
+    }
+  }
 
   return (
     <div>
@@ -58,9 +83,9 @@ const UserForm = () => {
             <input className='inputFormU' type="email" name="email" required placeholder="Email" onChange={handleChange} />
           </div>
 
-          <div class="fila">
+          <div className="fila">
             <input className='inputFormU' type="password" name="password" placeholder="Contraseña" required value={formData.password} onChange={handleChange} />
-            <input className='inputFormU' type="password" name="passwordMatch" placeholder="Verifique su contraseña" required value={formData.passwordMatch} onChange={handleChange} />
+            <input className='inputFormU' type="password" name="passwordMatch" placeholder="Verifique su contraseña" required value={formData.passwordMatch} onChange={passwordCheck} />
           </div>
           {!passwordsMatch && <p style={{ color: 'red' }}>Las contraseñas no coinciden</p>}
           <div className="unico">

@@ -4,6 +4,7 @@ import image from '../images/image.jpg'
 import { MdAddAPhoto } from "react-icons/md";
 import { FaPlus } from "react-icons/fa";
 
+
 const ProfEdit = () => {
   // Formulario utilizado para editar datos a un usuario existente
   // https://render-api-a6du.onrender.com/user/professional
@@ -47,6 +48,7 @@ const ProfEdit = () => {
       day: 'martes',
       date: '05-03-2024',
       time: '15:00',
+      category: 'Boxeo',
       price: '5000',
       capacity: '15',
     },
@@ -57,6 +59,7 @@ const ProfEdit = () => {
     day: '',
     date: '',
     time: '',
+    category: 'Boxeo',
     price: '',
     capacity: '',
   });
@@ -81,7 +84,8 @@ const ProfEdit = () => {
             <p className='tituloInfo'>Información personal</p>
             <div>
               <div className="imagen-subir">
-                <img className="fotoSubir" src={formData.image || require('../images/image.jpg')} alt="Imagen de perfil" />
+                <img className="fotoSubir" src={formData.image ? formData.image : image} alt="Imagen de perfil" />
+
                 <input id="file-upload" type="file" className="imagen-subir-input" onChange={handleImageUpload} accept="image/*" />
               </div>
               <div className="fila">

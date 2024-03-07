@@ -10,7 +10,7 @@ const Search = () => {
         <Header />
           <div className="main">
               <div className='side-novedades'>
-                <SidebarUser />
+                {localStorage.getItem('token') ? <SidebarUser /> : null}
                 <SearchPage />
               </div>
             </div>

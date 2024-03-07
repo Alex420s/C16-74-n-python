@@ -10,10 +10,9 @@ const PerfilProf = () => {
   return (
     <div>
       <Header />
-      <Saludo />
           <div className="main">
             <div className='side-novedadesp'>
-              <SidebarUser />
+              {localStorage.getItem('token') ? <SidebarUser /> : null}
               <PerfilP />
             </div>
           </div>
