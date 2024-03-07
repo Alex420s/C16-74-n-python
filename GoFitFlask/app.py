@@ -236,7 +236,26 @@ def create_turn(prof_id):
 
 @app.route('/inscribir-turno', methods=['POST'])
 def enroll_turn():
-    pass
+    data = request.json
+    user_id = data.get('user_id')
+    turn_id = data.get('turn_id')
+
+    if not user_id or not turn_id:
+        return jsonify({'error': 'User ID and turn ID are required'}), 400
+
+    turn = Turn.query.filter_by(id=turn_id).first()
+    if not turn:
+        return jsonify({'error': 'Turn not found'}), 404
+
+    if turn.capacity <= 0:
+        return jsonify({'error': 'No capacity available for this turn'}), 400
+
+    turn.capacity -= 1
+    turn.user_id = user_id
+    db.session.commit()
+
+    return jsonify({'message': 'Successfully enrolled in the turn'}), 200
+
 
 
 @app.route('/buscar-turnos', methods=['GET'])
