@@ -6,7 +6,7 @@ from flask_jwt_extended import JWTManager, create_access_token, jwt_required
 from PIL import Image
 import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
-from sqlalchemy import LargeBinary
+from sqlalchemy import LargeBinary, and_
 import base64
 from datetime import datetime
 # from models import *
@@ -243,10 +243,14 @@ def enroll_turn():
 def search_turns():
     address = request.args.get('address')
     category = request.args.get('category')
-    # turns = Turn.query.filter_by(category=category, address=address).all()
-    # turns = Turn.query.filter(Turn.category == category, Turn.city == address).all()
-    turns = Turn.query.all()
-
+    print(address)
+    print(category)
+    query = Turn.query
+    if category:
+        query = query.filter(Turn.category == category)
+    if address:
+        query = query.filter(Turn.address == address)
+    turns = query.all()
     turns_data = []
     for turn in turns:
         turn_data = {
