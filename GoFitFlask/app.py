@@ -287,9 +287,28 @@ def get_professional_turns(prof_id):
     return jsonify(turns_data)
 
 
-@app.route('/turnos_usuario/<int:user_id>', methods=['GET'])
+@app.route('/turnos-usuario/<int:user_id>', methods=['GET'])
 def get_user_turns(user_id):
-    pass
+    query = Turn.query
+    if user_id:
+        query = query.filter(Turn.user_id == user_id)
+    turns = query.all()
+    turns_data = []
+    for turn in turns:
+        turn_data = {
+            'id': turn.id,
+            'category': turn.category,
+            'city': turn.city,
+            'address': turn.address,
+            'date': turn.date.strftime('%Y-%m-%d'),
+            'time': turn.time.strftime('%H:%M:%S'),
+            'cost': turn.cost,
+            'capacity': turn.capacity,
+            'user_id': turn.user_id,
+            'professional_id': turn.professional_id
+        }
+        turns_data.append(turn_data)
+    return jsonify(turns_data)
 
 
 if __name__ == '__main__':

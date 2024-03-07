@@ -52,6 +52,7 @@ const SearchPage = (searchData) => {
         </div>
       </form>
     </div>
+    {rows ?
       <div className="listado">
         <p className="texto_rojo">Resultados búsqueda</p>
         <div className="lista_prof">
@@ -62,7 +63,7 @@ const SearchPage = (searchData) => {
             <div className="columna titulos-encab prov">Dirección   </div>
             <div className="columna titulos-encab">Reservar</div>
           </div>
-          {rows.map((turno, index) => (
+          {rows ? rows.map((turno, index) => (
             <div key={index} id={`turno-${index}`} className="fila-prof">
               <div className="columna nom">{turno.professional_id} {turno.apellido}</div>
               <div className="columna disc">{turno.category}</div>
@@ -72,9 +73,10 @@ const SearchPage = (searchData) => {
                 <Link style={{textDecoration: 'none'}} to={'/perfilProf'}><button className="hover ver">Ver</button></Link>
               </div>
             </div>
-          ))}
+          )) : null }
         </div>
       </div>
+      : null}
     </div>  
     );
 };
