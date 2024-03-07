@@ -15,6 +15,8 @@ const ProfEdit = () => {
     description: '',
     city: '',
     province: '',
+    cbu: '',
+    alias: '',
   });
 
   // Función para manejar cambios en los campos del formulario
@@ -79,6 +81,7 @@ const ProfEdit = () => {
             <p className='tituloInfo'>Información personal</p>
             <div>
               <div className="imagen-subir">
+<<<<<<< HEAD
                 <img className="fotoSubir" src={formData.image} alt="Imagen de perfil" />
                 <input
                   id="file-upload"
@@ -87,6 +90,10 @@ const ProfEdit = () => {
                   onChange={handleImageUpload}
                   accept="image/*"
                 />
+=======
+                <img className="fotoSubir" src={formData.image || require('../images/image.jpg')} alt="Imagen de perfil" />
+                <input id="file-upload" type="file" className="imagen-subir-input" onChange={handleImageUpload} accept="image/*" />
+>>>>>>> 397a0b624e41ebb0d0dcbd74ffbf458a7309b888
               </div>
               <div className="fila">
                 <input className="editP" type="text" placeholder="Nombre" required name="first_name" value={formData.first_name} onChange={handleChange} />
@@ -94,6 +101,10 @@ const ProfEdit = () => {
               </div>
               <div className="fila">
                 <input className="editP" type="email" name="email" id="email" required placeholder="Email" value={formData.email} onChange={handleChange} />
+              </div>
+              <div className="fila">
+                <input className="editP" type="number" placeholder="CBU" required name="CBU" value={formData.cbu} onChange={handleChange} />
+                <input className="editP" type="text" placeholder="Alias cta" required name="Alias_transferencia" value={formData.alias} onChange={handleChange} />
               </div>
             </div>
           </div>
@@ -128,15 +139,15 @@ const ProfEdit = () => {
       <p className='h2NvosTurnos'>Agendá nuevos turnos</p>
       {additionalRows.map((row, index) => (
           <div className='turnoAgendar' key={index}>
-            <input className="editP" readOnly={true} value={row.day}/>
-            <input className="editP" readOnly={true} value={row.date} />
-            <input className="editP" readOnly={true} value={row.time} />
-            <input className="editP" readOnly={true} value={row.price} />
-            <input className="editP" readOnly={true} value={row.capacity} />
+            <input className="editP2" readOnly={true} value={row.day}/>
+            <input className="editP2" readOnly={true} value={row.date} />
+            <input className="editP2" readOnly={true} value={row.time} />
+            <input className="editP2" readOnly={true} value={row.price} />
+            <input className="editP2" readOnly={true} value={row.capacity} />
           </div>
         ))}
       <div className="turnoAgendar">
-        <select name="day" id="dia" value={newRow.day} onChange={handleRowChange}>
+        <select name="day" id="dia" value={newRow.day} onChange={handleRowChange} className='editP2'>
           <option value="lunes">Lunes</option>
           <option value="martes">Martes</option>
           <option value="miercoles">Miércoles</option>
@@ -144,10 +155,10 @@ const ProfEdit = () => {
           <option value="viernes">Viernes</option>
           <option value="sabado">Sábado</option>
         </select>
-        <input className="editP" type="date" name="date" required value={newRow.date} onChange={handleRowChange} />
-        <input className="editP" type="time" name="time" required value={newRow.time} onChange={handleRowChange} />
-        <input className="editP" type="number" min="0" name="price" required placeholder="Precio" value={newRow.price} onChange={handleRowChange} />
-        <input className="editP" type="number" min="0" name="capacity" required placeholder='Cupo' value={newRow.capacity} onChange={handleRowChange} />
+        <input className="editP2" type="date" name="date" required value={newRow.date} onChange={handleRowChange} />
+        <input className="editP2" type="time" name="time" required value={newRow.time} onChange={handleRowChange} />
+        <input className="editP2" type="number" min="0" name="price" required placeholder="Precio" value={newRow.price} onChange={handleRowChange} />
+        <input className="editP2" type="number" min="0" name="capacity" required placeholder='Cupo' value={newRow.capacity} onChange={handleRowChange} />
         <div className="mas hover">
           <span onClick={addRow}> <FaPlus /></span>
         </div>

@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../../stylesheets/forms/ProfessionalForm.css'
+<<<<<<< HEAD
 import { Link, useNavigate } from 'react-router-dom'
+=======
+import { Link } from 'react-router-dom'
+import terms from '../../terminosycondiciones.pdf'
+>>>>>>> 397a0b624e41ebb0d0dcbd74ffbf458a7309b888
 
 const ProfessionalForm = () => {
   const [formData, setFormData] = useState({
@@ -33,7 +38,7 @@ const navigate = useNavigate()
   // const handleWeekdayChange = (e) => {
   //   const { name } = e.target;
   //   const day = name.substring(0, 3).toLowerCase(); 
-  
+
   //   setFormData(prevState => ({
   //     ...prevState,
   //     available_times: {
@@ -43,13 +48,13 @@ const navigate = useNavigate()
   //   }));
   //   console.log(formData);
   // };
-  
+
 
   // const handleTimeChange = (e) => {
   //   const { name, value } = e.target;
   //   const day = name.substring(0, 3).toLowerCase();
   //   const timeSlot = name.substring(3); 
-  
+
   //   setFormData(prevState => ({
   //     ...prevState,
   //     available_times: {
@@ -339,7 +344,8 @@ const navigate = useNavigate()
           <input className={!passwordsMatch ? 'disabled hover' : 'enviar hover'} type="submit" name="registro" value="Registrarte"/>
         </div>
         <div className="caja">
-          <input className='checkBoxP' type="checkbox" name="condiciones" value="condiciones" onChange={handleChange}/> <label>Acepto <Link to="../../terminos-y-condiciones.pdf" target="_blank">los términos y las condiciones</Link></label>
+          <input type="checkbox" name="condiciones" value="condiciones" onChange={handleChange} />
+          <label>Acepto <a href={terms} target="_blank" rel="noopener noreferrer">los términos y las condiciones</a></label>
         </div>
       </form>
     </div>

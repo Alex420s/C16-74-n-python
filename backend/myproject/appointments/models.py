@@ -11,6 +11,8 @@ class Availability(models.Model):
     status = models.BooleanField(default=True)
     cupo = models.IntegerField(default=0)  # Campo de cupo
     precio = models.DecimalField(max_digits=10, decimal_places=2, default=4200.0)  # Campo de precio
+    cbu_cvu = models.TextField(max_length=100, default="000000000000000000000")
+    alias = models.TextField(max_length=100, default="000000000000000000000")
     fecha = models.DateField()  # Campo de fecha
 
     def __str__(self):

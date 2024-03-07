@@ -3,10 +3,10 @@ from datetime import timedelta
 import os
 import dj_database_url
 from pathlib import Path
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
 
-# # # Cargar variables de entorno desde el archivo .env
-# load_dotenv()
+# # Cargar variables de entorno desde el archivo .env
+load_dotenv()
 
 # Obtener el valor de SECRET_KEY
 SECRET_KEY = os.getenv('SECRET_KEY')
