@@ -143,12 +143,18 @@ const ProfEdit = () => {
           <input className="editP2" readOnly={true} value={row.address} />
           <input className="editP2" readOnly={true} value={row.cost} />
           <input className="editP2" readOnly={true} value={row.capacity} />
-          <span onClick={addRow}> <ImCross /></span>
+          <span> <ImCross /></span>
         </div>
       ))}
       <div className="turnoAgendar">
-        
-        <input className="editP2" type="text" name="category" required placeholder="Categoría" value={newRow.category} onChange={handleRowChange} />
+        <select className='editP2' name="category" onChange={handleRowChange}>
+          <option value="">Todas las disciplinas</option>
+          <option value="Boxeo">Boxeo</option>
+          <option value="Zumba">Zumba</option>
+          <option value="Crossfit">Crossfit</option>
+          <option value="Gap">Gap</option>
+          <option value="Pilates">Pilates</option>
+        </select>
         <input className="editP2" type="date" name="date" required value={newRow.date} onChange={handleRowChange} />
         <input className="editP2" type="time" name="time" required value={newRow.time} onChange={handleRowChange} />
         <input className="editP2" type="text" name="address" required placeholder="Dirección" value={newRow.address} onChange={handleRowChange} />

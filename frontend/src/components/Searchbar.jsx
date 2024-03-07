@@ -1,29 +1,39 @@
 import { useState } from 'react'
 import '../stylesheets/Searchbar.css'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
 
 const Searchbar = () => {
-  //const [showModal, setShowModal] = useState(false);
-  //const [selectedClass, setSelectedClass] = useState(null);
+  const navigate = useNavigate();
+  const [searchCriteria, setSearchCriteria] = useState({
+    address: "",
+    category: "",
+  });
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setSearchCriteria({ ...searchCriteria, [name]: value });
+    console.log(searchCriteria);
   }
-  // https://render-api-a6du.onrender.com/user/filter
 
-  // Modal popup
-  // const handleBuscarClick = () => {
-  //   setShowModal(true);
-  // };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.get('http://127.0.0.1:5000/buscar-turnos', {
+        params: searchCriteria
+      });
+      navigate('/search', response.data ? { state: response.data } : null);
+    } catch (error) {
+      console.log(error);   
+    }
+  }
 
   return (
     <div className="searchbar">
       <p className="h2Busca">Buscar</p>
       <form className='inputsBuscador' onSubmit={handleSubmit}>
-          <input className='inputsBuscar' type="text" name="barrio" placeholder="Barrio" />
-          <input className='inputsBuscar' type="text" name="provincia" placeholder="Provincia/Estado" />
-          <select className='especialidad' name="disciplina">
+          <input className='inputsBuscar' type="text" name="address" placeholder="Dirección" onChange={handleChange} />
+          <select className='especialidad' name="category" onChange={handleChange}>
             <option value="">Todas las disciplinas</option>
             <option value="Boxeo">Boxeo</option>
             <option value="Zumba">Zumba</option>
@@ -32,20 +42,9 @@ const Searchbar = () => {
             <option value="Pilates">Pilates</option>
           </select>
         <div>
-          <Link to={'/search'}><button className='hover buscar' /*onClick={handleSubmit}*/>Buscar</button></Link>
+          <input className='hover buscar' type="submit" value="Buscar"/>
         </div>
       </form>
-      {/* {showModal && (
-        <div className="modal-overlay">
-          <SearchPage
-            clase={selectedClass}
-            onClose={() => {
-              setShowModal(false);
-              setSelectedClass(null);
-            }}
-          />
-        </div>
-      )} */}
     </div>
   )
 }

@@ -1,76 +1,73 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../stylesheets/Search.css'
 import { Link } from 'react-router-dom'
-// import { IoCloseCircleOutline } from "react-icons/io5";
+import axios from 'axios'
 
-// https://render-api-a6du.onrender.com/user/filter
-const objetoPrueba = [
-  {
-    nombre: "John",
-    apellido: "Doe",
-    disciplina: "Boxeo",
-    barrio: "Example",
-    provincia: "Example",
-  },
-  {
-    nombre: "Juan",
-    apellido: "Perez",
-    disciplina: "Zumba",
-    barrio: "Villa Urquiza",
-    provincia: "Villa Urquiza",
-  },
-  {
-    nombre: "Daniel",
-    apellido: "Garcia",
-    disciplina: "Spinning",
-    barrio: "Boedo",
-    provincia: "Boedo",
+
+const SearchPage = (searchData) => {
+
+  const [searchCriteria, setSearchCriteria] = useState({
+    address: "",
+    category: ""
+  })
+
+  const [rows, setRows] = useState(searchData.turns);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setSearchCriteria({...searchCriteria, [name]: value });
+    console.log(searchCriteria);
   }
-]
 
-const SearchPage = ({ onClose }) => {
-  //const handleClose = () => {
-  //  onClose();
-  //}
-    
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    try {
+      const response = await axios.get('http://127.0.0.1:5000/buscar-turnos', {
+        params: searchCriteria
+      });
+      setRows(response.data);
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div className="bodySearch">
       <p className="texto_rojo">Buscar</p>
-              {/* <IoCloseCircleOutline className='close-button' onClick={handleClose}/> */}
-      <div className="searchbar2">
-
-        <div className='inputBuscador2'>
-            <input className='inputsBuscar2' type="text" name="barrio" placeholder="Barrio" />
-            <input className='inputsBuscar2' type="text" name="provincia" placeholder="Provincia/Estado" />
-            <select className='disciplina' name="disciplina">
-              <option value="">Todas las disciplinas</option>
-              <option value="Boxeo">Boxeo</option>
-              <option value="Zumba">Zumba</option>
-              <option value="Crossfit">Crossfit</option>
-              <option value="Gap">Gap</option>
-              <option value="Pilates">Pilates</option>
-            </select>
-          <div>
-            <Link style={{textDecoration: 'none'}} to={'/search'}><input className='buscar2 hover' type="submit" name="buscar" value="Buscar" /></Link>
-          </div>
+      <div className="searchbar">
+      <p className="h2Busca">Buscar</p>
+      <form className='inputsBuscador' onSubmit={handleSubmit}>
+          <input className='inputsBuscar' type="text" name="address" placeholder="Dirección" onChange={handleChange} />
+          <select className='especialidad' name="category" onChange={handleChange}>
+            <option value="">Todas las disciplinas</option>
+            <option value="Boxeo">Boxeo</option>
+            <option value="Zumba">Zumba</option>
+            <option value="Crossfit">Crossfit</option>
+            <option value="Gap">Gap</option>
+            <option value="Pilates">Pilates</option>
+          </select>
+        <div>
+          <input className='hover buscar' type="submit" value="Buscar"/>
         </div>
-      </div>
+      </form>
+    </div>
       <div className="listado">
         <p className="texto_rojo">Resultados búsqueda</p>
         <div className="lista_prof">
           <div className="encabezado">
-            <div className="columna titulos-encab">Nombre y apellido</div>
+            <div className="columna titulos-encab">Nombre del profesional</div>
             <div className="columna titulos-encab">Disciplina</div>
-            <div className="columna titulos-encab">Barrio</div>
-            <div className="columna titulos-encab prov">Provincia/Estado</div>
+            <div className="columna titulos-encab">Fecha</div>
+            <div className="columna titulos-encab prov">Dirección   </div>
             <div className="columna titulos-encab">Reservar</div>
           </div>
-          {objetoPrueba.map((persona, index) => (
-            <div key={index} id={`persona-${index}`} className="fila-prof">
-              <div className="columna nom">{persona.nombre} {persona.apellido}</div>
-              <div className="columna disc">{persona.disciplina}</div>
-              <div className="columna barrio">{persona.barrio}</div>
-              <div className="columna prov">{persona.provincia}</div>
+          {rows.map((turno, index) => (
+            <div key={index} id={`turno-${index}`} className="fila-prof">
+              <div className="columna nom">{turno.professional_id} {turno.apellido}</div>
+              <div className="columna disc">{turno.category}</div>
+              <div className="columna barrio">{turno.date}</div>
+              <div className="columna prov">{turno.address}</div>
               <div className="columna">
                 <Link style={{textDecoration: 'none'}} to={'/perfilProf'}><button className="hover ver">Ver</button></Link>
               </div>

@@ -241,7 +241,29 @@ def enroll_turn():
 
 @app.route('/buscar-turnos', methods=['GET'])
 def search_turns():
-    pass
+    address = request.args.get('address')
+    category = request.args.get('category')
+    # turns = Turn.query.filter_by(category=category, address=address).all()
+    # turns = Turn.query.filter(Turn.category == category, Turn.city == address).all()
+    turns = Turn.query.all()
+
+    turns_data = []
+    for turn in turns:
+        turn_data = {
+            'id': turn.id,
+            'category': turn.category,
+            'city': turn.city,
+            'address': turn.address,
+            'date': turn.date.strftime('%Y-%m-%d'),
+            'time': turn.time.strftime('%H:%M:%S'),
+            'cost': turn.cost,
+            'capacity': turn.capacity,
+            'user_id': turn.user_id,
+            'professional_id': turn.professional_id
+        }
+        turns_data.append(turn_data)
+    print(turns_data)
+    return jsonify(turns_data)
 
 
 @app.route('/turnos-profesional/<int:prof_id>', methods=['GET'])
