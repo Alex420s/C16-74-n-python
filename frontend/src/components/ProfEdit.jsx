@@ -79,7 +79,7 @@ const ProfEdit = () => {
             <p className='tituloInfo'>Información personal</p>
             <div>
               <div className="imagen-subir">
-                <img className="fotoSubir" src={formData.image || require('../images/image.jpg')} alt="Imagen de perfil" />
+                <img className="fotoSubir" src={formData.image} alt="Imagen de perfil" />
                 <input
                   id="file-upload"
                   type="file"

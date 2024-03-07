@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../../stylesheets/forms/ProfessionalForm.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const ProfessionalForm = () => {
   const [formData, setFormData] = useState({
@@ -12,10 +12,11 @@ const ProfessionalForm = () => {
     password: '',
     category: '',
     description: '',
-    city: '',
-    province: '',
-    available_times: {}
+    adress: '',
+    phone_number: '',
   });
+
+const navigate = useNavigate()
 
   const [passwordsMatch, setPasswordsMatch] = useState(true);
 
@@ -66,8 +67,13 @@ const ProfessionalForm = () => {
     e.preventDefault();
     try {
       if (passwordsMatch) {
-        const response = await axios.post('https://render-api-a6du.onrender.com/user/register-professional', formData);
+        const response = await axios.post('http://127.0.0.1:8000/user/register-professional', formData);
         console.log('Response:', response.data);
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('firstName', response.first_name);
+        localStorage.setItem('id', response.professional_id);
+        // localStorage.setItem('id', response.data.role);
+        navigate('/profesional');
       } else {
         console.log('Passwords do not match');
       }
@@ -75,6 +81,7 @@ const ProfessionalForm = () => {
       console.error('Error:', error.response.data);
     }
   };
+
 
   return (
     <div>
@@ -118,8 +125,8 @@ const ProfessionalForm = () => {
         <div className="info-3">
           <p className='h3FormP'>Información clases</p>
           <div className="fila">
-            <input className="inputFormP" type="text" name="city" id="Barrio" required placeholder="Barrio" value={formData.barrio} onChange={handleChange} />
-            <input className="inputFormP" type="text" name="province" id="Provincia" required placeholder="Provincia/Estado" value={formData.province} onChange={handleChange} />
+            <input className="inputFormP" type="text" name="address" id="Barrio" required placeholder="Dirección" value={formData.barrio} onChange={handleChange} />
+            <input className="inputFormP" type="text" name="phone_number" id="Provincia" required placeholder="Teléfono" value={formData.province} onChange={handleChange} />
           </div>
           {/* <div id="contenedor">
             <div className="general">
@@ -329,7 +336,7 @@ const ProfessionalForm = () => {
           </div> */}
         </div>
         <div className="contenedor-enviar">
-          <input className={!passwordsMatch ? 'disabled hover' : 'enviar hover'} type="submit" name="registro" value="Registrarte" />
+          <input className={!passwordsMatch ? 'disabled hover' : 'enviar hover'} type="submit" name="registro" value="Registrarte"/>
         </div>
         <div className="caja">
           <input className='checkBoxP' type="checkbox" name="condiciones" value="condiciones" onChange={handleChange}/> <label>Acepto <Link to="../../terminos-y-condiciones.pdf" target="_blank">los términos y las condiciones</Link></label>

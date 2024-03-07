@@ -1,3 +1,4 @@
+#C16-74-n-python\backend\myproject\appointments\serializers.py
 from rest_framework import serializers
 from .models import Availability, Turn
 from users.models import Professional

@@ -14,6 +14,8 @@ from appointments.models import Availability
 from django.shortcuts import render
 from rest_framework import generics, status
 from rest_framework.views import APIView
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
 
 # Filtro de professional
 class ProfessionalListView(APIView):
@@ -67,10 +69,22 @@ class UserRegister(generics.CreateAPIView):
 	permission_classes = (AllowAny,)
 	queryset = CustomUser.objects.all()
 	serializer_class = UserRegisterSerializer
+
+
 class ProfessionalRegister(generics.CreateAPIView):
-	permission_classes = (AllowAny,)
-	queryset = Professional.objects.all()
-	serializer_class = ProfessionalRegisterSerializer
+    permission_classes = (AllowAny,)
+    queryset = Professional.objects.all()
+    serializer_class = ProfessionalRegisterSerializer
+
+    def perform_create(self, serializer):
+        image = self.request.data.get('image')  # Obtiene el archivo de imagen de los datos de la solicitud
+        if image:
+            # Guarda la imagen en el sistema de archivos y obtiene su ruta
+            image_path = default_storage.save('user_images/' + image.name, ContentFile(image.read()))
+            # Establece la ruta de la imagen en el serializer para que se guarde en la base de datos
+            serializer.save(image=image_path)
+        else:
+            serializer.save()
 
 
 class UserUpdateAPIView(APIView):

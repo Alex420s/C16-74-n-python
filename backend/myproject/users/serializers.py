@@ -5,6 +5,7 @@ from django.contrib.auth import get_user_model, authenticate
 from .models import Professional, CustomUser
 from django.db import transaction
 from django.contrib.auth.hashers import make_password
+from django.conf import settings
 
 
 
@@ -16,7 +17,7 @@ UserModel = get_user_model()
     "password": "test"
 }
 """
-class ProfessionalRegisterSerializer(serializers.ModelSerializer):
+"""class ProfessionalRegisterSerializer(serializers.ModelSerializer):
     # Define campos adicionales del usuario que deseas incluir en el serializador
     email = serializers.CharField(source='user.email')
     first_name = serializers.CharField(source='user.first_name')
@@ -43,8 +44,47 @@ class ProfessionalRegisterSerializer(serializers.ModelSerializer):
         professional = Professional.objects.create(user=user, **validated_data)
     
         professional.save()
-        return professional
+        return professional"""
     
+
+class ProfessionalRegisterSerializer(serializers.ModelSerializer):
+    # Define campos adicionales del usuario que deseas incluir en el serializador
+    email = serializers.CharField(source='user.email')
+    first_name = serializers.CharField(source='user.first_name')
+    last_name = serializers.CharField(source='user.last_name')
+    phone_number = serializers.CharField(source='user.phone_number')
+    address = serializers.CharField(source='user.address')
+    password = serializers.CharField(source='user.password')
+
+    class Meta:
+        model = Professional
+        fields = ['professional_id', 'speciality', 'description', 'availability_hours', 'neighborhood', 'province', 'image',
+                  'email', 'first_name', 'last_name', 'phone_number', 'address', 'password']
+        extra_kwargs = {'password': {'write_only': True}}
+
+    def create(self, validated_data):
+        user_data = validated_data.pop('user')
+        image = validated_data.pop('image', None)  # Obtenemos la imagen del validated_data si está presente
+
+        # Crear una nueva instancia de CustomUser con los datos proporcionados
+        user = CustomUser.objects.create(**user_data)
+        # Establecer el rol como 'professional'
+        user.role = 'professional'
+        user.set_password(user_data['password'])
+        # Guardar el usuario
+        user.save()
+
+        # Crear una instancia de Professional asociada al usuario creado
+        professional = Professional.objects.create(user=user, **validated_data)
+
+        # Si hay una imagen, guardamos la URL de la imagen
+        if image:
+            professional.image = image
+            professional.save()
+            professional.image_url = 'http://127.0.0.1:8000' + professional.image.url  # Cambiar local por url de render.
+            professional.save()
+
+        return professional
 
 class UserRegisterSerializer(serializers.ModelSerializer):
     role = serializers.CharField(default='user')  # Valor por defecto

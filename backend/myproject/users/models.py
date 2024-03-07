@@ -20,6 +20,8 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return f"{self.first_name} {self.last_name} - {self.role}"
     
+   
+##
 class Professional(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name='professional')
     professional_id = models.AutoField(primary_key=True)
@@ -29,10 +31,12 @@ class Professional(models.Model):
     neighborhood = models.CharField(max_length=100, blank=True, default="")
     province = models.CharField(max_length=100, blank=True, default="Buenos Aires")
     image = models.ImageField(upload_to="user_images", default="default.jpg")
+    image_url = models.CharField(max_length=255, blank=True)  # Nuevo campo para la URL de la imagen
     
     def __str__(self):
         return f"{self.user.first_name} {self.user.last_name} - {self.speciality}"
-    
+  
+
 @receiver(post_save, sender=CustomUser)
 def create_professional(sender, instance, created, **kwargs):
     if created and instance.is_superuser and instance.role == 'professional':
