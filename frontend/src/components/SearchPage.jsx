@@ -37,7 +37,7 @@ const SearchPage = (searchData) => {
       <p className="texto_rojo">Buscar</p>
       <div className="searchbar">
         <p className="h2Busca">Buscar</p>
-        <form className="inputsBuscador" onSubmit={handleSubmit}>
+        <form className="inputsBuscador2" onSubmit={handleSubmit}>
           <input
             className="inputsBuscar"
             type="text"
