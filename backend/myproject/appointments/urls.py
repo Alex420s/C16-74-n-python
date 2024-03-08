@@ -3,6 +3,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('create/', views.create_appointment, name='create_appointment'),
-    # Otras URLs de appointments
-]
+    path('', views.AvailabilityAPIView.as_view(), name='appoinment'),
+    path('turn/<int:professional_id>', views.TurnListView.as_view(), name='appoinment'),
+    path('<int:professional_id>/', views.AvailabilityIdAPIView.as_view(), name='appoinment'),
+    ]

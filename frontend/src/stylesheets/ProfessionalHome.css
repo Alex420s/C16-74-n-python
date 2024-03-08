@@ -1,0 +1,15 @@
+.main { 
+    display: flex;
+    justify-content: space-between;
+    margin-top: -60px;
+    width: 100%;
+    z-index: 500;
+}
+
+.side-novedades{
+    background-color: white;
+    display: flex;
+    width: 100%;
+    justify-content: start;
+    margin-top: 80px;
+}

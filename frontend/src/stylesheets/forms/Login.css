@@ -1,0 +1,51 @@
+.h2Login{
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.inputLogin{
+    padding: 10px;
+    font-size: 20px;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #7F7F7F;
+    margin: 10px 0;
+}
+
+.contenedor-ingresar{
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 0 0;
+}
+
+.ingresar{
+    font-size: 20px;
+    border-radius: 10px;
+    padding: 15px 40px;
+    border-style: none;
+    color: white;
+    background-color: #fb1720;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.registro {
+    text-align: center;
+    margin: 10px auto;
+}
+
+.registro p{
+    margin: 10px;
+    font-size: 15px;
+    line-height: 15px;
+}
+
+.registro a{
+    text-decoration: none;
+}
+
+.registro span{
+    color: red;
+}

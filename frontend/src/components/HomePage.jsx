@@ -7,11 +7,14 @@ import Promo4 from '../images/promo4.jpg'
 import Searchbar from '../components/Searchbar.jsx'
 import '../stylesheets/Home.css'
 import { Link } from 'react-router-dom'
+import ImgGral from '../images/img-principal.jpg'
+import ImgUser from '../images/img-index-usuario.jpg'
+import ImgProf from '../images/img-index-prof.jpg'
 
 const HomePage = () => {
   return (
-    <div>
-      <div className="promos">
+    <div className='bodyHome'>
+       <div className="promos">
         <ul>
           <li>
             <img src={ Promo1 } alt="Promo 1" />
@@ -27,29 +30,50 @@ const HomePage = () => {
           </li>
         </ul>
       </div>
-      <div className="infos">
-        <img src={ Gofit } alt="" />
-        <div className="texto">        
-          <p className="negrita">¿Tenés un espacio vacío entre dos actividades?</p>
-          <p>Aprovecha tu tiempo y reservá un turno con el especialista más cercano con nuestra app de turnos, está diseñada para hacer tu vida más fácil y
-            eficiente.</p>
-          <p>Reserva tu turno en cualquier lugar donde te encuentres. ¡Es rápido, conveniente y sin estrés!</p> 
-          <p>¿Qué más puedes hacer con nuestra app de turnos?</p>
-            <ul>
-              <li><span className="negrita">Flexibilidad Total:</span> Elige el día y la hora que mejor se adapten a tu agenda.</li>
-              <li><span className="negrita">Notificaciones en Tiempo Real:</span> Recibe recordatorios y actualizaciones automáticas sobre tus citas.</li>
-              <li><span className="negrita">Reservas para Toda la Familia:</span> Gestiona los turnos de tus seres queridos en una sola plataforma.</li> 
-              <li><span className="negrita">Interfaz Intuitiva:</span> Navega sin esfuerzo por nuestra aplicación con una interfaz fácil de usar.</li>
-            </ul>
-          <p className="negrita">¡No pierdas más tiempo valioso esperando!</p>
-          <p>Descarga nuestra app de turnos hoy mismo y experimenta la conveniencia en tus manos.</p>
-          <p>¡Tu tiempo es importante, úsalo sabiamente con nuestra aplicación!</p>
+      <div className="info_GO">
+      <img src={ Gofit } alt="" className='logo'/>
+        <div className='img-container'><img src={ImgGral} alt="" className="imgPricipal"/></div>
+        <div className="texto infoGral">
+          <p className="negrita">Plataforma de autogestión de turnos para entrenar</p>
+          <p>GoFitApp es la app que te facilita la gestión de tus entrenamientos y el de los miembros de tu familia. Manteniendo actualizada la disponibilidad de los entrenadores en tu zona.<br/>Como profesional te ayuda a visibilizarte y llegar a mas clientes.</p>
         </div>
       </div>
-      <Searchbar/>
-      <div id="contenedor-registrar">
-        <Link style={{ textDecoration: 'none' }} to={'/nuevo-profesional'}><input type="submit" name="registro_profesional" value="Publica tus clases" className="registroHome hover" /></Link>
-        <Link style={{ textDecoration: 'none' }} to={'/nuevo-usuario'}><input type="submit" name="registro_usuario" value="Reserva tu turno" className="registroHome hover" /></Link>  
+      <br />
+      <br />
+      <div className='searchbar'>
+        <Searchbar/>
+      </div>
+      <div className='infoUserProf'>
+        <div className="user">
+          <p className='titUserProf'>USUARIO</p>
+          <div className='detalleUserProf'>
+            <div className='infoBtn'>
+              <div className="texto textoUserProf">
+                <p>Con <b>GoFitApp</b> podrás:</p>
+                <p>Reservar turnos en cualquier momento y lugar.<br/>Elegir el día y la hora.<br/>Verificar la disponibilidad en tiempo real.<br/>Recibir notificaciones y recordatorios.</p>
+              </div>
+              <div className="contenedor-registrar">
+                  <Link style={{ textDecoration: 'none' }} to={'/nuevo-usuario'}><input type="submit" name="registro_usuario" value="Reserva tu turno" className="registroHome hover" /></Link>  
+              </div>
+            </div>
+            <div className="imgUserProf"><img src={ImgUser} alt="" className="imgUserProf"/></div>
+          </div>
+        </div>
+        <div className="prof">
+          <p className='titUserProf'>PROFESIONAL</p>
+          <div className='detalleUserProf'>
+            <div className="imgUserProf"><img src={ImgProf} alt="" className="imgUserProf"/></div>
+            <div className='infoBtn'>
+              <div className="texto textoUserProf">
+                <p>Con <b>GoFitApp</b> podrás:</p>
+                <p>Armar la vidriera de tu servicio.<br/>Gestionar tu agenda de manera eficiente.<br/>Confirmar y rechazar turnos.<br/>Recibir notificaciones cuando un usuario reserve.</p>
+              </div>
+              <div className="contenedor-registrar">
+              <Link style={{ textDecoration: 'none' }} to={'/nuevo-profesional'}><input type="submit" name="registro_profesional" value="Publica tus clases" className="registroHome hover" /></Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )

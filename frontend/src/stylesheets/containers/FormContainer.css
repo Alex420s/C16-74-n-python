@@ -1,0 +1,32 @@
+html {
+  background-color: rgb(0, 0, 0);
+}
+
+.outer-container {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin: auto;
+}
+
+.inner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 12px;
+  margin: 50px 0;
+  min-width: 30%;
+  padding: 30px 50px;
+}
+
+@media only screen and (max-width: 700px) {
+  .inner-container{
+     width: 90%;
+     padding: 30px 15px;
+  }
+}

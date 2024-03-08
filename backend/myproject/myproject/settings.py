@@ -1,11 +1,11 @@
 #C16-74-n-python\backend\myproject\myproject\settings.py
+from datetime import timedelta
 import os
 import dj_database_url
 from pathlib import Path
-
 from dotenv import load_dotenv
 
-# Cargar variables de entorno desde el archivo .env
+# # Cargar variables de entorno desde el archivo .env
 load_dotenv()
 
 # Obtener el valor de SECRET_KEY
@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'appointments',
     'payments',
     #Third Party Apps
+    'rest_framework_simplejwt.token_blacklist',
     'rest_framework',
     'corsheaders',
 ]
@@ -98,9 +99,10 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+default_db_url = "postgres://postgres:bBaC3DD4FF-CdBbg*2dbffB6-cfGDDC5@monorail.proxy.rlwy.net:25117/railway"
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL', default_db_url))
 }
 
 
@@ -159,6 +161,11 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.SessionAuthentication',
-    ),
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+
+}
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
