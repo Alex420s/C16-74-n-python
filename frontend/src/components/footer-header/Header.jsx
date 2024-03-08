@@ -16,8 +16,9 @@ const Header = () => {
   const logout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('firstName');
-    navigate('/');
-    // window.location.reload();
+    localStorage.removeItem('id');
+    localStorage.removeItem('role');
+    window.location.reload();
   }
   
   useEffect(() => {

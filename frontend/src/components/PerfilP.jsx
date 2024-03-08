@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import CheckOut from './CheckOut';
 import trainer from '../images/trainer.jpg';
 import '../stylesheets/PerfilProf.css';
+import { useNavigate } from 'react-router-dom';
 
 
 // https://render-api-a6du.onrender.com/appointments/id/
@@ -60,8 +61,12 @@ localStorage.setItem('description', "Kitty ipsum dolor sit amet, shed everywhere
 const PerfilP = () => {
     const [showModal, setShowModal] = useState(false);
     const [selectedClass, setSelectedClass] = useState(null);
+    const navigate = useNavigate();
 
     const handleReservarClick = (clase) => {
+        if (!localStorage.getItem('token')) {
+            navigate('/ingresar')
+        }
         setSelectedClass(clase);
         setShowModal(true);
     };
